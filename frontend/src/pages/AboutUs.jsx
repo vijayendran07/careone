@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import API_URL from '../config/api'
 
 export default function AboutUs({ onBookClick }) {
   const [gallery, setGallery] = useState([])
 
   useEffect(() => {
-    fetch('/api/gallery')
+    fetch(`${API_URL}/api/gallery`)
       .then(res => res.json())
       .then(data => {
         if (data.success) {

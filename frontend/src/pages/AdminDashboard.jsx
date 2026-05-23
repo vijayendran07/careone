@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+import API_URL from '../config/api'
 
 const STATUS_COLORS = {
   pending:   'bg-yellow-100 text-yellow-800',
@@ -82,7 +83,7 @@ export default function AdminDashboard() {
 
   const fetchAppointments = useCallback(async () => {
     try {
-      const res = await fetch('/api/appointments', { headers: authHeaders() })
+      const res = await fetch(`${API_URL}/api/appointments`, { headers: authHeaders() })
       if (res.status === 401 || res.status === 403) {
         localStorage.removeItem('authToken')
         navigate('/login')
@@ -95,7 +96,7 @@ export default function AdminDashboard() {
 
   const fetchGallery = useCallback(async () => {
     try {
-      const res = await fetch('/api/gallery')
+      const res = await fetch(`${API_URL}/api/gallery`)
       const data = await res.json()
       if (data.success) setGallery(data.images || [])
     } catch (e) { console.error(e) }
@@ -103,7 +104,7 @@ export default function AdminDashboard() {
 
   const fetchSettings = useCallback(async () => {
     try {
-      const res = await fetch('/api/settings', { headers: authHeaders() })
+      const res = await fetch(`${API_URL}/api/settings`, { headers: authHeaders() })
       const data = await res.json()
       if (data.success && data.settings) setSettings(data.settings)
     } catch (e) { console.error(e) }
@@ -124,7 +125,7 @@ export default function AdminDashboard() {
 
   const updateStatus = async (id, status) => {
     try {
-      const res = await fetch(`/api/appointments/${id}`, {
+      const res = await fetch(`${API_URL}/api/appointments/${id}`, {
         method: 'PUT',
         headers: authHeaders(),
         body: JSON.stringify({ status }),
@@ -140,7 +141,7 @@ export default function AdminDashboard() {
   const deleteAppointment = async (id) => {
     if (!window.confirm('Delete this appointment?')) return
     try {
-      const res = await fetch(`/api/appointments/${id}`, {
+      const res = await fetch(`${API_URL}/api/appointments/${id}`, {
         method: 'DELETE',
         headers: authHeaders(),
       })
@@ -154,7 +155,7 @@ export default function AdminDashboard() {
 
   const saveSettings = async () => {
     try {
-      const res = await fetch('/api/settings', {
+      const res = await fetch(`${API_URL}/api/settings`, {
         method: 'POST',
         headers: authHeaders(),
         body: JSON.stringify(settings),
@@ -247,7 +248,7 @@ export default function AdminDashboard() {
         setUploadProgress(0)
       })
 
-      xhr.open('POST', '/api/media/upload')
+      xhr.open('POST', `${API_URL}/api/media/upload`)
       xhr.setRequestHeader('Authorization', `Bearer ${getToken()}`)
       xhr.send(formData)
     } catch (e) {
@@ -272,7 +273,7 @@ export default function AdminDashboard() {
     }
 
     try {
-      const res = await fetch(`/api/gallery/${imageFormData.section}`, {
+      const res = await fetch(`${API_URL}/api/gallery/${imageFormData.section}`, {
         method: 'PUT',
         headers: authHeaders(),
         body: JSON.stringify(imageFormData),
@@ -294,7 +295,7 @@ export default function AdminDashboard() {
   const deleteGalleryImage = async (section) => {
     if (!window.confirm('Delete this image?')) return
     try {
-      const res = await fetch(`/api/gallery/${section}`, {
+      const res = await fetch(`${API_URL}/api/gallery/${section}`, {
         method: 'DELETE',
         headers: authHeaders(),
       })

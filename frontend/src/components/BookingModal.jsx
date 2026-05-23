@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import API_URL from '../config/api'
 
 export default function BookingModal({ onClose }) {
   const [form, setForm] = useState({
@@ -35,7 +36,7 @@ export default function BookingModal({ onClose }) {
         notes: form.message
       }
       
-      const response = await fetch('/api/appointments', {
+      const response = await fetch(`${API_URL}/api/appointments`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import API_URL from '../config/api'
 import { Link } from 'react-router-dom'
 
 export default function Treatments({ onBookClick }) {
   const [gallery, setGallery] = useState([])
 
   useEffect(() => {
-    fetch('/api/gallery')
+    fetch(`${API_URL}/api/gallery`)
       .then(res => res.json())
       .then(data => {
         if (data.success) {

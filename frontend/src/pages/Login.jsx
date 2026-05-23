@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import API_URL from '../config/api'
 
 export default function Login() {
   const [isRegister, setIsRegister] = useState(false)
@@ -17,7 +18,7 @@ export default function Login() {
     setLoading(true)
 
     try {
-      const url = isRegister ? '/api/auth/register' : '/api/auth/login'
+      const url = isRegister ? `${API_URL}/api/auth/register` : `${API_URL}/api/auth/login`
       const body = isRegister 
         ? { name, email, password, phone }
         : { email, password }
