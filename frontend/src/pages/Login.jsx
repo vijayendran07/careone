@@ -1,0 +1,227 @@
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+export default function Login() {
+  const [isRegister, setIsRegister] = useState(false)
+  const [userType, setUserType] = useState('user')
+  const [name, setName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setError('')
+    setLoading(true)
+
+    try {
+      const url = isRegister ? '/api/auth/register' : '/api/auth/login'
+      const body = isRegister 
+        ? { name, email, password, phone }
+        : { email, password }
+
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      })
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.message || (isRegister ? 'Registration failed' : 'Login failed'))
+      }
+
+      // Check role matches userType selection (optional but good for UX)
+      if (!isRegister && userType === 'admin' && data.role !== 'admin') {
+        throw new Error('Not authorized as admin')
+      }
+
+      // Save token and user info
+      localStorage.setItem('authToken', JSON.stringify({
+        token: data.token,
+        type: data.role,
+        email: data.email,
+        name: data.name,
+        loginTime: new Date().toISOString()
+      }))
+
+      if (data.role === 'admin') {
+        window.location.href = '/admin/dashboard'
+      } else {
+        window.location.href = '/'
+      }
+    } catch (err) {
+      setError(err.message || 'An error occurred. Please try again.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-primary/5 to-secondary/5 flex items-center justify-center px-6">
+      <div className="w-full max-w-md">
+        {/* Logo */}
+        <div className="text-center mb-12">
+          <h1 className="text-3xl font-bold text-primary mb-2">Care One</h1>
+          <p className="text-on-surface-variant">Clinical Excellence in Skin & Hair</p>
+        </div>
+
+        {/* Login Card */}
+        <div className="bg-surface rounded-2xl shadow-lg border border-outline-variant/20 p-8">
+          {/* Form Header */}
+          <h2 className="text-xl font-bold text-on-surface mb-6 text-center">
+            {isRegister ? 'Create Patient Account' : 'Welcome Back'}
+          </h2>
+
+          {/* User Type Selector - Only show for logging in */}
+          {!isRegister && (
+            <div className="flex gap-4 mb-8">
+              <button
+                type="button"
+                onClick={() => setUserType('user')}
+                className={`flex-1 py-3 px-4 rounded-lg font-semibold transition ${
+                  userType === 'user'
+                    ? 'bg-primary text-white'
+                    : 'bg-surface-container-low text-on-surface hover:bg-surface-container'
+                }`}
+              >
+                Patient
+              </button>
+              <button
+                type="button"
+                onClick={() => setUserType('admin')}
+                className={`flex-1 py-3 px-4 rounded-lg font-semibold transition ${
+                  userType === 'admin'
+                    ? 'bg-primary text-white'
+                    : 'bg-surface-container-low text-on-surface hover:bg-surface-container'
+                }`}
+              >
+                Admin
+              </button>
+            </div>
+          )}
+
+          {/* Form */}
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Full Name (Register Only) */}
+            {isRegister && (
+              <div>
+                <label className="block text-sm font-semibold text-on-surface mb-2">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="John Doe"
+                  className="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                />
+              </div>
+            )}
+
+            {/* Email */}
+            <div>
+              <label className="block text-sm font-semibold text-on-surface mb-2">
+                Email Address
+              </label>
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder={!isRegister && userType === 'admin' ? 'admin@careone.com' : 'your@email.com'}
+                className="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+              />
+            </div>
+
+            {/* Phone Number (Register Only) */}
+            {isRegister && (
+              <div>
+                <label className="block text-sm font-semibold text-on-surface mb-2">
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  required
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  placeholder="1234567890"
+                  className="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                />
+              </div>
+            )}
+
+            {/* Password */}
+            <div>
+              <label className="block text-sm font-semibold text-on-surface mb-2">
+                Password
+              </label>
+              <input
+                type="password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="••••••••"
+                className="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+              />
+            </div>
+
+            {/* Error Message */}
+            {error && (
+              <div className="p-4 bg-error/10 border border-error/30 rounded-lg text-error text-sm">
+                {error}
+              </div>
+            )}
+
+            {/* Remember & Forgot (Login Only) */}
+            {!isRegister && (
+              <div className="flex items-center justify-between text-sm">
+                <label className="flex items-center gap-2">
+                  <input type="checkbox" className="rounded" />
+                  <span className="text-on-surface-variant">Remember me</span>
+                </label>
+                <a href="#" className="text-primary hover:underline">Forgot password?</a>
+              </div>
+            )}
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:opacity-90 transition disabled:opacity-50"
+            >
+              {loading 
+                ? (isRegister ? 'Creating account...' : 'Signing in...') 
+                : (isRegister ? 'Register' : 'Sign In')}
+            </button>
+          </form>
+
+          {/* Divider */}
+          <div className="my-6 flex items-center gap-4">
+            <div className="flex-1 h-px bg-outline-variant"></div>
+            <span className="text-on-surface-variant text-sm">or</span>
+            <div className="flex-1 h-px bg-outline-variant"></div>
+          </div>
+
+          {/* Toggle Link */}
+          <p className="text-center text-on-surface-variant text-sm">
+            {isRegister ? 'Already have an account? ' : "Don't have an account? "}
+            <button 
+              type="button"
+              onClick={() => {
+                setIsRegister(!isRegister)
+                setError('')
+              }}
+              className="text-primary font-semibold hover:underline bg-transparent border-none p-0 cursor-pointer"
+            >
+              {isRegister ? 'Sign In' : 'Create one'}
+            </button>
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}
