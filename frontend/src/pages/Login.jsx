@@ -109,10 +109,11 @@ export default function Login() {
             {/* Full Name (Register Only) */}
             {isRegister && (
               <div>
-                <label className="block text-sm font-semibold text-on-surface mb-2">
+                <label htmlFor="name" className="block text-sm font-semibold text-on-surface mb-2">
                   Full Name
                 </label>
                 <input
+                  id="name"
                   type="text"
                   required
                   value={name}
@@ -125,10 +126,11 @@ export default function Login() {
 
             {/* Email */}
             <div>
-              <label className="block text-sm font-semibold text-on-surface mb-2">
+              <label htmlFor="email" className="block text-sm font-semibold text-on-surface mb-2">
                 Email Address
               </label>
               <input
+                id="email"
                 type="email"
                 required
                 value={email}
@@ -141,10 +143,11 @@ export default function Login() {
             {/* Phone Number (Register Only) */}
             {isRegister && (
               <div>
-                <label className="block text-sm font-semibold text-on-surface mb-2">
+                <label htmlFor="phone" className="block text-sm font-semibold text-on-surface mb-2">
                   Phone Number
                 </label>
                 <input
+                  id="phone"
                   type="tel"
                   required
                   value={phone}
@@ -157,10 +160,11 @@ export default function Login() {
 
             {/* Password */}
             <div>
-              <label className="block text-sm font-semibold text-on-surface mb-2">
+              <label htmlFor="password" className="block text-sm font-semibold text-on-surface mb-2">
                 Password
               </label>
               <input
+                id="password"
                 type="password"
                 required
                 value={password}

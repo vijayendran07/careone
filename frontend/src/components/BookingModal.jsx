@@ -67,40 +67,40 @@ export default function BookingModal({ onClose }) {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-semibold mb-2">Name</label>
-            <input type="text" name="name" value={form.name} onChange={handleChange} required
+            <label htmlFor="name" className="block text-sm font-semibold mb-2">Name</label>
+            <input type="text" id="name" name="name" value={form.name} onChange={handleChange} required
               className="w-full border border-outline p-3 rounded-lg focus:outline-none focus:border-primary" />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold mb-2">Email</label>
-            <input type="email" name="email" value={form.email} onChange={handleChange} required
+            <label htmlFor="email" className="block text-sm font-semibold mb-2">Email</label>
+            <input type="email" id="email" name="email" value={form.email} onChange={handleChange} required
               className="w-full border border-outline p-3 rounded-lg focus:outline-none focus:border-primary" />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold mb-2">Phone</label>
-            <input type="tel" name="phone" value={form.phone} onChange={handleChange} required
+            <label htmlFor="phone" className="block text-sm font-semibold mb-2">Phone</label>
+            <input type="tel" id="phone" name="phone" value={form.phone} onChange={handleChange} required
               className="w-full border border-outline p-3 rounded-lg focus:outline-none focus:border-primary" />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold mb-2">Service</label>
-            <select name="service" value={form.service} onChange={handleChange}
+            <label htmlFor="service" className="block text-sm font-semibold mb-2">Service</label>
+            <select id="service" name="service" value={form.service} onChange={handleChange}
               className="w-full border border-outline p-3 rounded-lg focus:outline-none focus:border-primary">
               {services.map(s => <option key={s} value={s}>{s}</option>)}
             </select>
           </div>
 
           <div>
-            <label className="block text-sm font-semibold mb-2">Preferred Date</label>
-            <input type="date" name="date" value={form.date} onChange={handleChange}
+            <label htmlFor="date" className="block text-sm font-semibold mb-2">Preferred Date</label>
+            <input type="date" id="date" name="date" value={form.date} onChange={handleChange}
               className="w-full border border-outline p-3 rounded-lg focus:outline-none focus:border-primary" />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold mb-2">Message (optional)</label>
-            <textarea name="message" value={form.message} onChange={handleChange}
+            <label htmlFor="message" className="block text-sm font-semibold mb-2">Message (optional)</label>
+            <textarea id="message" name="message" value={form.message} onChange={handleChange}
               className="w-full border border-outline p-3 rounded-lg focus:outline-none focus:border-primary h-24"></textarea>
           </div>
 

@@ -656,8 +656,9 @@ export default function AdminDashboard() {
                           { label: 'City', field: 'city', type: 'text' },
                         ].map(({ label, field, type }) => (
                           <div key={field}>
-                            <label className="block text-sm font-semibold text-on-surface mb-2">{label}</label>
+                            <label htmlFor={field} className="block text-sm font-semibold text-on-surface mb-2">{label}</label>
                             <input
+                              id={field}
                               type={type}
                               value={settings[field] || ''}
                               onChange={e => setSettings(prev => ({ ...prev, [field]: e.target.value }))}
@@ -666,8 +667,9 @@ export default function AdminDashboard() {
                           </div>
                         ))}
                         <div className="md:col-span-2">
-                          <label className="block text-sm font-semibold text-on-surface mb-2">Address</label>
+                          <label htmlFor="address" className="block text-sm font-semibold text-on-surface mb-2">Address</label>
                           <input
+                            id="address"
                             type="text"
                             value={settings.address || ''}
                             onChange={e => setSettings(prev => ({ ...prev, address: e.target.value }))}
@@ -762,8 +764,9 @@ export default function AdminDashboard() {
 
               {/* Title */}
               <div>
-                <label className="block text-sm font-semibold text-on-surface mb-2">Title</label>
+                <label htmlFor="imageTitle" className="block text-sm font-semibold text-on-surface mb-2">Title</label>
                 <input
+                  id="imageTitle"
                   type="text"
                   value={imageFormData.title}
                   onChange={e => setImageFormData(prev => ({ ...prev, title: e.target.value }))}
@@ -774,8 +777,9 @@ export default function AdminDashboard() {
 
               {/* Description */}
               <div>
-                <label className="block text-sm font-semibold text-on-surface mb-2">Description</label>
+                <label htmlFor="imageDesc" className="block text-sm font-semibold text-on-surface mb-2">Description</label>
                 <textarea
+                  id="imageDesc"
                   value={imageFormData.description}
                   onChange={e => setImageFormData(prev => ({ ...prev, description: e.target.value }))}
                   placeholder="Optional description for this image"
