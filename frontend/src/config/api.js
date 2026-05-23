@@ -1,3 +1,3 @@
-const API_URL = "https://careone-ft4z.onrender.com";
+const API_URL = "";
 
 export default API_URL;
