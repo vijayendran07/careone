@@ -184,45 +184,7 @@ export default function PatientResults({ onBookClick }) {
         </div>
       </section>
 
-      {/* Patient Testimonials */}
-      <section className="py-20 bg-surface-container-low">
-        <div className="max-w-container-max mx-auto px-6 md:px-8">
-          <h2 className="text-4xl font-bold text-on-surface mb-12 text-center font-headline-xl">What Our Patients Say</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                quote: "I was skeptical about hair restoration, but the results have been incredible. My confidence is back!",
-                name: "Arun K.",
-                service: "Hair Restoration",
-                rating: 5
-              },
-              {
-                quote: "The laser treatment was completely painless and the results exceeded my expectations. Highly recommended!",
-                name: "Priya S.",
-                service: "Laser Therapy",
-                rating: 5
-              },
-              {
-                quote: "My skin has never looked better. The chemical peels were transformative and the staff was so professional.",
-                name: "Divya M.",
-                service: "Skin Rejuvenation",
-                rating: 5
-              }
-            ].map((testimonial, idx) => (
-              <div key={idx} className="bg-surface rounded-2xl p-6 shadow-sm border border-outline-variant/20">
-                <div className="flex mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                     <span key={i} className="text-yellow-400">★</span>
-                  ))}
-                </div>
-                <p className="text-on-surface-variant mb-6 italic">"{testimonial.quote}"</p>
-                <h4 className="font-bold text-on-surface mb-1">{testimonial.name}</h4>
-                <p className="text-sm text-primary">{testimonial.service}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-primary to-primary/80">
