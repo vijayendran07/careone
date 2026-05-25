@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import API_URL from '../config/api'
 
 export default function Home({ onBookClick }) {
@@ -49,6 +48,9 @@ export default function Home({ onBookClick }) {
           <div className="space-y-6">
             <span className="text-secondary font-semibold uppercase tracking-wider">Redefining Aesthetics</span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">Expert Skin & Hair <span className="text-primary">Care You Can Trust</span></h1>
+             <div>
+            <img src={getImage('home-hero-banner', 'https://lh3.googleusercontent.com/aida-public/AB6AXuBjnO3uC-FfZyaEEJXGXSzK6vHlgDY6f6tf1FuwLUuMADRuwP9WHwuj7qYxODS7LCBn7vQD67_iOSrZ_mXdvW3-PchasnWJOuyt7qa7lQ95tvIdXtnDxqSFaDNzLicEfc9H1TZ30oCrapvu7DB72n50JZN87LSpdk2dTRIOAV_NIA_SFrdOL8kpKJAQUnA7CtTFSUrDfS8AIxb9UAM8gFx9HnvBsN4zR0cFa2HYlGiZCUXMuWYDpoPvN7tqo95aLTldWj-3AogarA')} alt="Care One" className="rounded-xl shadow-2xl w-full" />
+          </div>
             <p className="text-lg text-on-surface-variant max-w-xl">
               Experience the perfect blend of clinical precision and aesthetic luxury. Our expert-led treatments are tailored to your unique journey.
             </p>
@@ -61,10 +63,7 @@ export default function Home({ onBookClick }) {
               </a>
             </div>
           </div>
-          <div>
-            <img src={getImage('home-hero-banner', 'https://lh3.googleusercontent.com/aida-public/AB6AXuBjnO3uC-FfZyaEEJXGXSzK6vHlgDY6f6tf1FuwLUuMADRuwP9WHwuj7qYxODS7LCBn7vQD67_iOSrZ_mXdvW3-PchasnWJOuyt7qa7lQ95tvIdXtnDxqSFaDNzLicEfc9H1TZ30oCrapvu7DB72n50JZN87LSpdk2dTRIOAV_NIA_SFrdOL8kpKJAQUnA7CtTFSUrDfS8AIxb9UAM8gFx9HnvBsN4zR0cFa2HYlGiZCUXMuWYDpoPvN7tqo95aLTldWj-3AogarA')} alt="Care One" className="rounded-xl shadow-2xl w-full" />
           </div>
-        </div>
       </section>
 
       {/* About Section */}
@@ -114,9 +113,9 @@ export default function Home({ onBookClick }) {
                 </span>
                 <h3 className="text-xl font-bold mb-3">{service.title}</h3>
                 <p className="text-on-surface-variant group-hover:text-white/90 mb-6">{service.desc}</p>
-                <Link to={`/treatments#${service.title.toLowerCase().replace(' ', '-')}`} className="text-primary group-hover:text-white font-bold flex items-center gap-2">
+                <a href={`/treatments#${service.title.toLowerCase().replace(' ', '-')}`} className="text-primary group-hover:text-white font-bold flex items-center gap-2">
                   Explore Now <span className="material-symbols-outlined text-sm">arrow_forward</span>
-                </Link>
+                </a>
               </div>
             ))}
           </div>
