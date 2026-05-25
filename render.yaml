@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: careone-backend
+    env: node
+    region: singapore
+    plan: free
+    rootDir: .
+    buildCommand: cd frontend && npm install && npm run build && cd ../backend && npm install
+    startCommand: node backend/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        fromGroup: careone-secrets
+      - key: MONGODB_URI
+        fromGroup: careone-secrets
+      - key: JWT_SECRET
+        fromGroup: careone-secrets
+      - key: CLOUDINARY_URL
+        fromGroup: careone-secrets
