@@ -174,7 +174,7 @@ function Header({ onBookClick, navigate }) {
               </button>
             </div>
             
-            <nav className="flex flex-col gap-6 flex-1">
+            <nav className="flex flex-col gap-6 mb-6">
               <Link 
                 to="/" 
                 onClick={() => setIsMenuOpen(false)}
@@ -205,7 +205,7 @@ function Header({ onBookClick, navigate }) {
               </Link>
             </nav>
             
-            <div className="border-t border-outline-variant/20 pt-6 mt-auto space-y-4">
+            <div className="border-t border-outline-variant/20 pt-6 space-y-4">
               {user && user.type === 'admin' && (
                 <Link 
                   to="/admin/dashboard" 
