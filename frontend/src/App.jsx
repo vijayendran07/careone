@@ -30,6 +30,18 @@ function AppContent() {
   const { user } = useAuth()
   const location = useLocation()
   const navigate = useNavigate()
+  const [settings, setSettings] = useState(null)
+
+  useEffect(() => {
+    fetch(`${API_URL}/api/settings`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.settings) {
+          setSettings(data.settings)
+        }
+      })
+      .catch(console.error)
+  }, [])
 
   useEffect(() => {
     if (location.hash) {
@@ -83,7 +95,7 @@ function AppContent() {
           <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </main>
-      <Footer />
+      <Footer settings={settings} />
       {showBooking && <BookingModal onClose={() => setShowBooking(false)} />}
     </div>
   )
@@ -391,12 +403,16 @@ function Header({ onBookClick, navigate }) {
   )
 }
 
-function Footer() {
+function Footer({ settings }) {
+  const clinicName = settings?.clinicName || 'Care One'
+  const address = settings?.address || '123 Clinical Way, Wellness District'
+  const city = settings?.city || 'City Center, SC 56789'
+
   return (
     <footer className="bg-surface-container-highest border-t border-outline-variant/20">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-container-max mx-auto px-6 md:px-8 py-16">
         <div className="space-y-6">
-          <div className="text-2xl font-bold text-primary">Care One</div>
+          <div className="text-2xl font-bold text-primary">{clinicName}</div>
           <p className="text-on-surface-variant text-sm">Providing world-class clinical excellence in skin and hair care.</p>
         </div>
         <div>
@@ -419,11 +435,11 @@ function Footer() {
         </div>
         <div>
           <h4 className="font-bold text-on-surface mb-6">Location</h4>
-          <p className="text-xs text-on-surface-variant">123 Clinical Way, Wellness District<br/>City Center, SC 56789</p>
+          <p className="text-xs text-on-surface-variant">{address}<br/>{city}</p>
         </div>
       </div>
       <div className="border-t border-outline-variant/10 py-6 text-center">
-        <p className="text-xs text-on-surface-variant">© 2024 Care One Clinical Excellence. All rights reserved.</p>
+        <p className="text-xs text-on-surface-variant">© {new Date().getFullYear()} {clinicName} Clinical Excellence. All rights reserved.</p>
       </div>
     </footer>
   )

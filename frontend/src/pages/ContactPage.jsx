@@ -1,9 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import API_URL from '../config/api'
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
   const [loading, setLoading] = useState(false)
   const [status, setStatus] = useState(null)
+  const [settings, setSettings] = useState(null)
+
+  useEffect(() => {
+    fetch(`${API_URL}/api/settings`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.settings) {
+          setSettings(data.settings)
+        }
+      })
+      .catch(console.error)
+  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -15,11 +28,17 @@ export default function ContactPage() {
     }, 1200)
   }
 
+  const clinicName = settings?.clinicName || 'Care One'
+  const email = settings?.email || 'support@careone.com'
+  const phone = settings?.phone || '+1 (555) 890-3456'
+  const address = settings?.address || '123 Clinical Way, Wellness District'
+  const city = settings?.city || 'City Center, SC 56789'
+
   return (
     <div className="max-w-6xl mx-auto px-6 py-16">
       <div className="text-center mb-16">
         <span className="text-secondary font-semibold uppercase tracking-wider">Get In Touch</span>
-        <h1 className="text-4xl sm:text-5xl font-bold mt-2 text-on-surface">Contact Care One Clinic</h1>
+        <h1 className="text-4xl sm:text-5xl font-bold mt-2 text-on-surface">Contact {clinicName}</h1>
         <p className="text-on-surface-variant mt-3 max-w-xl mx-auto">
           Reach out to our clinical reception, dermatological consultants, or medical specialists today.
         </p>
@@ -35,7 +54,7 @@ export default function ContactPage() {
                 <span className="material-symbols-outlined text-primary">location_on</span>
                 <div>
                   <p className="font-semibold text-on-surface">Main Clinic Address</p>
-                  <p className="text-sm text-on-surface-variant">123 Clinical Way, Wellness District, City Center, SC 56789</p>
+                  <p className="text-sm text-on-surface-variant">{address}, {city}</p>
                 </div>
               </div>
 
@@ -43,7 +62,7 @@ export default function ContactPage() {
                 <span className="material-symbols-outlined text-primary">call</span>
                 <div>
                   <p className="font-semibold text-on-surface">Phone & Booking Support</p>
-                  <p className="text-sm text-on-surface-variant">+1 (555) 890-3456</p>
+                  <p className="text-sm text-on-surface-variant">{phone}</p>
                 </div>
               </div>
 
@@ -51,7 +70,7 @@ export default function ContactPage() {
                 <span className="material-symbols-outlined text-primary">mail</span>
                 <div>
                   <p className="font-semibold text-on-surface">Email Inquiries</p>
-                  <p className="text-sm text-on-surface-variant">support@careone.com</p>
+                  <p className="text-sm text-on-surface-variant">{email}</p>
                 </div>
               </div>
             </div>
