@@ -41,17 +41,25 @@ app.get('/api/health', (req, res) => {
 });
 
 const path = require('path');
+const fs = require('fs');
 
-// Serve static assets from frontend/dist
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
+const distPath = path.join(__dirname, '../frontend/dist');
+const indexPath = path.join(distPath, 'index.html');
 
-// Catch-all SPA route: serve index.html for any non-API GET request
-app.get(/.*/, (req, res, next) => {
-  if (req.path.startsWith('/api')) {
-    return next();
-  }
-  res.sendFile(path.resolve(__dirname, '../frontend/dist/index.html'));
-});
+if (fs.existsSync(indexPath)) {
+  console.log('Serving frontend static files from:', distPath);
+  app.use(express.static(distPath));
+  
+  // Catch-all SPA route: serve index.html for any non-API GET request
+  app.get(/.*/, (req, res, next) => {
+    if (req.path.startsWith('/api')) {
+      return next();
+    }
+    res.sendFile(indexPath);
+  });
+} else {
+  console.log('Frontend built files not found. Backend running in API-only mode.');
+}
 
 // Error handling middleware
 app.use((err, req, res, next) => {
