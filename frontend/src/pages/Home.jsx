@@ -114,7 +114,7 @@ export default function Home({ onBookClick }) {
                 <h3 className="text-xl font-bold mb-3">{service.title}</h3>
                 <p className="text-on-surface-variant group-hover:text-white/90 mb-6">{service.desc}</p>
                 <a href={`/treatments#${service.title.toLowerCase().replace(' ', '-')}`} className="text-primary group-hover:text-white font-bold flex items-center gap-2">
-                  Explore Now <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                <span className="material-symbols-outlined text-sm"></span>
                 </a>
               </div>
             ))}
