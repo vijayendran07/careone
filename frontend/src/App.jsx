@@ -9,6 +9,7 @@ import PatientResults from './pages/PatientResults'
 import Login from './pages/Login'
 import AdminDashboard from './pages/AdminDashboard'
 import BookingModal from './components/BookingModal'
+import API_URL from './config/api'
 
 function App() {
   return (
