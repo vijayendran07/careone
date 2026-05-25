@@ -148,36 +148,7 @@ export default function Home({ onBookClick }) {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-20 bg-surface-container-low">
-        <div className="max-w-container-max mx-auto px-6 md:px-8">
-          <div className="text-center mb-12">
-            <span className="text-secondary font-semibold uppercase tracking-wider">Testimonials</span>
-            <h2 className="text-4xl font-bold mt-2">Real results from real patients</h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((_, i) => (
-              <div key={i} className="bg-white p-8 rounded-xl shadow-sm border border-outline-variant/10">
-                <div className="flex gap-1 text-secondary mb-4">
-                  {[...Array(5)].map((_, j) => <span key={j}>★</span>)}
-                </div>
-                <p className="text-on-surface-variant italic mb-6">
-                  {i === 0 && "The hair restoration therapy was life-changing. My confidence has skyrocketed."}
-                  {i === 1 && "Professional and precise. The laser treatment was surprisingly comfortable."}
-                  {i === 2 && "The chemical peels transformed my skin texture completely."}
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-primary-container/20 rounded-full"></div>
-                  <div>
-                    <h5 className="font-bold">{['Arun K.', 'Priya S.', 'Divya M.'][i]}</h5>
-                    <p className="text-xs text-on-surface-variant">{['Hair Restoration', 'Laser Therapy', 'Skin Rejuvenation'][i]} Patient</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* FAQ */}
       <section className="py-20 bg-white">

@@ -10,6 +10,10 @@ import Login from './pages/Login'
 import AdminDashboard from './pages/AdminDashboard'
 import BookingModal from './components/BookingModal'
 import API_URL from './config/api'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsOfService from './pages/TermsOfService'
+import FAQs from './pages/FAQs'
+import ContactPage from './pages/ContactPage'
 
 function App() {
   return (
@@ -73,6 +77,10 @@ function AppContent() {
           <Route path="/treatments" element={<Treatments onBookClick={() => setShowBooking(true)} />} />
           <Route path="/about" element={<AboutUs onBookClick={() => setShowBooking(true)} />} />
           <Route path="/patient-results" element={<PatientResults onBookClick={() => setShowBooking(true)} />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsOfService />} />
+          <Route path="/faqs" element={<FAQs />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </main>
       <Footer />
@@ -393,19 +401,19 @@ function Footer() {
         <div>
           <h4 className="font-bold text-on-surface mb-6">Treatments</h4>
           <ul className="space-y-3 text-sm text-on-surface-variant">
-            <li><a href="#" className="hover:text-primary">Hair Restoration</a></li>
-            <li><a href="#" className="hover:text-primary">Skin Rejuvenation</a></li>
-            <li><a href="#" className="hover:text-primary">Laser Therapy</a></li>
-            <li><a href="#" className="hover:text-primary">Advanced Aesthetics</a></li>
+            <li><Link to="/treatments#hair-restoration" className="hover:text-primary transition">Hair Restoration</Link></li>
+            <li><Link to="/treatments#skin-rejuvenation" className="hover:text-primary transition">Skin Rejuvenation</Link></li>
+            <li><Link to="/treatments#laser-therapy" className="hover:text-primary transition">Laser Therapy</Link></li>
+            <li><Link to="/treatments#skin-rejuvenation" className="hover:text-primary transition">Advanced Aesthetics</Link></li>
           </ul>
         </div>
         <div>
           <h4 className="font-bold text-on-surface mb-6">Support</h4>
           <ul className="space-y-3 text-sm text-on-surface-variant">
-            <li><a href="#" className="hover:text-primary">Privacy Policy</a></li>
-            <li><a href="#" className="hover:text-primary">Terms of Service</a></li>
-            <li><a href="#" className="hover:text-primary">FAQs</a></li>
-            <li><a href="#" className="hover:text-primary">Contact</a></li>
+            <li><Link to="/privacy" className="hover:text-primary transition">Privacy Policy</Link></li>
+            <li><Link to="/terms" className="hover:text-primary transition">Terms of Service</Link></li>
+            <li><Link to="/faqs" className="hover:text-primary transition">FAQs</Link></li>
+            <li><Link to="/contact" className="hover:text-primary transition">Contact</Link></li>
           </ul>
         </div>
         <div>
