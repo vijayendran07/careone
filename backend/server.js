@@ -46,7 +46,7 @@ const path = require('path');
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
 // Catch-all SPA route: serve index.html for any non-API GET request
-app.get('*', (req, res, next) => {
+app.get(/.*/, (req, res, next) => {
   if (req.path.startsWith('/api')) {
     return next();
   }
