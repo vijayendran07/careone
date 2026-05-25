@@ -92,8 +92,12 @@ exports.deleteAppointment = async (req, res) => {
 // @route   GET /api/appointments/my
 exports.getMyAppointments = async (req, res) => {
   try {
-    const appointments = await Appointment.find({ patient: req.user._id })
-      .sort({ createdAt: -1 });
+    const appointments = await Appointment.find({
+      $or: [
+        { patient: req.user._id },
+        { email: req.user.email }
+      ]
+    }).sort({ createdAt: -1 });
     res.json({ success: true, appointments });
   } catch (error) {
     res.status(500).json({ message: error.message });

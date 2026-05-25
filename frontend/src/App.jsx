@@ -84,12 +84,37 @@ function Header({ onBookClick, navigate }) {
   const { user } = useAuth()
   const location = useLocation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [myAppointments, setMyAppointments] = useState([])
+  const [isNotifOpen, setIsNotifOpen] = useState(false)
 
   const handleLogout = () => {
     localStorage.removeItem('authToken')
     navigate('/')
     window.location.reload()
   }
+
+  useEffect(() => {
+    if (user && user.type !== 'admin') {
+      const fetchMyApts = async () => {
+        try {
+          const res = await fetch(`${API_URL}/api/appointments/my`, {
+            headers: {
+              'Authorization': `Bearer ${user.token}`
+            }
+          })
+          const data = await res.json()
+          if (data.success) {
+            setMyAppointments(data.appointments || [])
+          }
+        } catch (e) {
+          console.error(e)
+        }
+      }
+      fetchMyApts()
+      const interval = setInterval(fetchMyApts, 10000)
+      return () => clearInterval(interval)
+    }
+  }, [user])
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50 border-b border-outline-variant/20">
@@ -115,6 +140,105 @@ function Header({ onBookClick, navigate }) {
 
         {/* Action buttons */}
         <div className="flex items-center gap-4">
+          {/* Notifications Popover Toggle Button */}
+          {user && user.type !== 'admin' && (
+            <div className="relative">
+              <button
+                onClick={() => setIsNotifOpen(!isNotifOpen)}
+                className="relative p-2 rounded-full hover:bg-surface-container-low transition text-on-surface-variant flex items-center justify-center"
+                aria-label="View notifications"
+              >
+                <span className="material-symbols-outlined text-2xl">notifications</span>
+                {myAppointments.filter(a => a.status !== 'pending').length > 0 && (
+                  <span className="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-primary rounded-full animate-pulse"></span>
+                )}
+              </button>
+
+              {/* High-end Notifications Dropdown */}
+              {isNotifOpen && (
+                <>
+                  {/* Backdrop overlay to click away and close dropdown */}
+                  <div className="fixed inset-0 z-40" onClick={() => setIsNotifOpen(false)} />
+                  
+                  <div className="absolute right-0 mt-3 w-80 sm:w-96 bg-white rounded-2xl shadow-xl border border-outline-variant/30 z-50 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                    <div className="p-4 border-b border-outline-variant/30 bg-surface-container-low flex justify-between items-center">
+                      <h4 className="font-bold text-on-surface flex items-center gap-2">
+                        <span className="material-symbols-outlined text-xl text-primary">notifications</span>
+                        Appointments Schedule
+                      </h4>
+                      <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full font-semibold">
+                        {myAppointments.length} Booked
+                      </span>
+                    </div>
+
+                    <div className="max-h-96 overflow-y-auto divide-y divide-outline-variant/20">
+                      {myAppointments.length === 0 ? (
+                        <div className="p-8 text-center text-on-surface-variant text-sm flex flex-col items-center gap-2">
+                          <span className="material-symbols-outlined text-4xl text-outline">calendar_today</span>
+                          No appointments booked yet.
+                        </div>
+                      ) : (
+                        myAppointments.map(apt => {
+                          const hasConfirmedSchedule = apt.confirmedDate && apt.confirmedTime;
+                          return (
+                            <div key={apt._id} className="p-4 hover:bg-surface-container-lowest transition space-y-2">
+                              <div className="flex justify-between items-start">
+                                <span className="font-semibold text-sm text-on-surface truncate max-w-[150px] sm:max-w-[200px]">
+                                  {apt.treatment}
+                                </span>
+                                <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
+                                  apt.status === 'confirmed' ? 'bg-green-100 text-green-800' :
+                                  apt.status === 'cancelled' ? 'bg-red-100 text-red-800' :
+                                  apt.status === 'completed' ? 'bg-blue-100 text-blue-800' :
+                                  'bg-yellow-100 text-yellow-800'
+                                }`}>
+                                  {apt.status}
+                                </span>
+                              </div>
+
+                              <div className="text-xs text-on-surface-variant space-y-1">
+                                <p><strong>Requested:</strong> {new Date(apt.preferredDate).toLocaleDateString()} {apt.preferredTime ? `at ${apt.preferredTime}` : ''}</p>
+                                
+                                {apt.status === 'confirmed' && hasConfirmedSchedule && (
+                                  <div className="mt-2 p-2.5 bg-green-50 rounded-lg border border-green-100 text-green-900 space-y-1">
+                                    <p className="font-bold flex items-center gap-1">
+                                      <span className="material-symbols-outlined text-sm text-green-700">event_available</span>
+                                      Confirmed Slot:
+                                    </p>
+                                    <p><strong>Date:</strong> {new Date(apt.confirmedDate).toLocaleDateString()}</p>
+                                    <p><strong>Time:</strong> {apt.confirmedTime}</p>
+                                    {apt.adminNote && <p className="mt-1 text-[11px] italic text-green-800">"{apt.adminNote}"</p>}
+                                  </div>
+                                )}
+
+                                {apt.status === 'cancelled' && (
+                                  <div className="mt-2 p-2.5 bg-red-50 rounded-lg border border-red-100 text-red-900">
+                                    <p className="font-bold flex items-center gap-1">
+                                      <span className="material-symbols-outlined text-sm text-red-700">cancel</span>
+                                      Cancelled by Clinic
+                                    </p>
+                                    {apt.adminNote && <p className="mt-1 text-[11px] italic text-red-800">Reason: "{apt.adminNote}"</p>}
+                                  </div>
+                                )}
+
+                                {apt.status === 'pending' && (
+                                  <p className="text-[11px] text-yellow-800 italic mt-1 bg-yellow-50 p-2 rounded-lg border border-yellow-100 flex items-center gap-1">
+                                    <span className="material-symbols-outlined text-sm animate-spin text-yellow-600">sync</span>
+                                    Waiting for slot confirmation from clinic...
+                                  </p>
+                                )}
+                              </div>
+                            </div>
+                          )
+                        })
+                      )}
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+          )}
+
           {/* Desktop Only Actions */}
           <div className="hidden md:flex items-center gap-4">
             {user && user.type === 'admin' && (
