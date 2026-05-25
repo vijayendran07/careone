@@ -97,6 +97,11 @@ export default function BookingModal({ onClose }) {
             <input type="date" id="date" name="date" value={form.date} onChange={handleChange}
               className="w-full border border-outline p-3 rounded-lg focus:outline-none focus:border-primary" />
           </div>
+           <div>
+            <label htmlFor="time" className="block text-sm font-semibold mb-2">Preferred <time datetime=""></time></label>
+            <input type="time" id="time" name="time" value={form.time} onChange={handleChange}
+              className="w-full border border-outline p-3 rounded-lg focus:outline-none focus:border-primary" />
+          </div>
 
           <div>
             <label htmlFor="message" className="block text-sm font-semibold mb-2">Message (optional)</label>
