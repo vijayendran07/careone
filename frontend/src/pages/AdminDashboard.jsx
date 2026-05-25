@@ -351,7 +351,7 @@ export default function AdminDashboard() {
       )}
 
       {/* Sidebar */}
-      <aside className={`fixed left-0 top-0 w-64 h-screen bg-surface-container-low border-r border-outline-variant flex flex-col p-6 z-50 transition-transform duration-300 md:translate-x-0 ${
+      <aside className={`fixed left-0 top-0 w-64 h-screen bg-white border-r border-outline-variant flex flex-col p-6 z-50 transition-transform duration-300 md:translate-x-0 ${
         isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
       }`}>
         <div className="mb-10 flex justify-between items-center">
@@ -362,7 +362,7 @@ export default function AdminDashboard() {
           {/* Close button on Mobile */}
           <button 
             onClick={() => setIsSidebarOpen(false)}
-            className="md:hidden p-2 rounded-lg hover:bg-surface-container-high text-on-surface-variant"
+            className="md:hidden p-2 rounded-lg hover:bg-gray-100 text-on-surface-variant"
             aria-label="Close menu"
           >
             <span className="material-symbols-outlined text-xl">close</span>
@@ -379,7 +379,7 @@ export default function AdminDashboard() {
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition text-sm font-medium ${
                 activeTab === item.id
                   ? 'bg-primary/10 text-primary border-r-4 border-primary'
-                  : 'text-on-surface-variant hover:bg-surface-container-high'
+                  : 'text-on-surface-variant hover:bg-gray-100'
               }`}
             >
               <span className="material-symbols-outlined text-xl">{item.icon}</span>
@@ -406,7 +406,7 @@ export default function AdminDashboard() {
           <div className="flex items-center">
             <button 
               onClick={() => setIsSidebarOpen(true)}
-              className="p-2 rounded-lg hover:bg-surface-container-low transition md:hidden mr-2 text-on-surface-variant"
+              className="p-2 rounded-lg hover:bg-gray-100 transition md:hidden mr-2 text-on-surface-variant"
               aria-label="Open menu"
             >
               <span className="material-symbols-outlined">menu</span>
@@ -414,7 +414,7 @@ export default function AdminDashboard() {
             <h2 className="text-lg sm:text-xl font-bold text-primary">Care One Admin</h2>
           </div>
           <div className="flex items-center gap-3">
-            <button onClick={fetchAll} title="Refresh" className="p-2 rounded-lg hover:bg-surface-container-low transition">
+            <button onClick={fetchAll} title="Refresh" className="p-2 rounded-lg hover:bg-gray-100 transition">
               <span className="material-symbols-outlined text-on-surface-variant">refresh</span>
             </button>
             <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">
