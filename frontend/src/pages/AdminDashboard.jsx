@@ -345,7 +345,7 @@ export default function AdminDashboard() {
       {/* Sidebar Overlay backdrop on Mobile */}
       {isSidebarOpen && (
         <div 
-          className="fixed inset-0 bg-black/40 backdrop-blur-xs z-50 md:hidden"
+          className="fixed inset-0 bg-black/40 z-50 md:hidden"
           onClick={() => setIsSidebarOpen(false)}
         />
       )}
