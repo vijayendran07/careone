@@ -24,6 +24,22 @@ const appointmentSchema = new mongoose.Schema({
     type: Date,
     required: [true, 'Preferred date is required'],
   },
+  preferredTime: {
+    type: String,
+    default: '',
+  },
+  confirmedDate: {
+    type: Date,
+    default: null,
+  },
+  confirmedTime: {
+    type: String,
+    default: '',
+  },
+  adminNote: {
+    type: String,
+    default: '',
+  },
   notes: {
     type: String,
     default: '',

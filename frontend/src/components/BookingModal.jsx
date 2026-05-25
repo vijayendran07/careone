@@ -9,6 +9,7 @@ export default function BookingModal({ onClose }) {
     phone: '',
     service: 'Hair Restoration',
     date: '',
+    time: '',
     message: ''
   })
   const [loading, setLoading] = useState(false)
@@ -33,6 +34,7 @@ export default function BookingModal({ onClose }) {
         phone: form.phone,
         treatment: form.service,
         preferredDate: form.date,
+        preferredTime: form.time,
         notes: form.message
       }
       

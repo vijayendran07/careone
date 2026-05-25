@@ -4,13 +4,14 @@ const Appointment = require('../models/Appointment');
 // @route   POST /api/appointments
 exports.createAppointment = async (req, res) => {
   try {
-    const { fullName, email, phone, treatment, preferredDate, notes } = req.body;
+    const { fullName, email, phone, treatment, preferredDate, preferredTime, notes } = req.body;
     const appointment = await Appointment.create({
       fullName,
       email,
       phone,
       treatment,
       preferredDate,
+      preferredTime: preferredTime || '',
       notes,
       patient: req.user ? req.user._id : null,
     });
@@ -52,9 +53,16 @@ exports.getAppointments = async (req, res) => {
 // @route   PUT /api/appointments/:id
 exports.updateAppointment = async (req, res) => {
   try {
+    const { status, confirmedDate, confirmedTime, adminNote } = req.body;
+    const updateFields = {};
+    if (status) updateFields.status = status;
+    if (confirmedDate !== undefined) updateFields.confirmedDate = confirmedDate;
+    if (confirmedTime !== undefined) updateFields.confirmedTime = confirmedTime;
+    if (adminNote !== undefined) updateFields.adminNote = adminNote;
+
     const appointment = await Appointment.findByIdAndUpdate(
       req.params.id,
-      { status: req.body.status },
+      updateFields,
       { new: true }
     );
     if (!appointment) {

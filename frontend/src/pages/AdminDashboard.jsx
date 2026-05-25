@@ -26,6 +26,8 @@ export default function AdminDashboard() {
   const [imageFormData, setImageFormData] = useState({ section: '', imageUrl: '', title: '', description: '' })
   const [isUploading, setIsUploading] = useState(false)
   const [uploadProgress, setUploadProgress] = useState(0)
+  const [editingApt, setEditingApt] = useState(null)
+  const [editForm, setEditForm] = useState({ status: '', confirmedDate: '', confirmedTime: '', adminNote: '' })
 
   const imageSections = [
     // Home Page
@@ -135,6 +137,35 @@ export default function AdminDashboard() {
       if (data.success) {
         setAppointments(prev => prev.map(a => a._id === id ? data.appointment : a))
         showToast(`Appointment ${status}`)
+      }
+    } catch (e) { showToast('Failed to update', 'error') }
+  }
+
+  const openEditApt = (apt) => {
+    setEditingApt(apt)
+    setEditForm({
+      status: apt.status,
+      confirmedDate: apt.confirmedDate ? new Date(apt.confirmedDate).toISOString().split('T')[0] : '',
+      confirmedTime: apt.confirmedTime || '',
+      adminNote: apt.adminNote || '',
+    })
+  }
+
+  const saveEditApt = async () => {
+    if (!editingApt) return
+    try {
+      const res = await fetch(`${API_URL}/api/appointments/${editingApt._id}`, {
+        method: 'PUT',
+        headers: authHeaders(),
+        body: JSON.stringify(editForm),
+      })
+      const data = await res.json()
+      if (data.success) {
+        setAppointments(prev => prev.map(a => a._id === editingApt._id ? data.appointment : a))
+        showToast('Appointment updated!')
+        setEditingApt(null)
+      } else {
+        showToast(data.message || 'Failed to update', 'error')
       }
     } catch (e) { showToast('Failed to update', 'error') }
   }
@@ -541,7 +572,7 @@ export default function AdminDashboard() {
                         <table className="w-full">
                           <thead className="bg-surface-container-low">
                             <tr>
-                              {['Patient', 'Contact', 'Service', 'Preferred Date', 'Status', 'Actions'].map(h => (
+                              {['Patient', 'Contact', 'Service', 'Requested Schedule', 'Confirmed Schedule', 'Status', 'Actions'].map(h => (
                                 <th key={h} className="px-5 py-4 text-left text-xs font-semibold text-on-surface-variant uppercase">{h}</th>
                               ))}
                             </tr>
@@ -555,7 +586,21 @@ export default function AdminDashboard() {
                                 </td>
                                 <td className="px-5 py-4 text-sm text-on-surface-variant">{apt.phone}</td>
                                 <td className="px-5 py-4 text-sm text-on-surface">{apt.treatment}</td>
-                                <td className="px-5 py-4 text-sm text-on-surface">{new Date(apt.preferredDate).toLocaleDateString()}</td>
+                                <td className="px-5 py-4">
+                                  <p className="text-sm text-on-surface">{new Date(apt.preferredDate).toLocaleDateString()}</p>
+                                  {apt.preferredTime && <p className="text-xs text-on-surface-variant mt-0.5">🕐 {apt.preferredTime}</p>}
+                                </td>
+                                <td className="px-5 py-4">
+                                  {apt.confirmedDate ? (
+                                    <div>
+                                      <p className="text-sm font-semibold text-green-700">{new Date(apt.confirmedDate).toLocaleDateString()}</p>
+                                      {apt.confirmedTime && <p className="text-xs text-green-600 mt-0.5">🕐 {apt.confirmedTime}</p>}
+                                      {apt.adminNote && <p className="text-xs text-on-surface-variant mt-0.5 italic">{apt.adminNote}</p>}
+                                    </div>
+                                  ) : (
+                                    <span className="text-xs text-on-surface-variant italic">Not set</span>
+                                  )}
+                                </td>
                                 <td className="px-5 py-4">
                                   <span className={`px-3 py-1 rounded-full text-xs font-semibold ${STATUS_COLORS[apt.status] || 'bg-gray-100 text-gray-800'}`}>
                                     {apt.status.charAt(0).toUpperCase() + apt.status.slice(1)}
@@ -563,6 +608,12 @@ export default function AdminDashboard() {
                                 </td>
                                 <td className="px-5 py-4">
                                   <div className="flex items-center gap-2 flex-wrap">
+                                    <button
+                                      onClick={() => openEditApt(apt)}
+                                      className="bg-primary/10 text-primary hover:bg-primary/20 text-xs px-3 py-1.5 rounded-lg font-semibold transition flex items-center gap-1"
+                                    >
+                                      <span className="material-symbols-outlined text-sm">edit</span> Edit
+                                    </button>
                                     {apt.status === 'pending' && (
                                       <>
                                         <button
@@ -602,6 +653,69 @@ export default function AdminDashboard() {
                         </table>
                       </div>
                     )}
+                  </div>
+                </div>
+              )}
+
+              {/* ── EDIT APPOINTMENT MODAL ── */}
+              {editingApt && (
+                <div className="fixed inset-0 bg-black/50 z-[200] flex items-center justify-center p-4">
+                  <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
+                    <div className="flex justify-between items-center px-6 py-4 border-b border-outline/30">
+                      <h3 className="text-lg font-bold text-on-surface">Edit Appointment</h3>
+                      <button onClick={() => setEditingApt(null)} className="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 text-on-surface-variant font-bold transition">✕</button>
+                    </div>
+                    <div className="p-6 space-y-4">
+                      <div className="bg-surface-container-low rounded-lg p-3 text-sm">
+                        <p className="font-semibold text-on-surface">{editingApt.fullName}</p>
+                        <p className="text-on-surface-variant">{editingApt.treatment} — Requested: {new Date(editingApt.preferredDate).toLocaleDateString()} {editingApt.preferredTime && `at ${editingApt.preferredTime}`}</p>
+                      </div>
+                      <div>
+                        <label className="block text-sm font-semibold mb-2">Status</label>
+                        <select
+                          value={editForm.status}
+                          onChange={e => setEditForm(f => ({...f, status: e.target.value}))}
+                          className="w-full border border-outline p-3 rounded-lg focus:outline-none focus:border-primary"
+                        >
+                          {['pending','confirmed','completed','cancelled'].map(s => (
+                            <option key={s} value={s}>{s.charAt(0).toUpperCase() + s.slice(1)}</option>
+                          ))}
+                        </select>
+                      </div>
+                      <div className="grid grid-cols-2 gap-3">
+                        <div>
+                          <label className="block text-sm font-semibold mb-2">Confirmed Date</label>
+                          <input
+                            type="date"
+                            value={editForm.confirmedDate}
+                            onChange={e => setEditForm(f => ({...f, confirmedDate: e.target.value}))}
+                            className="w-full border border-outline p-3 rounded-lg focus:outline-none focus:border-primary"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-semibold mb-2">Confirmed Time</label>
+                          <input
+                            type="time"
+                            value={editForm.confirmedTime}
+                            onChange={e => setEditForm(f => ({...f, confirmedTime: e.target.value}))}
+                            className="w-full border border-outline p-3 rounded-lg focus:outline-none focus:border-primary"
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <label className="block text-sm font-semibold mb-2">Note to Patient <span className="text-on-surface-variant font-normal">(optional)</span></label>
+                        <textarea
+                          value={editForm.adminNote}
+                          onChange={e => setEditForm(f => ({...f, adminNote: e.target.value}))}
+                          placeholder="e.g. Please arrive 10 minutes early..."
+                          className="w-full border border-outline p-3 rounded-lg focus:outline-none focus:border-primary h-20 resize-none"
+                        />
+                      </div>
+                    </div>
+                    <div className="px-6 pb-6 flex gap-3">
+                      <button onClick={() => setEditingApt(null)} className="flex-1 border border-outline py-3 rounded-xl text-sm font-semibold hover:bg-gray-50 transition">Cancel</button>
+                      <button onClick={saveEditApt} className="flex-1 bg-primary text-white py-3 rounded-xl text-sm font-semibold hover:opacity-90 transition">Save Changes</button>
+                    </div>
                   </div>
                 </div>
               )}
