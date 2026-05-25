@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import ProtectedRoute from './components/ProtectedRoute'
 import Home from './pages/Home'
@@ -58,6 +58,7 @@ function AppContent() {
             </ProtectedRoute>
           }
         />
+        <Route path="*" element={<Navigate to="/admin/dashboard" replace />} />
       </Routes>
     )
   }

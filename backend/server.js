@@ -40,8 +40,17 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Care One API is running with MongoDB' });
 });
 
-app.get('/', (req, res) => {
-  res.json({ status: 'ok', message: 'Care One backend running' });
+const path = require('path');
+
+// Serve static assets from frontend/dist
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
+
+// Catch-all SPA route: serve index.html for any non-API GET request
+app.get('*', (req, res, next) => {
+  if (req.path.startsWith('/api')) {
+    return next();
+  }
+  res.sendFile(path.resolve(__dirname, '../frontend/dist/index.html'));
 });
 
 // Error handling middleware
