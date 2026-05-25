@@ -121,12 +121,12 @@ export default function Treatments({ onBookClick }) {
       {/* Skin Rejuvenation */}
       <section className="py-20 bg-white">
         <div className="max-w-container-max mx-auto px-6 md:px-8 grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-4">
+          <div className="space-y-4 order-2 md:order-1">
             {skinTreatments.map((t, i) => (
-              <img key={i} src={t.image} alt={t.title} className="rounded-xl w-full h-64 object-cover" />
+              <img key={i} src={t.image} alt={t.title} className="rounded-xl w-full h-48 sm:h-64 object-cover" />
             ))}
           </div>
-          <div>
+          <div className="order-1 md:order-2">
             <span className="text-secondary font-semibold uppercase tracking-wider">Skin Science</span>
             <h2 className="text-4xl font-bold mt-4 mb-6">Skin Rejuvenation & Chemical Peels</h2>
             <p className="text-on-surface-variant mb-8">

@@ -47,7 +47,7 @@ export default function Home({ onBookClick }) {
         <div className="max-w-container-max mx-auto px-6 md:px-8 grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <span className="text-secondary font-semibold uppercase tracking-wider">Redefining Aesthetics</span>
-            <h1 className="text-5xl md:text-6xl font-bold">Expert Skin & Hair <span className="text-primary">Care You Can Trust</span></h1>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">Expert Skin & Hair <span className="text-primary">Care You Can Trust</span></h1>
             <p className="text-lg text-on-surface-variant max-w-xl">
               Experience the perfect blend of clinical precision and aesthetic luxury. Our expert-led treatments are tailored to your unique journey.
             </p>
@@ -92,8 +92,8 @@ export default function Home({ onBookClick }) {
             </div>
           </div>
           <div className="space-y-4">
-            <img src={getImage('clinic-image-1', 'https://lh3.googleusercontent.com/aida-public/AB6AXuAWopbgodzo31C0vS93ZTpWwmR3CuQNUg_7DjYmgYPk_WyO__AB9ECXXYg1px_kJl8vYct0MXuDODaqzGN2FA9vaaMZSpZU0D7czEoB_UrHS3Fg-a3dgRNnVofTUHa60xGlZD6N8qD8j7hus6tZUL4JjKTuTyUBgfU4O4E9igai1n1v6P9JxAYJiq5DVtFLYjfqBq2sCeYRoGfbCSRlLrZJfKmR_xbbBEymrNlM6rDj4NQOTEB8591FX_7xLKvqu7qLtYjeMO49dQ')} alt="Clinic" className="rounded-xl w-full h-64 object-cover" />
-            <img src={getImage('clinic-image-2', 'https://lh3.googleusercontent.com/aida-public/AB6AXuB_-8LJ54u7vn5LYdwg64DJVDtBw1XSzm6lHSNNhTLcpEK9xcrssn2lK5Kwo6dcR3yHSOx7xXOymysFzPPqw4huTAA4l93z4daceiw0cP37h4bRzI28FNynyBKagDHsMfZJGj8ZUu-mq49SZyXpNNQem0Qgyvocc6TUDoKjs7NoL6fvtH8WYXSpHDSgmcfc_bxMtEMx4LdZ9ApMpPJrz5cBK_PTzACYlverAZ-llcqB7_uXQOx1wrG3OJz-yOj8Lx12SX8lJ_WKzA')} alt="Treatment" className="rounded-xl w-full h-64 object-cover" />
+            <img src={getImage('clinic-image-1', 'https://lh3.googleusercontent.com/aida-public/AB6AXuAWopbgodzo31C0vS93ZTpWwmR3CuQNUg_7DjYmgYPk_WyO__AB9ECXXYg1px_kJl8vYct0MXuDODaqzGN2FA9vaaMZSpZU0D7czEoB_UrHS3Fg-a3dgRNnVofTUHa60xGlZD6N8qD8j7hus6tZUL4JjKTuTyUBgfU4O4E9igai1n1v6P9JxAYJiq5DVtFLYjfqBq2sCeYRoGfbCSRlLrZJfKmR_xbbBEymrNlM6rDj4NQOTEB8591FX_7xLKvqu7qLtYjeMO49dQ')} alt="Clinic" className="rounded-xl w-full h-48 sm:h-64 object-cover" />
+            <img src={getImage('clinic-image-2', 'https://lh3.googleusercontent.com/aida-public/AB6AXuB_-8LJ54u7vn5LYdwg64DJVDtBw1XSzm6lHSNNhTLcpEK9xcrssn2lK5Kwo6dcR3yHSOx7xXOymysFzPPqw4huTAA4l93z4daceiw0cP37h4bRzI28FNynyBKagDHsMfZJGj8ZUu-mq49SZyXpNNQem0Qgyvocc6TUDoKjs7NoL6fvtH8WYXSpHDSgmcfc_bxMtEMx4LdZ9ApMpPJrz5cBK_PTzACYlverAZ-llcqB7_uXQOx1wrG3OJz-yOj8Lx12SX8lJ_WKzA')} alt="Treatment" className="rounded-xl w-full h-48 sm:h-64 object-cover" />
           </div>
         </div>
       </section>

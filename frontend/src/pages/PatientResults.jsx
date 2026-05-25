@@ -124,8 +124,8 @@ export default function PatientResults({ onBookClick }) {
             ].map((result, idx) => (
               <div key={idx} className="bg-surface rounded-2xl overflow-hidden shadow-sm border border-outline-variant/20 hover:shadow-md transition">
                 <div className="flex gap-3 p-3 bg-surface-container-highest">
-                  <img src={result.before} alt="Before" className="w-32 h-32 object-cover rounded-lg" />
-                  <img src={result.after} alt="After" className="w-32 h-32 object-cover rounded-lg" />
+                  <img src={result.before} alt="Before" className="w-1/2 h-32 object-cover rounded-lg" />
+                  <img src={result.after} alt="After" className="w-1/2 h-32 object-cover rounded-lg" />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-on-surface mb-1">{result.name}</h3>

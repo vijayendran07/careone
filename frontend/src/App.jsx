@@ -69,6 +69,7 @@ function AppContent() {
 function Header({ onBookClick, navigate }) {
   const { user } = useAuth()
   const location = useLocation()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const handleLogout = () => {
     localStorage.removeItem('authToken')
@@ -80,48 +81,164 @@ function Header({ onBookClick, navigate }) {
     <header className="bg-surface/95 backdrop-blur-sm shadow-sm sticky top-0 z-50 border-b border-outline-variant/20">
       <nav className="flex justify-between items-center max-w-container-max mx-auto px-6 md:px-8 py-4">
         <Link to="/" className="text-2xl font-bold text-primary">Care One</Link>
+        
+        {/* Desktop Navigation Links */}
         <div className="hidden md:flex items-center gap-8">
           <Link to="/" className={location.pathname === '/' ? "text-primary border-b-2 border-primary pb-1 font-semibold" : "text-on-surface-variant hover:text-primary transition"}>Home</Link>
           <Link to="/treatments" className={location.pathname === '/treatments' ? "text-primary border-b-2 border-primary pb-1 font-semibold" : "text-on-surface-variant hover:text-primary transition"}>Treatments</Link>
           <Link to="/about" className={location.pathname === '/about' ? "text-primary border-b-2 border-primary pb-1 font-semibold" : "text-on-surface-variant hover:text-primary transition"}>About Us</Link>
           <Link to="/patient-results" className={location.pathname === '/patient-results' ? "text-primary border-b-2 border-primary pb-1 font-semibold" : "text-on-surface-variant hover:text-primary transition"}>Patient Results</Link>
         </div>
+
+        {/* Action buttons */}
         <div className="flex items-center gap-4">
-          {user && user.type === 'admin' && (
-            <Link to="/admin/dashboard" className="text-primary font-semibold hover:underline">
-              Admin Panel
-            </Link>
-          )}
-          {(!user || user.type !== 'admin') && (
-            <button
-              onClick={onBookClick}
-              className="bg-primary text-white px-6 py-2 rounded-lg hover:opacity-90 transition"
-            >
-              Book Appointment
-            </button>
-          )}
-          {user ? (
-            <div className="flex items-center gap-3">
-              <span className="text-sm text-on-surface-variant hidden sm:inline">Hi, {user.name.split(' ')[0]}</span>
-              <button
-                onClick={handleLogout}
-                className="bg-error/10 text-error px-4 py-2 rounded-lg hover:bg-error/20 transition text-sm"
-              >
-                Logout
-              </button>
-            </div>
-          ) : (
-            <div className="flex items-center gap-2">
-              <Link
-                to="/login"
-                className="text-primary border border-primary px-4 py-2 rounded-lg hover:bg-primary/5 transition"
-              >
-                Login
+          {/* Desktop Only Actions */}
+          <div className="hidden md:flex items-center gap-4">
+            {user && user.type === 'admin' && (
+              <Link to="/admin/dashboard" className="text-primary font-semibold hover:underline">
+                Admin Panel
               </Link>
-            </div>
-          )}
+            )}
+            {(!user || user.type !== 'admin') && (
+              <button
+                onClick={onBookClick}
+                className="bg-primary text-white px-6 py-2 rounded-lg hover:opacity-90 transition"
+              >
+                Book Appointment
+              </button>
+            )}
+            {user ? (
+              <div className="flex items-center gap-3">
+                <span className="text-sm text-on-surface-variant">Hi, {user.name.split(' ')[0]}</span>
+                <button
+                  onClick={handleLogout}
+                  className="bg-error/10 text-error px-4 py-2 rounded-lg hover:bg-error/20 transition text-sm"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2">
+                <Link
+                  to="/login"
+                  className="text-primary border border-primary px-4 py-2 rounded-lg hover:bg-primary/5 transition"
+                >
+                  Login
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {/* Mobile hamburger menu toggle */}
+          <button 
+            onClick={() => setIsMenuOpen(true)}
+            className="md:hidden p-2 rounded-lg hover:bg-surface-container-low transition text-on-surface-variant"
+            aria-label="Open navigation menu"
+          >
+            <span className="material-symbols-outlined text-2xl">menu</span>
+          </button>
         </div>
       </nav>
+
+      {/* Mobile Drawer */}
+      {isMenuOpen && (
+        <>
+          {/* Backdrop */}
+          <div 
+            className="fixed inset-0 bg-black/40 backdrop-blur-xs z-[100] md:hidden"
+            onClick={() => setIsMenuOpen(false)}
+          />
+          {/* Drawer Content */}
+          <div className="fixed right-0 top-0 h-screen w-80 bg-white shadow-2xl z-[101] p-6 flex flex-col md:hidden transition duration-300">
+            <div className="flex justify-between items-center mb-8">
+              <span className="text-xl font-bold text-primary">Care One</span>
+              <button 
+                onClick={() => setIsMenuOpen(false)}
+                className="p-2 rounded-lg hover:bg-surface-container-low transition"
+                aria-label="Close navigation menu"
+              >
+                <span className="material-symbols-outlined text-2xl">close</span>
+              </button>
+            </div>
+            
+            <nav className="flex flex-col gap-6 flex-1">
+              <Link 
+                to="/" 
+                onClick={() => setIsMenuOpen(false)}
+                className={location.pathname === '/' ? "text-primary text-lg font-semibold" : "text-on-surface-variant text-lg hover:text-primary transition"}
+              >
+                Home
+              </Link>
+              <Link 
+                to="/treatments" 
+                onClick={() => setIsMenuOpen(false)}
+                className={location.pathname === '/treatments' ? "text-primary text-lg font-semibold" : "text-on-surface-variant text-lg hover:text-primary transition"}
+              >
+                Treatments
+              </Link>
+              <Link 
+                to="/about" 
+                onClick={() => setIsMenuOpen(false)}
+                className={location.pathname === '/about' ? "text-primary text-lg font-semibold" : "text-on-surface-variant text-lg hover:text-primary transition"}
+              >
+                About Us
+              </Link>
+              <Link 
+                to="/patient-results" 
+                onClick={() => setIsMenuOpen(false)}
+                className={location.pathname === '/patient-results' ? "text-primary text-lg font-semibold" : "text-on-surface-variant text-lg hover:text-primary transition"}
+              >
+                Patient Results
+              </Link>
+            </nav>
+            
+            <div className="border-t border-outline-variant/20 pt-6 mt-auto space-y-4">
+              {user && user.type === 'admin' && (
+                <Link 
+                  to="/admin/dashboard" 
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block text-center text-primary font-semibold border border-primary px-4 py-3 rounded-lg hover:bg-primary/5 transition"
+                >
+                  Admin Panel
+                </Link>
+              )}
+              {(!user || user.type !== 'admin') && (
+                <button
+                  onClick={() => {
+                    setIsMenuOpen(false)
+                    onBookClick()
+                  }}
+                  className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:opacity-90 transition shadow-sm"
+                >
+                  Book Appointment
+                </button>
+              )}
+              {user ? (
+                <div className="space-y-3">
+                  <p className="text-sm text-on-surface-variant text-center font-medium">Signed in as <span className="text-on-surface font-semibold">{user.name}</span></p>
+                  <button
+                    onClick={() => {
+                      setIsMenuOpen(false)
+                      handleLogout()
+                    }}
+                    className="w-full bg-error/10 text-error py-3 rounded-lg hover:bg-error/20 transition text-sm font-semibold"
+                  >
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <Link
+                  to="/login"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block text-center text-primary border border-primary py-3 rounded-lg hover:bg-primary/5 transition font-semibold"
+                >
+                  Login
+                </Link>
+              )}
+            </div>
+          </div>
+        </>
+      )}
     </header>
   )
 }

@@ -12,6 +12,7 @@ const STATUS_COLORS = {
 export default function AdminDashboard() {
   const navigate = useNavigate()
   const fileInputRef = useRef(null)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [activeTab, setActiveTab] = useState('dashboard')
   const [appointments, setAppointments] = useState([])
   const [gallery, setGallery] = useState([])
@@ -341,17 +342,40 @@ export default function AdminDashboard() {
         </div>
       )}
 
+      {/* Sidebar Overlay backdrop on Mobile */}
+      {isSidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black/40 backdrop-blur-xs z-50 md:hidden"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
       {/* Sidebar */}
-      <aside className="fixed left-0 top-0 w-64 h-screen bg-surface-container-low border-r border-outline-variant flex flex-col p-6">
-        <div className="mb-10">
-          <h1 className="text-2xl font-bold text-primary">Care One</h1>
-          <p className="text-xs text-on-surface-variant mt-1">Clinic Administration</p>
+      <aside className={`fixed left-0 top-0 w-64 h-screen bg-surface-container-low border-r border-outline-variant flex flex-col p-6 z-50 transition-transform duration-300 md:translate-x-0 ${
+        isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+      }`}>
+        <div className="mb-10 flex justify-between items-center">
+          <div>
+            <h1 className="text-2xl font-bold text-primary">Care One</h1>
+            <p className="text-xs text-on-surface-variant mt-1">Clinic Administration</p>
+          </div>
+          {/* Close button on Mobile */}
+          <button 
+            onClick={() => setIsSidebarOpen(false)}
+            className="md:hidden p-2 rounded-lg hover:bg-surface-container-high text-on-surface-variant"
+            aria-label="Close menu"
+          >
+            <span className="material-symbols-outlined text-xl">close</span>
+          </button>
         </div>
         <nav className="flex-1 space-y-1">
           {navItems.map(item => (
             <button
               key={item.id}
-              onClick={() => setActiveTab(item.id)}
+              onClick={() => {
+                setActiveTab(item.id)
+                setIsSidebarOpen(false)
+              }}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition text-sm font-medium ${
                 activeTab === item.id
                   ? 'bg-primary/10 text-primary border-r-4 border-primary'
@@ -364,7 +388,10 @@ export default function AdminDashboard() {
           ))}
         </nav>
         <button
-          onClick={handleLogout}
+          onClick={() => {
+            handleLogout()
+            setIsSidebarOpen(false)
+          }}
           className="w-full flex items-center gap-2 bg-primary text-white py-3 px-4 rounded-lg hover:opacity-90 transition mt-4"
         >
           <span className="material-symbols-outlined">logout</span>
@@ -373,10 +400,19 @@ export default function AdminDashboard() {
       </aside>
 
       {/* Main */}
-      <div className="ml-64 flex-1 flex flex-col min-h-screen">
+      <div className="ml-0 md:ml-64 flex-1 flex flex-col min-h-screen">
         {/* Header */}
-        <header className="bg-white border-b border-outline-variant h-16 flex items-center justify-between px-8 sticky top-0 z-40 shadow-sm">
-          <h2 className="text-xl font-bold text-primary">Care One Admin</h2>
+        <header className="bg-white border-b border-outline-variant h-16 flex items-center justify-between px-4 sm:px-8 sticky top-0 z-40 shadow-sm">
+          <div className="flex items-center">
+            <button 
+              onClick={() => setIsSidebarOpen(true)}
+              className="p-2 rounded-lg hover:bg-surface-container-low transition md:hidden mr-2 text-on-surface-variant"
+              aria-label="Open menu"
+            >
+              <span className="material-symbols-outlined">menu</span>
+            </button>
+            <h2 className="text-lg sm:text-xl font-bold text-primary">Care One Admin</h2>
+          </div>
           <div className="flex items-center gap-3">
             <button onClick={fetchAll} title="Refresh" className="p-2 rounded-lg hover:bg-surface-container-low transition">
               <span className="material-symbols-outlined text-on-surface-variant">refresh</span>
@@ -417,7 +453,7 @@ export default function AdminDashboard() {
                       { label: 'Confirmed',          value: confirmed, icon: '✅', color: 'text-green-600' },
                       { label: 'Completed',          value: appointments.filter(a=>a.status==='completed').length, icon: '🏆', color: 'text-blue-600' },
                     ].map((s, i) => (
-                      <div key={i} className="bg-white rounded-xl border border-outline-variant p-6 shadow-sm">
+                      <div key={i} className="bg-white rounded-xl border border-outline-variant p-4 sm:p-6 shadow-sm">
                         <p className="text-2xl mb-2">{s.icon}</p>
                         <p className={`text-3xl font-bold ${s.color} mb-1`}>{s.value}</p>
                         <p className="text-xs text-on-surface-variant font-semibold">{s.label}</p>
@@ -436,32 +472,34 @@ export default function AdminDashboard() {
                     {appointments.length === 0 ? (
                       <div className="p-8 text-center text-on-surface-variant">No appointments yet.</div>
                     ) : (
-                      <table className="w-full">
-                        <thead className="bg-surface-container-low">
-                          <tr>
-                            {['Patient', 'Service', 'Date', 'Status'].map(h => (
-                              <th key={h} className="px-6 py-3 text-left text-xs font-semibold text-on-surface-variant uppercase">{h}</th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody className="divide-y divide-outline-variant">
-                          {appointments.slice(0, 5).map(apt => (
-                            <tr key={apt._id} className="hover:bg-surface-container-low transition">
-                              <td className="px-6 py-4">
-                                <p className="font-semibold text-on-surface text-sm">{apt.fullName}</p>
-                                <p className="text-xs text-on-surface-variant">{apt.phone}</p>
-                              </td>
-                              <td className="px-6 py-4 text-sm text-on-surface-variant">{apt.treatment}</td>
-                              <td className="px-6 py-4 text-sm text-on-surface">{new Date(apt.preferredDate).toLocaleDateString()}</td>
-                              <td className="px-6 py-4">
-                                <span className={`px-3 py-1 rounded-full text-xs font-semibold ${STATUS_COLORS[apt.status] || 'bg-gray-100 text-gray-800'}`}>
-                                  {apt.status.charAt(0).toUpperCase() + apt.status.slice(1)}
-                                </span>
-                              </td>
+                      <div className="overflow-x-auto">
+                        <table className="w-full">
+                          <thead className="bg-surface-container-low">
+                            <tr>
+                              {['Patient', 'Service', 'Date', 'Status'].map(h => (
+                                <th key={h} className="px-6 py-3 text-left text-xs font-semibold text-on-surface-variant uppercase">{h}</th>
+                              ))}
                             </tr>
-                          ))}
-                        </tbody>
-                      </table>
+                          </thead>
+                          <tbody className="divide-y divide-outline-variant">
+                            {appointments.slice(0, 5).map(apt => (
+                              <tr key={apt._id} className="hover:bg-surface-container-low transition">
+                                <td className="px-6 py-4">
+                                  <p className="font-semibold text-on-surface text-sm">{apt.fullName}</p>
+                                  <p className="text-xs text-on-surface-variant">{apt.phone}</p>
+                                </td>
+                                <td className="px-6 py-4 text-sm text-on-surface-variant">{apt.treatment}</td>
+                                <td className="px-6 py-4 text-sm text-on-surface">{new Date(apt.preferredDate).toLocaleDateString()}</td>
+                                <td className="px-6 py-4">
+                                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${STATUS_COLORS[apt.status] || 'bg-gray-100 text-gray-800'}`}>
+                                    {apt.status.charAt(0).toUpperCase() + apt.status.slice(1)}
+                                  </span>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
                     )}
                   </div>
                 </div>
@@ -481,7 +519,7 @@ export default function AdminDashboard() {
                   </div>
 
                   {/* Filter tabs */}
-                  <div className="flex gap-2 mb-6">
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {['all', 'pending', 'confirmed', 'completed', 'cancelled'].map(s => (
                       <button
                         key={s}
@@ -585,7 +623,7 @@ export default function AdminDashboard() {
                           <span className="h-1 w-6 bg-primary rounded-full"></span>
                           {category}
                         </h4>
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                           {categoryImages.map(section => {
                             const image = gallery.find(g => g.section === section.id)
                             return (

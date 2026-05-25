@@ -55,7 +55,7 @@ export default function AboutUs({ onBookClick }) {
               Since 2015, Care One has been pioneering advanced dermatological treatments with a commitment to excellence, safety, and patient transformation.
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8 mt-16">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-16">
             <div className="bg-surface rounded-2xl p-8 shadow-sm border border-outline-variant/20">
               <div className="text-4xl font-bold text-primary mb-2">500+</div>
               <p className="text-on-surface-variant">Successful Treatments Monthly</p>
@@ -123,7 +123,7 @@ export default function AboutUs({ onBookClick }) {
       <section className="py-20 bg-white">
         <div className="max-w-container-max mx-auto px-6 md:px-8">
           <h2 className="text-4xl font-bold text-on-surface mb-12 text-center font-headline-xl">Our Core Values</h2>
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {[
               { icon: '✓', title: 'Excellence', desc: 'Highest standards in every treatment' },
               { icon: '❤', title: 'Compassion', desc: 'Patient-centered care always' },
