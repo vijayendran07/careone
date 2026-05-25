@@ -119,7 +119,7 @@ export default function Treatments({ onBookClick }) {
       </section>
 
       {/* Skin Rejuvenation */}
-      <section className="py-20 bg-white">
+      <section id="skin-rejuvenation" className="py-20 bg-white">
         <div className="max-w-container-max mx-auto px-6 md:px-8 grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-4 order-2 md:order-1">
             {skinTreatments.map((t, i) => (
@@ -146,7 +146,7 @@ export default function Treatments({ onBookClick }) {
       </section>
 
       {/* Laser Therapy */}
-      <section className="py-20 bg-surface-container-low">
+      <section id="laser-therapy" className="py-20 bg-surface-container-low">
         <div className="max-w-container-max mx-auto px-6 md:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4">Next-Gen Laser Therapy</h2>

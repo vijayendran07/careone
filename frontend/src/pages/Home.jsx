@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import API_URL from '../config/api'
 
 export default function Home({ onBookClick }) {
@@ -113,9 +114,9 @@ export default function Home({ onBookClick }) {
                 </span>
                 <h3 className="text-xl font-bold mb-3">{service.title}</h3>
                 <p className="text-on-surface-variant group-hover:text-white/90 mb-6">{service.desc}</p>
-                <a href={`/treatments#${service.title.toLowerCase().replace(' ', '-')}`} className="text-primary group-hover:text-white font-bold flex items-center gap-2">
+                <Link to={`/treatments#${service.title.toLowerCase().replace(' ', '-')}`} className="text-primary group-hover:text-white font-bold flex items-center gap-2">
                   Explore Now <span className="material-symbols-outlined text-sm">arrow_forward</span>
-                </a>
+                </Link>
               </div>
             ))}
           </div>

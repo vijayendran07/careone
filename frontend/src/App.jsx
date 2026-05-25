@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import ProtectedRoute from './components/ProtectedRoute'
@@ -25,6 +25,19 @@ function AppContent() {
   const { user } = useAuth()
   const location = useLocation()
   const navigate = useNavigate()
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1))
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }, 150)
+      }
+    } else {
+      window.scrollTo(0, 0)
+    }
+  }, [location])
 
   // Don't show header/footer on login and admin pages
   const isAdminPage = location.pathname.startsWith('/admin')
@@ -80,7 +93,16 @@ function Header({ onBookClick, navigate }) {
   return (
     <header className="bg-surface/95 backdrop-blur-sm shadow-sm sticky top-0 z-50 border-b border-outline-variant/20">
       <nav className="flex justify-between items-center max-w-container-max mx-auto px-6 md:px-8 py-4">
-        <Link to="/" className="text-2xl font-bold text-primary">Care One</Link>
+        {/* Mobile hamburger menu toggle */}
+        <button 
+          onClick={() => setIsMenuOpen(true)}
+          className="md:hidden p-2 rounded-lg hover:bg-surface-container-low transition text-on-surface-variant"
+          aria-label="Open navigation menu"
+        >
+          <span className="material-symbols-outlined text-2xl">menu</span>
+        </button>
+
+        <Link to="/" className="text-2xl font-bold text-primary order-last md:order-first">Care One</Link>
         
         {/* Desktop Navigation Links */}
         <div className="hidden md:flex items-center gap-8">
@@ -128,15 +150,6 @@ function Header({ onBookClick, navigate }) {
               </div>
             )}
           </div>
-
-          {/* Mobile hamburger menu toggle */}
-          <button 
-            onClick={() => setIsMenuOpen(true)}
-            className="md:hidden p-2 rounded-lg hover:bg-surface-container-low transition text-on-surface-variant"
-            aria-label="Open navigation menu"
-          >
-            <span className="material-symbols-outlined text-2xl">menu</span>
-          </button>
         </div>
       </nav>
 
@@ -149,7 +162,7 @@ function Header({ onBookClick, navigate }) {
             onClick={() => setIsMenuOpen(false)}
           />
           {/* Drawer Content */}
-          <div className="fixed right-0 top-0 h-screen w-80 bg-white shadow-2xl z-[101] p-6 flex flex-col md:hidden transition duration-300">
+          <div className="fixed right-0 top-0 h-screen w-80 bg-white shadow-2xl z-[101] p-6 flex flex-col md:hidden transition duration-300 overflow-y-auto">
             <div className="flex justify-between items-center mb-8">
               <span className="text-xl font-bold text-primary">Care One</span>
               <button 
