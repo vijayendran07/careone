@@ -128,16 +128,8 @@ function Header({ onBookClick, navigate }) {
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50 border-b border-outline-variant/20">
       <nav className="flex justify-between items-center max-w-container-max mx-auto px-6 md:px-8 py-4">
-        {/* Mobile hamburger menu toggle */}
-        <button 
-          onClick={() => setIsMenuOpen(true)}
-          className="md:hidden p-2 rounded-lg hover:bg-surface-container-low transition text-on-surface-variant"
-          aria-label="Open navigation menu"
-        >
-          <span className="material-symbols-outlined text-2xl">menu</span>
-        </button>
-
-        <Link to="/" className="text-2xl font-bold text-primary order-last md:order-first">Care One</Link>
+        {/* Logo (Always Left) */}
+        <Link to="/" className="text-2xl font-bold text-primary">Care One</Link>
         
         {/* Desktop Navigation Links */}
         <div className="hidden md:flex items-center gap-8">
@@ -147,8 +139,8 @@ function Header({ onBookClick, navigate }) {
           <Link to="/patient-results" className={location.pathname === '/patient-results' ? "text-primary border-b-2 border-primary pb-1 font-semibold" : "text-on-surface-variant hover:text-primary transition"}>Patient Results</Link>
         </div>
 
-        {/* Action buttons */}
-        <div className="flex items-center gap-4">
+        {/* Right Action buttons and Hamburger Menu */}
+        <div className="flex items-center gap-2 md:gap-4">
           {/* Notifications Popover Toggle Button */}
           {user && user.type !== 'admin' && (
             <div className="relative">
@@ -169,7 +161,7 @@ function Header({ onBookClick, navigate }) {
                   {/* Backdrop overlay to click away and close dropdown */}
                   <div className="fixed inset-0 z-40" onClick={() => setIsNotifOpen(false)} />
                   
-                  <div className="absolute right-0 mt-3 w-80 sm:w-96 bg-white rounded-2xl shadow-xl border border-outline-variant/30 z-50 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                  <div className="absolute right-[-60px] md:right-0 mt-3 w-[88vw] max-w-sm sm:w-96 bg-white rounded-2xl shadow-xl border border-outline-variant/30 z-50 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
                     <div className="p-4 border-b border-outline-variant/30 bg-surface-container-low flex justify-between items-center">
                       <h4 className="font-bold text-on-surface flex items-center gap-2">
                         <span className="material-symbols-outlined text-xl text-primary">notifications</span>
@@ -192,7 +184,7 @@ function Header({ onBookClick, navigate }) {
                           return (
                             <div key={apt._id} className="p-4 hover:bg-surface-container-lowest transition space-y-2">
                               <div className="flex justify-between items-start">
-                                <span className="font-semibold text-sm text-on-surface truncate max-w-[150px] sm:max-w-[200px]">
+                                <span className="font-semibold text-sm text-on-surface truncate max-w-[120px] sm:max-w-[200px]">
                                   {apt.treatment}
                                 </span>
                                 <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
@@ -284,6 +276,15 @@ function Header({ onBookClick, navigate }) {
               </div>
             )}
           </div>
+
+          {/* Mobile hamburger menu toggle */}
+          <button 
+            onClick={() => setIsMenuOpen(true)}
+            className="md:hidden p-2 rounded-lg hover:bg-surface-container-low transition text-on-surface-variant"
+            aria-label="Open navigation menu"
+          >
+            <span className="material-symbols-outlined text-2xl">menu</span>
+          </button>
         </div>
       </nav>
 
