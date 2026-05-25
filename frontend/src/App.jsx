@@ -92,7 +92,7 @@ function Header({ onBookClick, navigate }) {
   }
 
   return (
-    <header className="bg-surface/95 backdrop-blur-sm shadow-sm sticky top-0 z-50 border-b border-outline-variant/20">
+    <header className="bg-white shadow-sm sticky top-0 z-50 border-b border-outline-variant/20">
       <nav className="flex justify-between items-center max-w-container-max mx-auto px-6 md:px-8 py-4">
         {/* Mobile hamburger menu toggle */}
         <button 
