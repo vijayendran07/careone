@@ -66,15 +66,15 @@ export default function AboutUs({ onBookClick }) {
               </button>
             </div>
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
               {[
                 { value: '500+', label: 'Monthly Treatments' },
                 { value: '98%', label: 'Satisfaction Rate' },
                 { value: '2000+', label: 'Happy Patients' }
               ].map((stat, i) => (
-                <div key={i} className="bg-white rounded-2xl p-6 shadow-sm border border-outline-variant/20 text-center">
-                  <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">{stat.value}</div>
-                  <p className="text-sm text-on-surface-variant leading-tight">{stat.label}</p>
+                <div key={i} className="bg-white rounded-2xl p-5 md:p-6 shadow-sm border border-outline-variant/20 text-center hover:shadow-md transition duration-200">
+                  <div className="text-3xl lg:text-4xl font-extrabold text-primary mb-2">{stat.value}</div>
+                  <p className="text-xs sm:text-sm text-on-surface-variant font-medium leading-snug">{stat.label}</p>
                 </div>
               ))}
             </div>
