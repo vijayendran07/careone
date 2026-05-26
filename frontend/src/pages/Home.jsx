@@ -48,7 +48,7 @@ export default function Home({ onBookClick }) {
         <img
           src={getImage('home-hero-banner', 'https://lh3.googleusercontent.com/aida-public/AB6AXuBjnO3uC-FfZyaEEJXGXSzK6vHlgDY6f6tf1FuwLUuMADRuwP9WHwuj7qYxODS7LCBn7vQD67_iOSrZ_mXdvW3-PchasnWJOuyt7qa7lQ95tvIdXtnDxqSFaDNzLicEfc9H1TZ30oCrapvu7DB72n50JZN87LSpdk2dTRIOAV_NIA_SFrdOL8kpKJAQUnA7CtTFSUrDfS8AIxb9UAM8gFx9HnvBsN4zR0cFa2HYlGiZCUXMuWYDpoPvN7tqo95aLTldWj-3AogarA')}
           alt="Care One Hero"
-          className="absolute inset-0 w-full h-full object-contain bg-gray-50"
+          className="absolute inset-0 w-full h-full object-cover object-center"
         />
         {/* Gradient overlay for readability - made very subtle as per reference */}
         <div className="absolute inset-0 bg-white/30 sm:bg-transparent" />
