@@ -95,13 +95,6 @@ export default function Treatments({ onBookClick }) {
             <p className="text-base lg:text-lg text-gray-600 leading-relaxed max-w-xl mx-auto font-medium">
               Discover our comprehensive range of medical-grade treatments designed to restore confidence through science-led precision.
             </p>
-            
-            {/* Carousel Dots */}
-            <div className="flex justify-center items-center gap-2 pt-8">
-              <span className="w-2.5 h-2.5 rounded-full bg-primary"></span>
-              <span className="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
-              <span className="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
-            </div>
           </div>
         </div>
       </section>

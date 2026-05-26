@@ -142,7 +142,7 @@ function Header({ onBookClick, navigate }) {
       <nav className="flex justify-between items-center max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-4">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 flex-shrink-0">
-          <img src="/logo.png" alt="Care One" className="h-14 lg:h-24 w-auto" onError={e => { e.target.style.display='none'; e.target.nextSibling.style.display='flex' }} />
+          <img src="/logo.png" alt="Care One" className="h-20 lg:h-28 w-auto" onError={e => { e.target.style.display='none'; e.target.nextSibling.style.display='flex' }} />
           <div style={{display:'none'}} className="flex-col leading-none">
             <span className="text-xl font-bold tracking-wide text-on-surface" style={{fontFamily:'Georgia,serif'}}>CARE ONE</span>
             <span className="text-[10px] text-on-surface-variant tracking-widest" style={{fontFamily:'Georgia,serif',letterSpacing:'0.2em'}}>Skin &amp; Hair Clinic</span>
@@ -154,7 +154,6 @@ function Header({ onBookClick, navigate }) {
           <Link to="/" className={location.pathname === '/' ? "text-gray-900 border-b-2 border-primary pb-1 font-semibold" : "text-gray-600 hover:text-primary transition font-medium"}>Home</Link>
           <Link to="/about" className={location.pathname === '/about' ? "text-gray-900 border-b-2 border-primary pb-1 font-semibold" : "text-gray-600 hover:text-primary transition font-medium"}>About us</Link>
           <Link to="/treatments" className={location.pathname === '/treatments' ? "text-gray-900 border-b-2 border-primary pb-1 font-semibold" : "text-gray-600 hover:text-primary transition font-medium"}>Treatments</Link>
-          <div className="text-gray-600 hover:text-primary transition cursor-pointer flex items-center gap-1 font-medium">More <span className="material-symbols-outlined text-sm">expand_more</span></div>
           <Link to="/contact" className={location.pathname === '/contact' ? "text-gray-900 border-b-2 border-primary pb-1 font-semibold" : "text-gray-600 hover:text-primary transition font-medium"}>Contact</Link>
         </div>
 
@@ -319,7 +318,7 @@ function Header({ onBookClick, navigate }) {
           <div className="fixed right-0 top-0 h-screen w-80 bg-white shadow-2xl z-[101] p-6 flex flex-col md:hidden transition duration-300 overflow-y-auto">
             <div className="flex justify-between items-center mb-8">
             <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2">
-              <img src="/logo.png" alt="Care One" className="h-12 w-auto" onError={e => { e.target.style.display='none'; e.target.nextSibling.style.display='flex' }} />
+              <img src="/logo.png" alt="Care One" className="h-16 w-auto" onError={e => { e.target.style.display='none'; e.target.nextSibling.style.display='flex' }} />
               <div style={{display:'none'}} className="flex-col leading-none">
                 <span className="text-lg font-bold tracking-wide text-on-surface" style={{fontFamily:'Georgia,serif'}}>CARE ONE</span>
                 <span className="text-[9px] text-on-surface-variant tracking-widest" style={{fontFamily:'Georgia,serif'}}>Skin &amp; Hair Clinic</span>

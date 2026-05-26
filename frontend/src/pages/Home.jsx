@@ -64,13 +64,6 @@ export default function Home({ onBookClick }) {
             <p className="text-base lg:text-lg text-gray-600 leading-relaxed max-w-xl mx-auto font-medium">
               Reclaim your confidence with advanced, dermatologist-led treatments customized for your unique skin and hair goals.
             </p>
-            
-            {/* Carousel Dots */}
-            <div className="flex justify-center items-center gap-2 pt-8">
-              <span className="w-2.5 h-2.5 rounded-full bg-primary"></span>
-              <span className="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
-              <span className="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
-            </div>
           </div>
         </div>
       </section>
