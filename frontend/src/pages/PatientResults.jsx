@@ -163,7 +163,7 @@ export default function PatientResults({ onBookClick }) {
           <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
             {[
               {
-                icon: '✨',
+                icon: '🌟',
                 title: 'Laser Hair Removal',
                 results: ['95% hair reduction after 6 sessions', 'Permanent results in all body areas', 'Works on all skin tones', 'Fast sessions (15-45 min)', 'No scarring or burns']
               },

@@ -622,26 +622,9 @@ export default function AdminDashboard() {
                     <div className="bg-white rounded-2xl border border-outline-variant shadow-sm p-6 space-y-5">
                       <h4 className="font-bold text-on-surface">Update Banner Image</h4>
 
-                      <div>
-                        <label className="block text-sm font-semibold mb-2">Image URL</label>
-                        <input
-                          type="text"
-                          placeholder="https://your-image-url.com/banner.jpg"
-                          value={imageFormData.section === 'home-hero-banner' ? imageFormData.imageUrl : (gallery.find(g => g.section === 'home-hero-banner')?.imageUrl || '')}
-                          onChange={e => setImageFormData({ section: 'home-hero-banner', imageUrl: e.target.value, title: 'Home Hero Banner', description: '' })}
-                          onFocus={() => {
-                            if (imageFormData.section !== 'home-hero-banner') {
-                              const existing = gallery.find(g => g.section === 'home-hero-banner')
-                              setImageFormData({ section: 'home-hero-banner', imageUrl: existing?.imageUrl || '', title: 'Home Hero Banner', description: existing?.description || '' })
-                            }
-                          }}
-                          className="w-full border border-outline-variant p-3 rounded-xl text-sm focus:outline-none focus:border-primary"
-                        />
-                      </div>
-
                       {/* Cloudinary Upload */}
                       <div>
-                        <label className="block text-sm font-semibold mb-2">Or Upload from Device</label>
+                        <label className="block text-sm font-semibold mb-2">Upload Image File</label>
                         <input
                           type="file"
                           accept="image/*"
