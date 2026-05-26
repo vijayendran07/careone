@@ -651,9 +651,9 @@ export default function AdminDashboard() {
                         <button
                           onClick={async () => {
                             const data = imageFormData.section === 'home-hero-banner' ? imageFormData : { section: 'home-hero-banner', imageUrl: gallery.find(g => g.section === 'home-hero-banner')?.imageUrl || '', title: 'Home Hero Banner', description: '' }
-                            if (!data.imageUrl) { showToast('Please enter an image URL', 'error'); return }
+                            if (!data.imageUrl) { showToast('Please select or upload an image', 'error'); return }
                             try {
-                              const res = await fetch(`${API_URL}/api/gallery`, {
+                              const res = await fetch(`${API_URL}/api/gallery/home-hero-banner`, {
                                 method: 'PUT',
                                 headers: authHeaders(),
                                 body: JSON.stringify(data),
