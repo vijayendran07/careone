@@ -48,7 +48,7 @@ export default function Home({ onBookClick }) {
         <img
           src={getImage('home-hero-banner', 'https://lh3.googleusercontent.com/aida-public/AB6AXuBjnO3uC-FfZyaEEJXGXSzK6vHlgDY6f6tf1FuwLUuMADRuwP9WHwuj7qYxODS7LCBn7vQD67_iOSrZ_mXdvW3-PchasnWJOuyt7qa7lQ95tvIdXtnDxqSFaDNzLicEfc9H1TZ30oCrapvu7DB72n50JZN87LSpdk2dTRIOAV_NIA_SFrdOL8kpKJAQUnA7CtTFSUrDfS8AIxb9UAM8gFx9HnvBsN4zR0cFa2HYlGiZCUXMuWYDpoPvN7tqo95aLTldWj-3AogarA')}
           alt="Care One Hero"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-contain bg-gray-50"
         />
         {/* Gradient overlay for readability - made very subtle as per reference */}
         <div className="absolute inset-0 bg-white/30 sm:bg-transparent" />
@@ -61,7 +61,7 @@ export default function Home({ onBookClick }) {
               <br className="hidden sm:block" />
               Care You Can <span className="text-primary">Trust</span>
             </h1>
-            <p className="text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed max-w-xl mx-auto font-medium">
+            <p className="text-sm sm:text-base lg:text-lg text-black-600 leading-relaxed max-w-xl mx-auto font-medium">
               Reclaim your confidence with advanced, dermatologist-led treatments customized for your unique skin and hair goals.
             </p>
           </div>
