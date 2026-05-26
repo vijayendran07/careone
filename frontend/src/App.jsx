@@ -142,7 +142,7 @@ function Header({ onBookClick, navigate }) {
       <nav className="flex justify-between items-center max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-4">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 flex-shrink-0">
-          <img src="/logo.png" alt="Care One" className="h-10 w-auto" onError={e => { e.target.style.display='none'; e.target.nextSibling.style.display='flex' }} />
+          <img src="/logo.png" alt="Care One" className="h-14 lg:h-16 w-auto" onError={e => { e.target.style.display='none'; e.target.nextSibling.style.display='flex' }} />
           <div style={{display:'none'}} className="flex-col leading-none">
             <span className="text-xl font-bold tracking-wide text-on-surface" style={{fontFamily:'Georgia,serif'}}>CARE ONE</span>
             <span className="text-[10px] text-on-surface-variant tracking-widest" style={{fontFamily:'Georgia,serif',letterSpacing:'0.2em'}}>Skin &amp; Hair Clinic</span>
@@ -318,7 +318,7 @@ function Header({ onBookClick, navigate }) {
           <div className="fixed right-0 top-0 h-screen w-80 bg-white shadow-2xl z-[101] p-6 flex flex-col md:hidden transition duration-300 overflow-y-auto">
             <div className="flex justify-between items-center mb-8">
             <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2">
-              <img src="/logo.png" alt="Care One" className="h-9 w-auto" onError={e => { e.target.style.display='none'; e.target.nextSibling.style.display='flex' }} />
+              <img src="/logo.png" alt="Care One" className="h-12 w-auto" onError={e => { e.target.style.display='none'; e.target.nextSibling.style.display='flex' }} />
               <div style={{display:'none'}} className="flex-col leading-none">
                 <span className="text-lg font-bold tracking-wide text-on-surface" style={{fontFamily:'Georgia,serif'}}>CARE ONE</span>
                 <span className="text-[9px] text-on-surface-variant tracking-widest" style={{fontFamily:'Georgia,serif'}}>Skin &amp; Hair Clinic</span>
