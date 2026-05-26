@@ -139,7 +139,7 @@ function Header({ onBookClick, navigate }) {
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50 border-b border-outline-variant/20">
-      <nav className="flex justify-between items-center max-w-5xl mx-auto px-4 md:px-8 py-4">
+      <nav className="flex justify-between items-center max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-4">
         {/* Logo (Always Left) */}
         <Link to="/" className="text-2xl font-bold text-primary">Care One</Link>
         
@@ -410,7 +410,7 @@ function Footer({ settings }) {
 
   return (
     <footer className="bg-surface-container-highest border-t border-outline-variant/20">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-5xl mx-auto px-4 md:px-8 py-16">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-14">
         <div className="space-y-6">
           <div className="text-2xl font-bold text-primary">{clinicName}</div>
           <p className="text-on-surface-variant text-sm">Providing world-class clinical excellence in skin and hair care.</p>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import API_URL from '../config/api'
-import { Link } from 'react-router-dom'
 
 export default function Treatments({ onBookClick }) {
   const [gallery, setGallery] = useState([])
@@ -24,7 +23,7 @@ export default function Treatments({ onBookClick }) {
   const hairTreatments = [
     {
       title: 'PRP Hair Therapy',
-      desc: 'Platelet-Rich Plasma therapy uses your body\'s own growth factors to stimulate dormant follicles.',
+      desc: "Platelet-Rich Plasma therapy uses your body's own growth factors to stimulate dormant follicles.",
       benefits: ['Thickens existing hair', '45 min session, minimal downtime'],
       featured: false
     },
@@ -72,44 +71,67 @@ export default function Treatments({ onBookClick }) {
 
   return (
     <main>
-      {/* Hero */}
-      <section className="py-10 md:py-16 bg-white">
-        <div className="max-w-5xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-6 md:gap-8 items-center">
-          <div>
-            <span className="text-secondary font-semibold uppercase tracking-wider text-sm md:text-base">Clinical Excellence</span>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-2 md:mt-4 mb-4 md:mb-6">Advanced Clinical Solutions for Skin & Hair</h1>
-            <p className="text-base md:text-lg text-on-surface-variant mb-6 md:mb-8">
-              Discover our comprehensive range of medical-grade treatments designed to restore confidence through science-led precision.
-            </p>
-            <a href="#hair-restoration" className="bg-primary text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold hover:opacity-90 inline-flex items-center gap-2 text-sm md:text-base">
-              Explore Treatments ↓
-            </a>
+      {/* ═══════════════ HERO ═══════════════ */}
+      <section className="min-h-[70vh] bg-white flex items-center">
+        <div className="w-full max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-12 lg:py-0">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="space-y-6 order-2 lg:order-1">
+              <span className="inline-block bg-secondary/10 text-secondary font-semibold uppercase tracking-widest text-xs px-4 py-2 rounded-full">
+                Clinical Excellence
+              </span>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+                Advanced Clinical Solutions for Skin &amp; Hair
+              </h1>
+              <p className="text-base lg:text-xl text-on-surface-variant leading-relaxed">
+                Discover our comprehensive range of medical-grade treatments designed to restore confidence through science-led precision.
+              </p>
+              <a
+                href="#hair-restoration"
+                className="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:opacity-90 hover:-translate-y-1 transition-all duration-200"
+              >
+                Explore Treatments
+                <span className="material-symbols-outlined text-lg">arrow_downward</span>
+              </a>
+            </div>
+            <div className="order-1 lg:order-2 rounded-3xl overflow-hidden shadow-2xl">
+              <img
+                src={getImage('treatments-hero', 'https://lh3.googleusercontent.com/aida-public/AB6AXuDZSjr9ffFKDccUSvb4gr1uFpIOgSxF4OjsSKoQsmPGtNUKTyHPUTV5GTa9lUcQmhge3sEH29AH1yUlOZgZal6M84EzaAtb7mUrQKFqI9WOa-UVekJU6uTQLD7IlYIWOX9C0c0UWMl7aUyTvGlw4qTms_4-ssQfzRFvXrszjHMm8sxGJ9nyKMMtTXKBGPyIsmilPVo8JFCRbUN5X9ce5whW9SpUKlWStYDhaNU6EkMXHOsBmui0_Nbpch70KR7Tyd7ACd-dMK7wCw')}
+                alt="Treatments"
+                className="w-full h-72 sm:h-96 lg:h-[520px] object-cover"
+              />
+            </div>
           </div>
-          <img src={getImage('treatments-hero', 'https://lh3.googleusercontent.com/aida-public/AB6AXuDZSjr9ffFKDccUSvb4gr1uFpIOgSxF4OjsSKoQsmPGtNUKTyHPUTV5GTa9lUcQmhge3sEH29AH1yUlOZgZal6M84EzaAtb7mUrQKFqI9WOa-UVekJU6uTQLD7IlYIWOX9C0c0UWMl7aUyTvGlw4qTms_4-ssQfzRFvXrszjHMm8sxGJ9nyKMMtTXKBGPyIsmilPVo8JFCRbUN5X9ce5whW9SpUKlWStYDhaNU6EkMXHOsBmui0_Nbpch70KR7Tyd7ACd-dMK7wCw')} alt="Treatments" className="rounded-xl shadow-lg w-full h-48 md:h-auto object-cover" />
         </div>
       </section>
 
-      {/* Hair Restoration */}
-      <section id="hair-restoration" className="py-10 md:py-14 bg-surface-container-low">
-        <div className="max-w-5xl mx-auto px-4 md:px-8">
-          <div className="mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold mb-3 md:mb-4">Hair Restoration & Vitality</h2>
-            <p className="text-sm md:text-base text-on-surface-variant max-w-2xl">Advanced therapeutic interventions to combat thinning and promote robust follicular health.</p>
+      {/* ═══════════════ HAIR RESTORATION ═══════════════ */}
+      <section id="hair-restoration" className="py-16 lg:py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
+          <div className="mb-12">
+            <span className="inline-block bg-primary/10 text-primary font-semibold uppercase tracking-widest text-xs px-4 py-2 rounded-full mb-4">
+              Hair Care
+            </span>
+            <h2 className="text-3xl lg:text-5xl font-bold mb-4">Hair Restoration &amp; Vitality</h2>
+            <p className="text-on-surface-variant text-base lg:text-lg max-w-2xl">Advanced therapeutic interventions to combat thinning and promote robust follicular health.</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {hairTreatments.map((t, i) => (
-              <div key={i} className={`p-6 md:p-8 rounded-xl flex flex-col h-full border ${t.featured ? 'bg-primary text-white border-primary shadow-lg md:-translate-y-2' : 'bg-white border-outline-variant/20'}`}>
-                <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4">{t.title}</h3>
-                <p className={`mb-4 md:mb-6 flex-grow text-sm md:text-base ${t.featured ? 'text-primary-fixed-dim' : 'text-on-surface-variant'}`}>{t.desc}</p>
-                <div className="space-y-2 md:space-y-3 mb-6 md:mb-8">
+              <div key={i} className={`p-8 rounded-2xl flex flex-col border transition-all hover:shadow-xl hover:-translate-y-1 duration-300 ${t.featured ? 'bg-primary text-white border-primary shadow-lg scale-105' : 'bg-white border-outline-variant/20'}`}>
+                {t.featured && <span className="inline-block bg-white/20 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4 w-fit">Most Popular</span>}
+                <h3 className="text-xl lg:text-2xl font-bold mb-4">{t.title}</h3>
+                <p className={`mb-6 flex-grow leading-relaxed text-sm lg:text-base ${t.featured ? 'text-white/90' : 'text-on-surface-variant'}`}>{t.desc}</p>
+                <div className="space-y-3 mb-8">
                   {t.benefits.map((b, j) => (
-                    <div key={j} className="flex gap-2 text-xs md:text-sm">
-                      <span className="material-symbols-outlined scale-75">check_circle</span>
+                    <div key={j} className="flex gap-3 text-sm">
+                      <span className={`material-symbols-outlined text-base flex-shrink-0 ${t.featured ? 'text-white' : 'text-primary'}`}>check_circle</span>
                       <span>{b}</span>
                     </div>
                   ))}
                 </div>
-                <button onClick={onBookClick} className={`w-full py-2.5 md:py-3 rounded-lg font-semibold transition text-sm md:text-base ${t.featured ? 'bg-white text-primary hover:bg-secondary-fixed' : 'border border-primary text-primary hover:bg-primary hover:text-white'}`}>
+                <button
+                  onClick={onBookClick}
+                  className={`w-full py-3 rounded-xl font-semibold transition text-sm ${t.featured ? 'bg-white text-primary hover:bg-gray-100' : 'border-2 border-primary text-primary hover:bg-primary hover:text-white'}`}
+                >
                   Book Consultation
                 </button>
               </div>
@@ -118,61 +140,79 @@ export default function Treatments({ onBookClick }) {
         </div>
       </section>
 
-      {/* Skin Rejuvenation */}
-      <section id="skin-rejuvenation" className="py-10 md:py-14 bg-white">
-        <div className="max-w-5xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-6 md:gap-8 items-center">
-          <div className="space-y-3 md:space-y-4 order-2 md:order-1">
-            {skinTreatments.map((t, i) => (
-              <img key={i} src={t.image} alt={t.title} className="rounded-xl w-full h-40 sm:h-64 object-cover" />
-            ))}
-          </div>
-          <div className="order-1 md:order-2">
-            <span className="text-secondary font-semibold uppercase tracking-wider text-sm md:text-base">Skin Science</span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-2 md:mt-4 mb-4 md:mb-6">Skin Rejuvenation & Chemical Peels</h2>
-            <p className="text-sm md:text-base text-on-surface-variant mb-6 md:mb-8">
-              Our dermatological experts craft bespoke peel protocols and rejuvenation cycles to address pigmentation and signs of aging.
-            </p>
-            {skinTreatments.map((t, i) => (
-              <div key={i} className="border-b border-outline-variant/30 pb-3 md:pb-4 mb-3 md:mb-4">
-                <h4 className="text-base md:text-lg font-bold mb-1 md:mb-2">{t.title}</h4>
-                <p className="text-on-surface-variant text-xs md:text-sm">{t.desc}</p>
+      {/* ═══════════════ SKIN REJUVENATION ═══════════════ */}
+      <section id="skin-rejuvenation" className="py-16 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="grid grid-cols-2 gap-4 h-[380px] lg:h-[480px]">
+              {skinTreatments.map((t, i) => (
+                <img key={i} src={t.image} alt={t.title} className="rounded-2xl w-full h-full object-cover" />
+              ))}
+            </div>
+            <div className="space-y-6">
+              <span className="inline-block bg-secondary/10 text-secondary font-semibold uppercase tracking-widest text-xs px-4 py-2 rounded-full">
+                Skin Science
+              </span>
+              <h2 className="text-3xl lg:text-5xl font-bold leading-tight">Skin Rejuvenation &amp; Chemical Peels</h2>
+              <p className="text-on-surface-variant text-base lg:text-lg leading-relaxed">
+                Our dermatological experts craft bespoke peel protocols and rejuvenation cycles to address pigmentation and signs of aging.
+              </p>
+              <div className="space-y-4">
+                {skinTreatments.map((t, i) => (
+                  <div key={i} className="p-5 bg-gray-50 rounded-2xl border border-outline-variant/20 hover:border-primary/30 hover:bg-primary/5 transition-all">
+                    <h4 className="text-base lg:text-lg font-bold mb-2">{t.title}</h4>
+                    <p className="text-on-surface-variant text-sm leading-relaxed">{t.desc}</p>
+                  </div>
+                ))}
               </div>
-            ))}
-            <button onClick={onBookClick} className="bg-primary text-white px-6 md:px-8 py-2.5 md:py-3 rounded-lg font-semibold hover:opacity-90 mt-4 md:mt-8 text-sm md:text-base">
-              Book Appointment
-            </button>
+              <button
+                onClick={onBookClick}
+                className="bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:opacity-90 hover:-translate-y-1 transition-all duration-200 text-base"
+              >
+                Book Appointment
+              </button>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Laser Therapy */}
-      <section id="laser-therapy" className="py-10 md:py-14 bg-surface-container-low">
-        <div className="max-w-5xl mx-auto px-4 md:px-8">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold mb-3 md:mb-4">Next-Gen Laser Therapy</h2>
-            <p className="text-sm md:text-base text-on-surface-variant max-w-2xl mx-auto">
+      {/* ═══════════════ LASER THERAPY ═══════════════ */}
+      <section id="laser-therapy" className="py-16 lg:py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
+          <div className="text-center mb-12 lg:mb-16">
+            <span className="inline-block bg-primary/10 text-primary font-semibold uppercase tracking-widest text-xs px-4 py-2 rounded-full mb-4">
+              Laser Treatments
+            </span>
+            <h2 className="text-3xl lg:text-5xl font-bold">Next-Gen Laser Therapy</h2>
+            <p className="text-on-surface-variant text-base lg:text-lg max-w-2xl mx-auto mt-4 leading-relaxed">
               Utilizing world-class laser platforms for permanent hair reduction and non-surgical skin resurfacing.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
             {laserTreatments.map((t, i) => (
-              <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-outline-variant/20">
-                <div className="relative h-48 md:h-64 overflow-hidden">
+              <div key={i} className="bg-white rounded-3xl overflow-hidden shadow-sm border border-outline-variant/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div className="relative h-56 lg:h-72 overflow-hidden">
                   <img src={t.image} alt={t.title} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4 md:p-6">
-                    <h3 className="text-xl md:text-2xl font-bold text-white">{t.title}</h3>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
+                    <h3 className="text-2xl lg:text-3xl font-bold text-white">{t.title}</h3>
                   </div>
                 </div>
-                <div className="p-4 md:p-8">
-                  <p className="text-sm md:text-base text-on-surface-variant mb-4 md:mb-6">{t.desc}</p>
-                  <div className="grid grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-8">
+                <div className="p-6 lg:p-8">
+                  <p className="text-on-surface-variant mb-6 leading-relaxed text-sm lg:text-base">{t.desc}</p>
+                  <div className="grid grid-cols-2 gap-3 mb-6">
                     {t.benefits.map((b, j) => (
-                      <div key={j} className="flex items-center gap-2 text-xs md:text-sm">
-                        <span className="material-symbols-outlined scale-75 text-primary">bolt</span>
-                        <span>{b}</span>
+                      <div key={j} className="flex items-center gap-2 text-sm bg-primary/5 rounded-xl p-3">
+                        <span className="material-symbols-outlined text-primary text-base">bolt</span>
+                        <span className="font-medium">{b}</span>
                       </div>
                     ))}
                   </div>
+                  <button
+                    onClick={onBookClick}
+                    className="w-full border-2 border-primary text-primary py-3 rounded-xl font-semibold hover:bg-primary hover:text-white transition-all duration-200"
+                  >
+                    Book Session
+                  </button>
                 </div>
               </div>
             ))}
@@ -180,19 +220,19 @@ export default function Treatments({ onBookClick }) {
         </div>
       </section>
 
-      {/* Process */}
-      <section className="py-10 md:py-14 bg-white">
-        <div className="max-w-5xl mx-auto px-4 md:px-8">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold">Your Path to Renewed Confidence</h2>
+      {/* ═══════════════ PROCESS ═══════════════ */}
+      <section className="py-16 lg:py-24 bg-primary text-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
+          <div className="text-center mb-12 lg:mb-16">
+            <h2 className="text-3xl lg:text-5xl font-bold">Your Path to Renewed Confidence</h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {['Book Appointment', 'Expert Consultation', 'Tailored Treatment', 'Glowing Results'].map((step, i) => (
               <div key={i} className="text-center">
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-surface-container rounded-full mx-auto flex items-center justify-center mb-4 border-2 md:border-4 border-secondary hover:scale-110 transition">
-                  <span className="text-xl md:text-2xl font-bold text-secondary">0{i + 1}</span>
+                <div className="w-16 h-16 lg:w-20 lg:h-20 bg-white/20 rounded-full mx-auto flex items-center justify-center mb-5 border-2 border-white/30 hover:bg-white/30 transition-colors">
+                  <span className="text-xl lg:text-2xl font-bold">0{i + 1}</span>
                 </div>
-                <h4 className="font-bold text-sm md:text-lg mb-2">{step}</h4>
+                <h4 className="font-bold text-base lg:text-lg">{step}</h4>
               </div>
             ))}
           </div>
