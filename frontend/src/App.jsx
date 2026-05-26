@@ -142,7 +142,7 @@ function Header({ onBookClick, navigate }) {
       <nav className="flex justify-between items-center max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-4">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 flex-shrink-0">
-          <img src="/logo.png" alt="Care One" className="h-14 lg:h-16 w-auto" onError={e => { e.target.style.display='none'; e.target.nextSibling.style.display='flex' }} />
+          <img src="/logo.png" alt="Care One" className="h-14 lg:h-24 w-auto" onError={e => { e.target.style.display='none'; e.target.nextSibling.style.display='flex' }} />
           <div style={{display:'none'}} className="flex-col leading-none">
             <span className="text-xl font-bold tracking-wide text-on-surface" style={{fontFamily:'Georgia,serif'}}>CARE ONE</span>
             <span className="text-[10px] text-on-surface-variant tracking-widest" style={{fontFamily:'Georgia,serif',letterSpacing:'0.2em'}}>Skin &amp; Hair Clinic</span>
@@ -150,11 +150,12 @@ function Header({ onBookClick, navigate }) {
         </Link>
         
         {/* Desktop Navigation Links */}
-        <div className="hidden md:flex items-center gap-8">
-          <Link to="/" className={location.pathname === '/' ? "text-primary border-b-2 border-primary pb-1 font-semibold" : "text-on-surface-variant hover:text-primary transition"}>Home</Link>
-          <Link to="/treatments" className={location.pathname === '/treatments' ? "text-primary border-b-2 border-primary pb-1 font-semibold" : "text-on-surface-variant hover:text-primary transition"}>Treatments</Link>
-          <Link to="/about" className={location.pathname === '/about' ? "text-primary border-b-2 border-primary pb-1 font-semibold" : "text-on-surface-variant hover:text-primary transition"}>About Us</Link>
-          <Link to="/patient-results" className={location.pathname === '/patient-results' ? "text-primary border-b-2 border-primary pb-1 font-semibold" : "text-on-surface-variant hover:text-primary transition"}>Patient Results</Link>
+        <div className="hidden lg:flex items-center gap-8">
+          <Link to="/" className={location.pathname === '/' ? "text-gray-900 border-b-2 border-primary pb-1 font-semibold" : "text-gray-600 hover:text-primary transition font-medium"}>Home</Link>
+          <Link to="/about" className={location.pathname === '/about' ? "text-gray-900 border-b-2 border-primary pb-1 font-semibold" : "text-gray-600 hover:text-primary transition font-medium"}>About us</Link>
+          <Link to="/treatments" className={location.pathname === '/treatments' ? "text-gray-900 border-b-2 border-primary pb-1 font-semibold" : "text-gray-600 hover:text-primary transition font-medium"}>Treatments</Link>
+          <div className="text-gray-600 hover:text-primary transition cursor-pointer flex items-center gap-1 font-medium">More <span className="material-symbols-outlined text-sm">expand_more</span></div>
+          <Link to="/contact" className={location.pathname === '/contact' ? "text-gray-900 border-b-2 border-primary pb-1 font-semibold" : "text-gray-600 hover:text-primary transition font-medium"}>Contact</Link>
         </div>
 
         {/* Right Action buttons and Hamburger Menu */}
@@ -268,9 +269,9 @@ function Header({ onBookClick, navigate }) {
             {(!user || user.type !== 'admin') && (
               <button
                 onClick={onBookClick}
-                className="bg-primary text-white px-6 py-2 rounded-lg hover:opacity-90 transition"
+                className="bg-[#29a89d] text-white px-8 py-2.5 rounded-lg hover:opacity-90 transition font-medium"
               >
-                Book Appointment
+                Appointment
               </button>
             )}
             {user ? (

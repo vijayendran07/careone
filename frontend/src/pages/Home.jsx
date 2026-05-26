@@ -50,32 +50,26 @@ export default function Home({ onBookClick }) {
           alt="Care One Hero"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        {/* Gradient overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/50 lg:from-transparent lg:via-white/40 lg:to-white/60" />
+        {/* Gradient overlay for readability - made very subtle as per reference */}
+        <div className="absolute inset-0 bg-white/30 sm:bg-transparent" />
 
         {/* Centered text content */}
         <div className="relative z-10 w-full text-center px-6 md:px-10 lg:px-16 py-16">
           <div className="max-w-3xl mx-auto space-y-6">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-white lg:text-on-surface drop-shadow-sm">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-gray-900 drop-shadow-sm">
               Expert Skin &amp; Hair{' '}
-              <span className="text-white lg:text-primary drop-shadow-sm">Care You Can Trust</span>
+              <br className="hidden sm:block" />
+              Care You Can <span className="text-primary">Trust</span>
             </h1>
-            <p className="text-base lg:text-xl text-white/90 lg:text-on-surface-variant leading-relaxed max-w-xl mx-auto drop-shadow-sm">
+            <p className="text-base lg:text-lg text-gray-600 leading-relaxed max-w-xl mx-auto font-medium">
               Reclaim your confidence with advanced, dermatologist-led treatments customized for your unique skin and hair goals.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-              <button
-                onClick={onBookClick}
-                className="bg-primary text-white px-8 py-4 rounded-xl font-semibold text-base hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
-              >
-                Book Appointment
-              </button>
-              <a
-                href="#services"
-                className="bg-white/20 backdrop-blur-sm border-2 border-white text-white lg:bg-transparent lg:border-primary/40 lg:text-primary px-8 py-4 rounded-xl font-semibold text-base text-center hover:bg-white/30 lg:hover:bg-primary/5 transition-all duration-200"
-              >
-                View Treatments
-              </a>
+            
+            {/* Carousel Dots */}
+            <div className="flex justify-center items-center gap-2 pt-8">
+              <span className="w-2.5 h-2.5 rounded-full bg-primary"></span>
+              <span className="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
+              <span className="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
             </div>
           </div>
         </div>
