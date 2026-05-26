@@ -11,7 +11,8 @@ const STATUS_COLORS = {
 
 export default function AdminDashboard() {
   const navigate = useNavigate()
-  const fileInputRef = useRef(null)
+  const heroFileInputRef = useRef(null)
+  const modalFileInputRef = useRef(null)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [activeTab, setActiveTab] = useState('dashboard')
   const [appointments, setAppointments] = useState([])
@@ -628,7 +629,7 @@ export default function AdminDashboard() {
                         <input
                           type="file"
                           accept="image/*"
-                          ref={fileInputRef}
+                          ref={heroFileInputRef}
                           className="hidden"
                           onChange={(e) => {
                             const file = e.target.files[0]
@@ -638,7 +639,7 @@ export default function AdminDashboard() {
                           }}
                         />
                         <button
-                          onClick={() => fileInputRef.current?.click()}
+                          onClick={() => heroFileInputRef.current?.click()}
                           disabled={isUploading}
                           className="w-full flex items-center justify-center gap-2 border-2 border-dashed border-outline-variant py-3 rounded-xl text-sm font-semibold text-on-surface-variant hover:border-primary hover:text-primary transition disabled:opacity-50"
                         >
@@ -1091,10 +1092,10 @@ export default function AdminDashboard() {
                 <label className="block text-sm font-semibold text-on-surface mb-3">Upload Image *</label>
                 <div 
                   className="relative border-2 border-dashed border-outline-variant rounded-lg p-8 text-center bg-surface-container-low hover:bg-surface-container-high transition cursor-pointer"
-                  onClick={() => fileInputRef.current?.click()}
+                  onClick={() => modalFileInputRef.current?.click()}
                 >
                   <input
-                    ref={fileInputRef}
+                    ref={modalFileInputRef}
                     type="file"
                     accept="image/*"
                     onChange={handleFileSelect}
