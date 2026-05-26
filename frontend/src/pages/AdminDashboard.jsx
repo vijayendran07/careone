@@ -116,10 +116,12 @@ export default function AdminDashboard() {
 
   const fetchMessages = useCallback(async () => {
     try {
+      console.log('Fetching messages...');
       const res = await fetch(`${API_URL}/api/messages`, { headers: authHeaders() })
       const data = await res.json()
+      console.log('Fetched messages data:', data);
       if (data.success) setMessages(data.messages || [])
-    } catch (e) { console.error(e) }
+    } catch (e) { console.error('Error fetching messages:', e) }
   }, [])
 
   const fetchAll = useCallback(async () => {
