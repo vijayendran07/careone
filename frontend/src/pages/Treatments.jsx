@@ -75,7 +75,8 @@ export default function Treatments({ onBookClick }) {
       <section className="min-h-[70vh] bg-white flex items-center">
         <div className="w-full max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-12 lg:py-0">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="space-y-6 order-2 lg:order-1">
+            {/* Left: Text Content */}
+            <div className="space-y-6 order-1">
               <span className="inline-block bg-secondary/10 text-secondary font-semibold uppercase tracking-widest text-xs px-4 py-2 rounded-full">
                 Clinical Excellence
               </span>
@@ -85,6 +86,16 @@ export default function Treatments({ onBookClick }) {
               <p className="text-base lg:text-xl text-on-surface-variant leading-relaxed">
                 Discover our comprehensive range of medical-grade treatments designed to restore confidence through science-led precision.
               </p>
+
+              {/* Mobile-only image: between description and button */}
+              <div className="lg:hidden rounded-2xl overflow-hidden shadow-xl">
+                <img
+                  src={getImage('treatments-hero', 'https://lh3.googleusercontent.com/aida-public/AB6AXuDZSjr9ffFKDccUSvb4gr1uFpIOgSxF4OjsSKoQsmPGtNUKTyHPUTV5GTa9lUcQmhge3sEH29AH1yUlOZgZal6M84EzaAtb7mUrQKFqI9WOa-UVekJU6uTQLD7IlYIWOX9C0c0UWMl7aUyTvGlw4qTms_4-ssQfzRFvXrszjHMm8sxGJ9nyKMMtTXKBGPyIsmilPVo8JFCRbUN5X9ce5whW9SpUKlWStYDhaNU6EkMXHOsBmui0_Nbpch70KR7Tyd7ACd-dMK7wCw')}
+                  alt="Treatments"
+                  className="w-full h-64 object-cover"
+                />
+              </div>
+
               <a
                 href="#hair-restoration"
                 className="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:opacity-90 hover:-translate-y-1 transition-all duration-200"
@@ -93,11 +104,13 @@ export default function Treatments({ onBookClick }) {
                 <span className="material-symbols-outlined text-lg">arrow_downward</span>
               </a>
             </div>
-            <div className="order-1 lg:order-2 rounded-3xl overflow-hidden shadow-2xl">
+
+            {/* Right: Desktop-only image */}
+            <div className="hidden lg:block order-2 rounded-3xl overflow-hidden shadow-2xl">
               <img
                 src={getImage('treatments-hero', 'https://lh3.googleusercontent.com/aida-public/AB6AXuDZSjr9ffFKDccUSvb4gr1uFpIOgSxF4OjsSKoQsmPGtNUKTyHPUTV5GTa9lUcQmhge3sEH29AH1yUlOZgZal6M84EzaAtb7mUrQKFqI9WOa-UVekJU6uTQLD7IlYIWOX9C0c0UWMl7aUyTvGlw4qTms_4-ssQfzRFvXrszjHMm8sxGJ9nyKMMtTXKBGPyIsmilPVo8JFCRbUN5X9ce5whW9SpUKlWStYDhaNU6EkMXHOsBmui0_Nbpch70KR7Tyd7ACd-dMK7wCw')}
                 alt="Treatments"
-                className="w-full h-72 sm:h-96 lg:h-[520px] object-cover"
+                className="w-full h-[520px] object-cover"
               />
             </div>
           </div>
