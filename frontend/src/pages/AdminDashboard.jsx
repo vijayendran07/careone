@@ -888,9 +888,9 @@ export default function AdminDashboard() {
                             return (
                               <div key={section.id} className="bg-white rounded-xl border border-outline-variant shadow-sm overflow-hidden hover:shadow-md transition">
                                 {/* Image Preview */}
-                                <div className="relative h-48 bg-surface-container-low overflow-hidden flex items-center justify-center">
+                                <div className="relative h-48 bg-surface-container-low overflow-hidden flex items-center justify-center bg-gray-50">
                                   {image?.imageUrl ? (
-                                    <img src={image.imageUrl} alt={section.label} className="w-full h-full object-cover" />
+                                    <img src={image.imageUrl} alt={section.label} className="w-full h-full object-contain" />
                                   ) : (
                                     <div className="text-center text-on-surface-variant">
                                       <span className="material-symbols-outlined text-5xl mb-2 block opacity-50">image_not_supported</span>

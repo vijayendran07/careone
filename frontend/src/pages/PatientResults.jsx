@@ -73,13 +73,13 @@ export default function PatientResults({ onBookClick }) {
             ].map((result, idx) => (
               <div key={idx} className="rounded-3xl overflow-hidden shadow-sm border border-outline-variant/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white">
                 <div className="flex gap-1">
-                  <div className="flex-1">
+                  <div className="flex-1 bg-gray-50">
                     <p className="text-xs text-center font-bold text-on-surface-variant bg-gray-100 py-2">Before</p>
-                    <img src={result.before} alt="Before" className="w-full h-52 lg:h-64 object-cover" />
+                    <img src={result.before} alt="Before" className="w-full h-52 lg:h-64 object-contain" />
                   </div>
-                  <div className="flex-1">
+                  <div className="flex-1 bg-gray-50">
                     <p className="text-xs text-center font-bold text-on-surface-variant bg-primary/10 py-2 text-primary">After</p>
-                    <img src={result.after} alt="After" className="w-full h-52 lg:h-64 object-cover" />
+                    <img src={result.after} alt="After" className="w-full h-52 lg:h-64 object-contain" />
                   </div>
                 </div>
                 <div className="p-5 lg:p-6">
@@ -133,13 +133,13 @@ export default function PatientResults({ onBookClick }) {
             ].map((result, idx) => (
               <div key={idx} className="rounded-3xl overflow-hidden shadow-sm border border-outline-variant/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white">
                 <div className="flex gap-1">
-                  <div className="flex-1">
+                  <div className="flex-1 bg-gray-50">
                     <p className="text-xs text-center font-bold text-on-surface-variant bg-gray-100 py-2">Before</p>
-                    <img src={result.before} alt="Before" className="w-full h-52 lg:h-64 object-cover" />
+                    <img src={result.before} alt="Before" className="w-full h-52 lg:h-64 object-contain" />
                   </div>
-                  <div className="flex-1">
+                  <div className="flex-1 bg-gray-50">
                     <p className="text-xs text-center font-bold text-on-surface-variant bg-primary/10 py-2 text-primary">After</p>
-                    <img src={result.after} alt="After" className="w-full h-52 lg:h-64 object-cover" />
+                    <img src={result.after} alt="After" className="w-full h-52 lg:h-64 object-contain" />
                   </div>
                 </div>
                 <div className="p-5 lg:p-6">

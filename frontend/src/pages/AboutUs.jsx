@@ -117,8 +117,8 @@ export default function AboutUs({ onBookClick }) {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
             {team.map((member, idx) => (
-              <div key={idx} className="bg-white rounded-3xl overflow-hidden shadow-sm border border-outline-variant/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                <img src={member.image} alt={member.name} className="w-full h-64 lg:h-80 object-cover" />
+              <div key={idx} className="bg-white rounded-3xl overflow-hidden shadow-sm border border-outline-variant/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+                <img src={member.image} alt={member.name} className="w-full h-64 lg:h-80 object-contain bg-gray-50" />
                 <div className="p-6 lg:p-8">
                   <h3 className="text-xl font-bold text-on-surface mb-1">{member.name}</h3>
                   <p className="text-primary text-sm font-semibold mb-3">{member.title}</p>
