@@ -399,6 +399,7 @@ export default function AdminDashboard() {
 
   const navItems = [
     { id: 'dashboard',    label: 'Dashboard',           icon: 'dashboard' },
+    { id: 'hero-banner',  label: 'Hero Banner',          icon: 'wallpaper' },
     { id: 'appointments', label: 'Patient Appointments', icon: 'calendar_month' },
     { id: 'messages',     label: 'Messages',            icon: 'mail' },
     { id: 'content',      label: 'Content Management',  icon: 'edit_note' },
@@ -581,6 +582,129 @@ export default function AdminDashboard() {
                         </table>
                       </div>
                     )}
+                  </div>
+                </div>
+              )}
+
+              {/* ── HERO BANNER ── */}
+              {activeTab === 'hero-banner' && (
+                <div>
+                  <div className="mb-8">
+                    <h3 className="text-3xl font-bold text-on-surface mb-1">Home Hero Banner</h3>
+                    <p className="text-on-surface-variant">Upload or update the full-width banner image displayed on the Home page.</p>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-8">
+                    {/* Preview */}
+                    <div className="bg-white rounded-2xl border border-outline-variant shadow-sm overflow-hidden">
+                      <div className="p-4 border-b border-outline-variant bg-surface-container-low">
+                        <h4 className="font-bold text-on-surface">Current Banner</h4>
+                      </div>
+                      <div className="relative h-64 bg-gray-100 flex items-center justify-center">
+                        {(() => {
+                          const heroImg = gallery.find(g => g.section === 'home-hero-banner')
+                          return heroImg?.imageUrl ? (
+                            <img src={heroImg.imageUrl} alt="Hero Banner" className="w-full h-full object-cover" />
+                          ) : (
+                            <div className="text-center text-on-surface-variant">
+                              <span className="material-symbols-outlined text-5xl mb-2 block opacity-40">wallpaper</span>
+                              <p className="text-sm">No banner set — default image in use</p>
+                            </div>
+                          )
+                        })()}
+                      </div>
+                      <div className="p-4">
+                        <p className="text-xs text-on-surface-variant">This image spans the full width of the home page hero section on desktop.</p>
+                      </div>
+                    </div>
+
+                    {/* Edit Form */}
+                    <div className="bg-white rounded-2xl border border-outline-variant shadow-sm p-6 space-y-5">
+                      <h4 className="font-bold text-on-surface">Update Banner Image</h4>
+
+                      <div>
+                        <label className="block text-sm font-semibold mb-2">Image URL</label>
+                        <input
+                          type="text"
+                          placeholder="https://your-image-url.com/banner.jpg"
+                          value={imageFormData.section === 'home-hero-banner' ? imageFormData.imageUrl : (gallery.find(g => g.section === 'home-hero-banner')?.imageUrl || '')}
+                          onChange={e => setImageFormData({ section: 'home-hero-banner', imageUrl: e.target.value, title: 'Home Hero Banner', description: '' })}
+                          onFocus={() => {
+                            if (imageFormData.section !== 'home-hero-banner') {
+                              const existing = gallery.find(g => g.section === 'home-hero-banner')
+                              setImageFormData({ section: 'home-hero-banner', imageUrl: existing?.imageUrl || '', title: 'Home Hero Banner', description: existing?.description || '' })
+                            }
+                          }}
+                          className="w-full border border-outline-variant p-3 rounded-xl text-sm focus:outline-none focus:border-primary"
+                        />
+                      </div>
+
+                      {/* Cloudinary Upload */}
+                      <div>
+                        <label className="block text-sm font-semibold mb-2">Or Upload from Device</label>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          ref={fileInputRef}
+                          className="hidden"
+                          onChange={async (e) => {
+                            const file = e.target.files[0]
+                            if (!file) return
+                            setIsUploading(true)
+                            try {
+                              const fd = new FormData()
+                              fd.append('file', file)
+                              fd.append('upload_preset', 'careone_gallery')
+                              const res = await fetch('https://api.cloudinary.com/v1_1/demo/image/upload', { method: 'POST', body: fd })
+                              const data = await res.json()
+                              if (data.secure_url) {
+                                setImageFormData(prev => ({ ...prev, section: 'home-hero-banner', imageUrl: data.secure_url, title: 'Home Hero Banner' }))
+                                showToast('Image uploaded!')
+                              }
+                            } catch { showToast('Upload failed', 'error') }
+                            setIsUploading(false)
+                          }}
+                        />
+                        <button
+                          onClick={() => fileInputRef.current?.click()}
+                          disabled={isUploading}
+                          className="w-full flex items-center justify-center gap-2 border-2 border-dashed border-outline-variant py-3 rounded-xl text-sm font-semibold text-on-surface-variant hover:border-primary hover:text-primary transition disabled:opacity-50"
+                        >
+                          <span className="material-symbols-outlined text-base">upload</span>
+                          {isUploading ? 'Uploading...' : 'Choose Image File'}
+                        </button>
+                      </div>
+
+                      <div className="flex gap-3 pt-2">
+                        <button
+                          onClick={async () => {
+                            const data = imageFormData.section === 'home-hero-banner' ? imageFormData : { section: 'home-hero-banner', imageUrl: gallery.find(g => g.section === 'home-hero-banner')?.imageUrl || '', title: 'Home Hero Banner', description: '' }
+                            if (!data.imageUrl) { showToast('Please enter an image URL', 'error'); return }
+                            try {
+                              const res = await fetch(`${API_URL}/api/gallery`, {
+                                method: 'PUT',
+                                headers: authHeaders(),
+                                body: JSON.stringify(data),
+                              })
+                              const result = await res.json()
+                              if (result.success) { showToast('Hero banner updated!'); fetchGallery(); setImageFormData({ section: '', imageUrl: '', title: '', description: '' }) }
+                              else showToast(result.message || 'Failed', 'error')
+                            } catch { showToast('Failed to save', 'error') }
+                          }}
+                          className="flex-1 bg-primary text-white py-3 rounded-xl font-semibold text-sm hover:opacity-90 transition"
+                        >
+                          Save Banner
+                        </button>
+                        {gallery.find(g => g.section === 'home-hero-banner') && (
+                          <button
+                            onClick={() => deleteGalleryImage('home-hero-banner')}
+                            className="px-4 py-3 rounded-xl border border-red-200 text-red-500 text-sm font-semibold hover:bg-red-50 transition"
+                          >
+                            Reset to Default
+                          </button>
+                        )}
+                      </div>
+                    </div>
                   </div>
                 </div>
               )}

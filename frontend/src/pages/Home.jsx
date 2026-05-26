@@ -42,76 +42,40 @@ export default function Home({ onBookClick }) {
 
   return (
     <main>
-      {/* ═══════════════ HERO SECTION ═══════════════ */}
-      <section className="min-h-[90vh] bg-white flex items-center">
-        <div className="w-full max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-12 lg:py-0">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left: Text Content */}
-            <div className="space-y-6 lg:space-y-8 order-1">
-             
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
-                Expert Skin &amp; Hair{' '}
-                <span className="text-primary">Care You Can Trust</span>
-              </h1>
-              <p className="text-base lg:text-xl text-on-surface-variant leading-relaxed max-w-lg">
-                Experience the perfect blend of clinical precision and aesthetic luxury. Our expert-led treatments are tailored to your unique journey.
-              </p>
+      {/* ═══════════════ HERO BANNER ═══════════════ */}
+      <section className="relative min-h-[75vh] lg:min-h-[85vh] flex items-center overflow-hidden">
+        {/* Full-width background image */}
+        <img
+          src={getImage('home-hero-banner', 'https://lh3.googleusercontent.com/aida-public/AB6AXuBjnO3uC-FfZyaEEJXGXSzK6vHlgDY6f6tf1FuwLUuMADRuwP9WHwuj7qYxODS7LCBn7vQD67_iOSrZ_mXdvW3-PchasnWJOuyt7qa7lQ95tvIdXtnDxqSFaDNzLicEfc9H1TZ30oCrapvu7DB72n50JZN87LSpdk2dTRIOAV_NIA_SFrdOL8kpKJAQUnA7CtTFSUrDfS8AIxb9UAM8gFx9HnvBsN4zR0cFa2HYlGiZCUXMuWYDpoPvN7tqo95aLTldWj-3AogarA')}
+          alt="Care One Hero"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Gradient overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/50 lg:from-transparent lg:via-white/40 lg:to-white/60" />
 
-              {/* ── Mobile-only image: sits between description and buttons ── */}
-              <div className="lg:hidden rounded-2xl overflow-hidden shadow-xl">
-                <img
-                  src={getImage('home-hero-banner', 'https://lh3.googleusercontent.com/aida-public/AB6AXuBjnO3uC-FfZyaEEJXGXSzK6vHlgDY6f6tf1FuwLUuMADRuwP9WHwuj7qYxODS7LCBn7vQD67_iOSrZ_mXdvW3-PchasnWJOuyt7qa7lQ95tvIdXtnDxqSFaDNzLicEfc9H1TZ30oCrapvu7DB72n50JZN87LSpdk2dTRIOAV_NIA_SFrdOL8kpKJAQUnA7CtTFSUrDfS8AIxb9UAM8gFx9HnvBsN4zR0cFa2HYlGiZCUXMuWYDpoPvN7tqo95aLTldWj-3AogarA')}
-                  alt="Care One Clinic"
-                  className="w-full h-64 object-cover"
-                />
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button
-                  onClick={onBookClick}
-                  className="bg-primary text-white px-8 py-4 rounded-xl font-semibold text-base hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
-                >
-                  Start Your Journey
-                </button>
-                <a
-                  href="#services"
-                  className="border-2 border-primary/30 text-primary px-8 py-4 rounded-xl font-semibold text-base text-center hover:bg-primary/5 hover:border-primary transition-all duration-200"
-                >
-                  View Treatments
-                </a>
-              </div>
-              {/* Trust Badges */}
-              <div className="flex flex-wrap gap-6 pt-4 border-t border-outline-variant/20">
-                {['FDA-Approved', '2000+ Patients', '98% Satisfaction', 'Expert Doctors'].map((badge, i) => (
-                  <div key={i} className="flex items-center gap-2 text-sm text-on-surface-variant">
-                    <span className="material-symbols-outlined text-primary text-base">verified</span>
-                    <span className="font-medium">{badge}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right: Desktop-only Hero Image */}
-            <div className="hidden lg:block order-2 space-y-4">
-              <div className="rounded-3xl overflow-hidden shadow-2xl">
-                <img
-                  src={getImage('home-hero-banner', 'https://lh3.googleusercontent.com/aida-public/AB6AXuBjnO3uC-FfZyaEEJXGXSzK6vHlgDY6f6tf1FuwLUuMADRuwP9WHwuj7qYxODS7LCBn7vQD67_iOSrZ_mXdvW3-PchasnWJOuyt7qa7lQ95tvIdXtnDxqSFaDNzLicEfc9H1TZ30oCrapvu7DB72n50JZN87LSpdk2dTRIOAV_NIA_SFrdOL8kpKJAQUnA7CtTFSUrDfS8AIxb9UAM8gFx9HnvBsN4zR0cFa2HYlGiZCUXMuWYDpoPvN7tqo95aLTldWj-3AogarA')}
-                  alt="Care One Clinic"
-                  className="w-full h-[540px] object-cover"
-                />
-              </div>
-              {/* Info card below image */}
-              <div className="bg-white rounded-2xl shadow-md p-4 border border-outline-variant/10">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="material-symbols-outlined text-primary">medical_services</span>
-                  </div>
-                  <div>
-                    <p className="font-bold text-on-surface text-sm">Clinical Excellence Since 2015</p>
-                    <p className="text-on-surface-variant text-xs mt-0.5">FDA-certified treatments by expert dermatologists</p>
-                  </div>
-                </div>
-              </div>
+        {/* Centered text content */}
+        <div className="relative z-10 w-full text-center px-6 md:px-10 lg:px-16 py-16">
+          <div className="max-w-3xl mx-auto space-y-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-white lg:text-on-surface drop-shadow-sm">
+              Expert Skin &amp; Hair{' '}
+              <span className="text-white lg:text-primary drop-shadow-sm">Care You Can Trust</span>
+            </h1>
+            <p className="text-base lg:text-xl text-white/90 lg:text-on-surface-variant leading-relaxed max-w-xl mx-auto drop-shadow-sm">
+              Reclaim your confidence with advanced, dermatologist-led treatments customized for your unique skin and hair goals.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
+              <button
+                onClick={onBookClick}
+                className="bg-primary text-white px-8 py-4 rounded-xl font-semibold text-base hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
+              >
+                Book Appointment
+              </button>
+              <a
+                href="#services"
+                className="bg-white/20 backdrop-blur-sm border-2 border-white text-white lg:bg-transparent lg:border-primary/40 lg:text-primary px-8 py-4 rounded-xl font-semibold text-base text-center hover:bg-white/30 lg:hover:bg-primary/5 transition-all duration-200"
+              >
+                View Treatments
+              </a>
             </div>
           </div>
         </div>
