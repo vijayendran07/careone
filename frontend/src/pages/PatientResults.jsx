@@ -131,15 +131,21 @@ export default function PatientResults({ onBookClick }) {
                 description: 'Significant reduction in fine lines and age spots. Patient regained youthful glow and skin elasticity.'
               }
             ].map((result, idx) => (
-              <div key={idx} className="bg-white rounded-3xl overflow-hidden shadow-sm border border-outline-variant/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                <div className="flex gap-2 p-3 bg-gray-50">
-                  <img src={result.before} alt="Before" className="w-1/2 h-36 lg:h-44 object-cover rounded-xl" />
-                  <img src={result.after} alt="After" className="w-1/2 h-36 lg:h-44 object-cover rounded-xl" />
+              <div key={idx} className="rounded-3xl overflow-hidden shadow-sm border border-outline-variant/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white">
+                <div className="flex gap-1">
+                  <div className="flex-1">
+                    <p className="text-xs text-center font-bold text-on-surface-variant bg-gray-100 py-2">Before</p>
+                    <img src={result.before} alt="Before" className="w-full h-52 lg:h-64 object-cover" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-xs text-center font-bold text-on-surface-variant bg-primary/10 py-2 text-primary">After</p>
+                    <img src={result.after} alt="After" className="w-full h-52 lg:h-64 object-cover" />
+                  </div>
                 </div>
                 <div className="p-5 lg:p-6">
-                  <h3 className="text-lg font-bold text-on-surface mb-1">{result.name}</h3>
-                  <p className="text-primary text-xs font-semibold mb-3">{result.treatment}</p>
-                  <p className="text-on-surface-variant text-sm leading-relaxed">{result.description}</p>
+                  <h3 className="font-bold text-on-surface text-base mb-1">{result.name}</h3>
+                  <p className="text-xs text-primary font-semibold mb-2">{result.treatment}</p>
+                  <p className="text-xs text-on-surface-variant">{result.description}</p>
                 </div>
               </div>
             ))}
