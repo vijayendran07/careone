@@ -43,7 +43,7 @@ export default function Home({ onBookClick }) {
   return (
     <main>
       {/* ═══════════════ HERO BANNER ═══════════════ */}
-      <section className="relative min-h-[75vh] lg:min-h-[85vh] flex items-center overflow-hidden">
+      <section className="relative w-full aspect-square sm:aspect-auto sm:min-h-[60vh] lg:min-h-[70vh] flex items-center overflow-hidden">
         {/* Full-width background image */}
         <img
           src={getImage('home-hero-banner', 'https://lh3.googleusercontent.com/aida-public/AB6AXuBjnO3uC-FfZyaEEJXGXSzK6vHlgDY6f6tf1FuwLUuMADRuwP9WHwuj7qYxODS7LCBn7vQD67_iOSrZ_mXdvW3-PchasnWJOuyt7qa7lQ95tvIdXtnDxqSFaDNzLicEfc9H1TZ30oCrapvu7DB72n50JZN87LSpdk2dTRIOAV_NIA_SFrdOL8kpKJAQUnA7CtTFSUrDfS8AIxb9UAM8gFx9HnvBsN4zR0cFa2HYlGiZCUXMuWYDpoPvN7tqo95aLTldWj-3AogarA')}
@@ -54,14 +54,14 @@ export default function Home({ onBookClick }) {
         <div className="absolute inset-0 bg-white/30 sm:bg-transparent" />
 
         {/* Centered text content */}
-        <div className="relative z-10 w-full text-center px-6 md:px-10 lg:px-16 py-16">
-          <div className="max-w-3xl mx-auto space-y-6">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-gray-900 drop-shadow-sm">
+        <div className="relative z-10 w-full text-center px-4 sm:px-6 md:px-10 lg:px-16 py-8 sm:py-16">
+          <div className="max-w-3xl mx-auto space-y-4 sm:space-y-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-gray-900 drop-shadow-sm">
               Expert Skin &amp; Hair{' '}
               <br className="hidden sm:block" />
               Care You Can <span className="text-primary">Trust</span>
             </h1>
-            <p className="text-base lg:text-lg text-gray-600 leading-relaxed max-w-xl mx-auto font-medium">
+            <p className="text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed max-w-xl mx-auto font-medium">
               Reclaim your confidence with advanced, dermatologist-led treatments customized for your unique skin and hair goals.
             </p>
           </div>

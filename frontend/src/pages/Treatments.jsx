@@ -72,7 +72,7 @@ export default function Treatments({ onBookClick }) {
   return (
     <main>
       {/* ═══════════════ HERO BANNER ═══════════════ */}
-      <section className="relative w-full bg-[#f8f6f0] flex flex-col items-center justify-center overflow-hidden min-h-[70vh] lg:min-h-[85vh]">
+      <section className="relative w-full aspect-square sm:aspect-auto sm:min-h-[60vh] lg:min-h-[70vh] flex flex-col items-center justify-center overflow-hidden">
         {/* Background image, fully displayed */}
         <div className="absolute inset-0 w-full h-full flex items-center justify-center lg:justify-end">
           <img
@@ -86,13 +86,13 @@ export default function Treatments({ onBookClick }) {
         <div className="absolute inset-0 bg-white/30 sm:bg-transparent" />
 
         {/* Centered text content */}
-        <div className="relative z-10 w-full text-center px-6 md:px-10 lg:px-16 py-16">
-          <div className="max-w-3xl mx-auto space-y-6">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 drop-shadow-sm">
+        <div className="relative z-10 w-full text-center px-4 sm:px-6 md:px-10 lg:px-16 py-8 sm:py-16">
+          <div className="max-w-3xl mx-auto space-y-4 sm:space-y-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 drop-shadow-sm">
               Advanced Clinical Solutions for <br className="hidden sm:block" />
               Skin &amp; <span className="text-primary">Hair</span>
             </h1>
-            <p className="text-base lg:text-lg text-gray-600 leading-relaxed max-w-xl mx-auto font-medium">
+            <p className="text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed max-w-xl mx-auto font-medium">
               Discover our comprehensive range of medical-grade treatments designed to restore confidence through science-led precision.
             </p>
           </div>
