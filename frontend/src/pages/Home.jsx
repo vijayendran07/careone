@@ -48,9 +48,7 @@ export default function Home({ onBookClick }) {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left: Text Content */}
             <div className="space-y-6 lg:space-y-8 order-1">
-              <span className="inline-block bg-secondary/10 text-secondary font-semibold uppercase tracking-widest text-xs px-4 py-2 rounded-full">
-                Redefining Aesthetics
-              </span>
+             
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
                 Expert Skin &amp; Hair{' '}
                 <span className="text-primary">Care You Can Trust</span>
