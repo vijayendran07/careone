@@ -622,7 +622,7 @@ export default function AdminDashboard() {
                     <div className="bg-white rounded-2xl border border-outline-variant shadow-sm p-6 space-y-5">
                       <h4 className="font-bold text-on-surface">Update Banner Image</h4>
 
-                      {/* Cloudinary Upload */}
+                      {/* Local System Upload */}
                       <div>
                         <label className="block text-sm font-semibold mb-2">Upload Image File</label>
                         <input
@@ -630,22 +630,11 @@ export default function AdminDashboard() {
                           accept="image/*"
                           ref={fileInputRef}
                           className="hidden"
-                          onChange={async (e) => {
+                          onChange={(e) => {
                             const file = e.target.files[0]
                             if (!file) return
-                            setIsUploading(true)
-                            try {
-                              const fd = new FormData()
-                              fd.append('file', file)
-                              fd.append('upload_preset', 'careone_gallery')
-                              const res = await fetch('https://api.cloudinary.com/v1_1/demo/image/upload', { method: 'POST', body: fd })
-                              const data = await res.json()
-                              if (data.secure_url) {
-                                setImageFormData(prev => ({ ...prev, section: 'home-hero-banner', imageUrl: data.secure_url, title: 'Home Hero Banner' }))
-                                showToast('Image uploaded!')
-                              }
-                            } catch { showToast('Upload failed', 'error') }
-                            setIsUploading(false)
+                            setImageFormData(prev => ({ ...prev, section: 'home-hero-banner', title: 'Home Hero Banner' }))
+                            uploadImageFile(file)
                           }}
                         />
                         <button
@@ -654,7 +643,7 @@ export default function AdminDashboard() {
                           className="w-full flex items-center justify-center gap-2 border-2 border-dashed border-outline-variant py-3 rounded-xl text-sm font-semibold text-on-surface-variant hover:border-primary hover:text-primary transition disabled:opacity-50"
                         >
                           <span className="material-symbols-outlined text-base">upload</span>
-                          {isUploading ? 'Uploading...' : 'Choose Image File'}
+                          {isUploading ? `Uploading... ${uploadProgress}%` : 'Choose Image File'}
                         </button>
                       </div>
 
