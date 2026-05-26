@@ -45,7 +45,6 @@ export default function AdminDashboard() {
     { id: 'laser-treatment-2', label: '⚡ Fractional Resurfacing', category: 'Treatments Page' },
 
     // About Us Page
-    { id: 'about-story-image', label: '🏥 About Us Story', category: 'About Us Page' },
     { id: 'doctor-image-1', label: '👨‍⚕️ Dr. Rajesh Kumar', category: 'About Us Page' },
     { id: 'doctor-image-2', label: '👩‍⚕️ Dr. Priya Sharma', category: 'About Us Page' },
     { id: 'doctor-image-3', label: '👨‍⚕️ Dr. Amit Patel', category: 'About Us Page' },

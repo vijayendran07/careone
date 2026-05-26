@@ -85,36 +85,20 @@ export default function AboutUs({ onBookClick }) {
       {/* ═══════════════ OUR STORY ═══════════════ */}
       <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div className="space-y-6">
-              <span className="inline-block bg-secondary/10 text-secondary font-semibold uppercase tracking-widest text-xs px-4 py-2 rounded-full">
-                Our Story
-              </span>
-              <h2 className="text-3xl lg:text-5xl font-bold leading-tight">A Decade of Transforming Lives</h2>
-              <p className="text-on-surface-variant text-base lg:text-lg leading-relaxed">
-                Founded in 2015, Care One emerged from a vision to bring world-class dermatological treatments to our community. Our founder, Dr. Rajesh Kumar, spent years in advanced training with leading clinics internationally before establishing this center of excellence.
-              </p>
-              <p className="text-on-surface-variant text-base lg:text-lg leading-relaxed">
-                What started as a single clinic with 3 staff members has grown into a comprehensive aesthetic and dermatological center with cutting-edge technology and a team of 15+ specialists.
-              </p>
-              <p className="text-on-surface-variant text-base lg:text-lg leading-relaxed">
-                Today, we're proud to serve over 2,000 satisfied patients and maintain the highest standards of clinical care, patient safety, and aesthetic outcomes.
-              </p>
-            </div>
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl h-[400px] lg:h-[520px]">
-              <img
-                src={getImage('about-story-image', 'https://images.unsplash.com/photo-1576091160695-112396e5fc4f?auto=format&fit=crop&w=700&q=80')}
-                alt="Our Clinic"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent" />
-              <div className="absolute bottom-8 left-8 right-8">
-                <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-4">
-                  <p className="font-bold text-on-surface">Est. 2015 · Thillai Nagar</p>
-                  <p className="text-xs text-on-surface-variant mt-1">15+ specialists · FDA-certified facility</p>
-                </div>
-              </div>
-            </div>
+          <div className="max-w-3xl mx-auto text-center space-y-6">
+            <span className="inline-block bg-secondary/10 text-secondary font-semibold uppercase tracking-widest text-xs px-4 py-2 rounded-full">
+              Our Story
+            </span>
+            <h2 className="text-3xl lg:text-5xl font-bold leading-tight">A Decade of Transforming Lives</h2>
+            <p className="text-on-surface-variant text-base lg:text-lg leading-relaxed">
+              Founded in 2015, Care One emerged from a vision to bring world-class dermatological treatments to our community. Our founder, Dr. Rajesh Kumar, spent years in advanced training with leading clinics internationally before establishing this center of excellence.
+            </p>
+            <p className="text-on-surface-variant text-base lg:text-lg leading-relaxed">
+              What started as a single clinic with 3 staff members has grown into a comprehensive aesthetic and dermatological center with cutting-edge technology and a team of 15+ specialists.
+            </p>
+            <p className="text-on-surface-variant text-base lg:text-lg leading-relaxed">
+              Today, we're proud to serve over 2,000 satisfied patients and maintain the highest standards of clinical care, patient safety, and aesthetic outcomes.
+            </p>
           </div>
         </div>
       </section>
