@@ -47,7 +47,7 @@ export default function Home({ onBookClick }) {
         <div className="w-full max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-12 lg:py-0">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left: Text Content */}
-            <div className="space-y-6 lg:space-y-8 order-1 lg:order-1">
+            <div className="space-y-6 lg:space-y-8 order-1">
               <span className="inline-block bg-secondary/10 text-secondary font-semibold uppercase tracking-widest text-xs px-4 py-2 rounded-full">
                 Redefining Aesthetics
               </span>
@@ -58,6 +58,16 @@ export default function Home({ onBookClick }) {
               <p className="text-base lg:text-xl text-on-surface-variant leading-relaxed max-w-lg">
                 Experience the perfect blend of clinical precision and aesthetic luxury. Our expert-led treatments are tailored to your unique journey.
               </p>
+
+              {/* ── Mobile-only image: sits between description and buttons ── */}
+              <div className="lg:hidden rounded-2xl overflow-hidden shadow-xl">
+                <img
+                  src={getImage('home-hero-banner', 'https://lh3.googleusercontent.com/aida-public/AB6AXuBjnO3uC-FfZyaEEJXGXSzK6vHlgDY6f6tf1FuwLUuMADRuwP9WHwuj7qYxODS7LCBn7vQD67_iOSrZ_mXdvW3-PchasnWJOuyt7qa7lQ95tvIdXtnDxqSFaDNzLicEfc9H1TZ30oCrapvu7DB72n50JZN87LSpdk2dTRIOAV_NIA_SFrdOL8kpKJAQUnA7CtTFSUrDfS8AIxb9UAM8gFx9HnvBsN4zR0cFa2HYlGiZCUXMuWYDpoPvN7tqo95aLTldWj-3AogarA')}
+                  alt="Care One Clinic"
+                  className="w-full h-64 object-cover"
+                />
+              </div>
+
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
                   onClick={onBookClick}
@@ -83,13 +93,13 @@ export default function Home({ onBookClick }) {
               </div>
             </div>
 
-            {/* Right: Hero Image */}
-            <div className="order-2 lg:order-2 space-y-4">
+            {/* Right: Desktop-only Hero Image */}
+            <div className="hidden lg:block order-2 space-y-4">
               <div className="rounded-3xl overflow-hidden shadow-2xl">
                 <img
                   src={getImage('home-hero-banner', 'https://lh3.googleusercontent.com/aida-public/AB6AXuBjnO3uC-FfZyaEEJXGXSzK6vHlgDY6f6tf1FuwLUuMADRuwP9WHwuj7qYxODS7LCBn7vQD67_iOSrZ_mXdvW3-PchasnWJOuyt7qa7lQ95tvIdXtnDxqSFaDNzLicEfc9H1TZ30oCrapvu7DB72n50JZN87LSpdk2dTRIOAV_NIA_SFrdOL8kpKJAQUnA7CtTFSUrDfS8AIxb9UAM8gFx9HnvBsN4zR0cFa2HYlGiZCUXMuWYDpoPvN7tqo95aLTldWj-3AogarA')}
                   alt="Care One Clinic"
-                  className="w-full h-72 sm:h-96 lg:h-[540px] object-cover"
+                  className="w-full h-[540px] object-cover"
                 />
               </div>
               {/* Info card below image */}
