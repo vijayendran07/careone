@@ -84,17 +84,16 @@ export default function Home({ onBookClick }) {
             </div>
 
             {/* Right: Hero Image */}
-            <div className="relative order-1 lg:order-2">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+            <div className="order-1 lg:order-2 space-y-4">
+              <div className="rounded-3xl overflow-hidden shadow-2xl">
                 <img
                   src={getImage('home-hero-banner', 'https://lh3.googleusercontent.com/aida-public/AB6AXuBjnO3uC-FfZyaEEJXGXSzK6vHlgDY6f6tf1FuwLUuMADRuwP9WHwuj7qYxODS7LCBn7vQD67_iOSrZ_mXdvW3-PchasnWJOuyt7qa7lQ95tvIdXtnDxqSFaDNzLicEfc9H1TZ30oCrapvu7DB72n50JZN87LSpdk2dTRIOAV_NIA_SFrdOL8kpKJAQUnA7CtTFSUrDfS8AIxb9UAM8gFx9HnvBsN4zR0cFa2HYlGiZCUXMuWYDpoPvN7tqo95aLTldWj-3AogarA')}
                   alt="Care One Clinic"
-                  className="w-full h-72 sm:h-96 lg:h-[580px] object-cover"
+                  className="w-full h-72 sm:h-96 lg:h-[540px] object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent" />
               </div>
-              {/* Floating card */}
-              <div className="absolute bottom-6 left-6 right-6 lg:-left-6 bg-white rounded-2xl shadow-xl p-4 border border-outline-variant/10">
+              {/* Info card below image */}
+              <div className="bg-white rounded-2xl shadow-md p-4 border border-outline-variant/10">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
                     <span className="material-symbols-outlined text-primary">medical_services</span>
