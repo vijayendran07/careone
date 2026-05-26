@@ -52,18 +52,18 @@ export default function ContactPage() {
   const city = settings?.city || 'City Center, SC 56789'
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-16">
-      <div className="text-center mb-16">
-        <span className="text-secondary font-semibold uppercase tracking-wider">Get In Touch</span>
-        <h1 className="text-4xl sm:text-5xl font-bold mt-2 text-on-surface">Contact {clinicName}</h1>
-        <p className="text-on-surface-variant mt-3 max-w-xl mx-auto">
+    <div className="max-w-6xl mx-auto px-4 md:px-8 py-10 md:py-14">
+      <div className="text-center mb-8 md:mb-12">
+        <span className="text-secondary font-semibold uppercase tracking-wider text-sm md:text-base">Get In Touch</span>
+        <h1 className="text-3xl sm:text-4xl font-bold mt-2 text-on-surface">Contact {clinicName}</h1>
+        <p className="text-sm md:text-base text-on-surface-variant mt-2 md:mt-3 max-w-xl mx-auto">
           Reach out to our clinical reception, dermatological consultants, or medical specialists today.
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-12 items-start">
+      <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-start">
         {/* Contact Info */}
-        <div className="space-y-8 bg-surface-container-low p-8 rounded-2xl border border-outline-variant/30">
+        <div className="space-y-6 md:space-y-8 bg-surface-container-low p-6 md:p-8 rounded-2xl border border-outline-variant/30">
           <div>
             <h3 className="text-xl font-bold text-on-surface mb-4">Clinic Information</h3>
             <div className="space-y-4">
@@ -93,9 +93,9 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="border-t border-outline-variant/20 pt-6">
-            <h3 className="text-xl font-bold text-on-surface mb-4">Clinic Opening Hours</h3>
-            <ul className="space-y-2 text-sm text-on-surface-variant">
+          <div className="border-t border-outline-variant/20 pt-4 md:pt-6">
+            <h3 className="text-lg md:text-xl font-bold text-on-surface mb-3 md:mb-4">Clinic Opening Hours</h3>
+            <ul className="space-y-1 md:space-y-2 text-xs md:text-sm text-on-surface-variant">
               <li className="flex justify-between"><span>Monday - Friday</span> <strong>9:00 AM - 7:00 PM</strong></li>
               <li className="flex justify-between"><span>Saturday</span> <strong>10:00 AM - 4:00 PM</strong></li>
               <li className="flex justify-between"><span>Sunday</span> <strong className="text-primary">Closed</strong></li>
@@ -104,8 +104,8 @@ export default function ContactPage() {
         </div>
 
         {/* Message Form */}
-        <form onSubmit={handleSubmit} className="bg-white p-8 rounded-2xl border border-outline-variant/30 shadow-sm space-y-6">
-          <h3 className="text-xl font-bold text-on-surface">Send a Message</h3>
+        <form onSubmit={handleSubmit} className="bg-white p-6 md:p-8 rounded-2xl border border-outline-variant/30 shadow-sm space-y-4 md:space-y-6">
+          <h3 className="text-lg md:text-xl font-bold text-on-surface">Send a Message</h3>
           
           <div className="grid sm:grid-cols-2 gap-4">
             <div>

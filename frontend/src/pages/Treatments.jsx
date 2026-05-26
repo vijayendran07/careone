@@ -73,43 +73,43 @@ export default function Treatments({ onBookClick }) {
   return (
     <main>
       {/* Hero */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-container-max mx-auto px-6 md:px-8 grid md:grid-cols-2 gap-12 items-center">
+      <section className="py-10 md:py-16 bg-white">
+        <div className="max-w-container-max mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-8 items-center">
           <div>
-            <span className="text-secondary font-semibold uppercase tracking-wider">Clinical Excellence</span>
-            <h1 className="text-5xl font-bold mt-4 mb-6">Advanced Clinical Solutions for Skin & Hair</h1>
-            <p className="text-lg text-on-surface-variant mb-8">
+            <span className="text-secondary font-semibold uppercase tracking-wider text-sm md:text-base">Clinical Excellence</span>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-2 md:mt-4 mb-4 md:mb-6">Advanced Clinical Solutions for Skin & Hair</h1>
+            <p className="text-base md:text-lg text-on-surface-variant mb-6 md:mb-8">
               Discover our comprehensive range of medical-grade treatments designed to restore confidence through science-led precision.
             </p>
-            <a href="#hair-restoration" className="bg-primary text-white px-8 py-4 rounded-lg font-semibold hover:opacity-90 inline-flex items-center gap-2">
+            <a href="#hair-restoration" className="bg-primary text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold hover:opacity-90 inline-flex items-center gap-2 text-sm md:text-base">
               Explore Treatments ↓
             </a>
           </div>
-          <img src={getImage('treatments-hero', 'https://lh3.googleusercontent.com/aida-public/AB6AXuDZSjr9ffFKDccUSvb4gr1uFpIOgSxF4OjsSKoQsmPGtNUKTyHPUTV5GTa9lUcQmhge3sEH29AH1yUlOZgZal6M84EzaAtb7mUrQKFqI9WOa-UVekJU6uTQLD7IlYIWOX9C0c0UWMl7aUyTvGlw4qTms_4-ssQfzRFvXrszjHMm8sxGJ9nyKMMtTXKBGPyIsmilPVo8JFCRbUN5X9ce5whW9SpUKlWStYDhaNU6EkMXHOsBmui0_Nbpch70KR7Tyd7ACd-dMK7wCw')} alt="Treatments" className="rounded-xl shadow-2xl w-full" />
+          <img src={getImage('treatments-hero', 'https://lh3.googleusercontent.com/aida-public/AB6AXuDZSjr9ffFKDccUSvb4gr1uFpIOgSxF4OjsSKoQsmPGtNUKTyHPUTV5GTa9lUcQmhge3sEH29AH1yUlOZgZal6M84EzaAtb7mUrQKFqI9WOa-UVekJU6uTQLD7IlYIWOX9C0c0UWMl7aUyTvGlw4qTms_4-ssQfzRFvXrszjHMm8sxGJ9nyKMMtTXKBGPyIsmilPVo8JFCRbUN5X9ce5whW9SpUKlWStYDhaNU6EkMXHOsBmui0_Nbpch70KR7Tyd7ACd-dMK7wCw')} alt="Treatments" className="rounded-xl shadow-lg w-full h-48 md:h-auto object-cover" />
         </div>
       </section>
 
       {/* Hair Restoration */}
-      <section id="hair-restoration" className="py-20 bg-surface-container-low">
-        <div className="max-w-container-max mx-auto px-6 md:px-8">
-          <div className="mb-12">
-            <h2 className="text-4xl font-bold mb-4">Hair Restoration & Vitality</h2>
-            <p className="text-on-surface-variant max-w-2xl">Advanced therapeutic interventions to combat thinning and promote robust follicular health.</p>
+      <section id="hair-restoration" className="py-10 md:py-14 bg-surface-container-low">
+        <div className="max-w-container-max mx-auto px-4 md:px-8">
+          <div className="mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3 md:mb-4">Hair Restoration & Vitality</h2>
+            <p className="text-sm md:text-base text-on-surface-variant max-w-2xl">Advanced therapeutic interventions to combat thinning and promote robust follicular health.</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
             {hairTreatments.map((t, i) => (
-              <div key={i} className={`p-8 rounded-xl flex flex-col h-full border ${t.featured ? 'bg-primary text-white border-primary shadow-xl md:-translate-y-4' : 'bg-white border-outline-variant/20'}`}>
-                <h3 className="text-xl font-bold mb-4">{t.title}</h3>
-                <p className={`mb-6 flex-grow ${t.featured ? 'text-primary-fixed-dim' : 'text-on-surface-variant'}`}>{t.desc}</p>
-                <div className="space-y-3 mb-8">
+              <div key={i} className={`p-6 md:p-8 rounded-xl flex flex-col h-full border ${t.featured ? 'bg-primary text-white border-primary shadow-lg md:-translate-y-2' : 'bg-white border-outline-variant/20'}`}>
+                <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4">{t.title}</h3>
+                <p className={`mb-4 md:mb-6 flex-grow text-sm md:text-base ${t.featured ? 'text-primary-fixed-dim' : 'text-on-surface-variant'}`}>{t.desc}</p>
+                <div className="space-y-2 md:space-y-3 mb-6 md:mb-8">
                   {t.benefits.map((b, j) => (
-                    <div key={j} className="flex gap-2 text-sm">
+                    <div key={j} className="flex gap-2 text-xs md:text-sm">
                       <span className="material-symbols-outlined scale-75">check_circle</span>
                       <span>{b}</span>
                     </div>
                   ))}
                 </div>
-                <button onClick={onBookClick} className={`w-full py-3 rounded-lg font-semibold transition ${t.featured ? 'bg-white text-primary hover:bg-secondary-fixed' : 'border border-primary text-primary hover:bg-primary hover:text-white'}`}>
+                <button onClick={onBookClick} className={`w-full py-2.5 md:py-3 rounded-lg font-semibold transition text-sm md:text-base ${t.featured ? 'bg-white text-primary hover:bg-secondary-fixed' : 'border border-primary text-primary hover:bg-primary hover:text-white'}`}>
                   Book Consultation
                 </button>
               </div>
@@ -119,26 +119,26 @@ export default function Treatments({ onBookClick }) {
       </section>
 
       {/* Skin Rejuvenation */}
-      <section id="skin-rejuvenation" className="py-20 bg-white">
-        <div className="max-w-container-max mx-auto px-6 md:px-8 grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-4 order-2 md:order-1">
+      <section id="skin-rejuvenation" className="py-10 md:py-14 bg-white">
+        <div className="max-w-container-max mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div className="space-y-3 md:space-y-4 order-2 md:order-1">
             {skinTreatments.map((t, i) => (
-              <img key={i} src={t.image} alt={t.title} className="rounded-xl w-full h-48 sm:h-64 object-cover" />
+              <img key={i} src={t.image} alt={t.title} className="rounded-xl w-full h-40 sm:h-64 object-cover" />
             ))}
           </div>
           <div className="order-1 md:order-2">
-            <span className="text-secondary font-semibold uppercase tracking-wider">Skin Science</span>
-            <h2 className="text-4xl font-bold mt-4 mb-6">Skin Rejuvenation & Chemical Peels</h2>
-            <p className="text-on-surface-variant mb-8">
+            <span className="text-secondary font-semibold uppercase tracking-wider text-sm md:text-base">Skin Science</span>
+            <h2 className="text-3xl md:text-4xl font-bold mt-2 md:mt-4 mb-4 md:mb-6">Skin Rejuvenation & Chemical Peels</h2>
+            <p className="text-sm md:text-base text-on-surface-variant mb-6 md:mb-8">
               Our dermatological experts craft bespoke peel protocols and rejuvenation cycles to address pigmentation and signs of aging.
             </p>
             {skinTreatments.map((t, i) => (
-              <div key={i} className="border-b border-outline-variant/30 pb-4 mb-4">
-                <h4 className="text-lg font-bold mb-2">{t.title}</h4>
-                <p className="text-on-surface-variant text-sm">{t.desc}</p>
+              <div key={i} className="border-b border-outline-variant/30 pb-3 md:pb-4 mb-3 md:mb-4">
+                <h4 className="text-base md:text-lg font-bold mb-1 md:mb-2">{t.title}</h4>
+                <p className="text-on-surface-variant text-xs md:text-sm">{t.desc}</p>
               </div>
             ))}
-            <button onClick={onBookClick} className="bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:opacity-90 mt-8">
+            <button onClick={onBookClick} className="bg-primary text-white px-6 md:px-8 py-2.5 md:py-3 rounded-lg font-semibold hover:opacity-90 mt-4 md:mt-8 text-sm md:text-base">
               Book Appointment
             </button>
           </div>
@@ -146,28 +146,28 @@ export default function Treatments({ onBookClick }) {
       </section>
 
       {/* Laser Therapy */}
-      <section id="laser-therapy" className="py-20 bg-surface-container-low">
-        <div className="max-w-container-max mx-auto px-6 md:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">Next-Gen Laser Therapy</h2>
-            <p className="text-on-surface-variant max-w-2xl mx-auto">
+      <section id="laser-therapy" className="py-10 md:py-14 bg-surface-container-low">
+        <div className="max-w-container-max mx-auto px-4 md:px-8">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3 md:mb-4">Next-Gen Laser Therapy</h2>
+            <p className="text-sm md:text-base text-on-surface-variant max-w-2xl mx-auto">
               Utilizing world-class laser platforms for permanent hair reduction and non-surgical skin resurfacing.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
             {laserTreatments.map((t, i) => (
-              <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-md border border-outline-variant/20">
-                <div className="relative h-64 overflow-hidden">
+              <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-outline-variant/20">
+                <div className="relative h-48 md:h-64 overflow-hidden">
                   <img src={t.image} alt={t.title} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
-                    <h3 className="text-2xl font-bold text-white">{t.title}</h3>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4 md:p-6">
+                    <h3 className="text-xl md:text-2xl font-bold text-white">{t.title}</h3>
                   </div>
                 </div>
-                <div className="p-8">
-                  <p className="text-on-surface-variant mb-6">{t.desc}</p>
-                  <div className="grid grid-cols-2 gap-4 mb-8">
+                <div className="p-4 md:p-8">
+                  <p className="text-sm md:text-base text-on-surface-variant mb-4 md:mb-6">{t.desc}</p>
+                  <div className="grid grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-8">
                     {t.benefits.map((b, j) => (
-                      <div key={j} className="flex items-center gap-2 text-sm">
+                      <div key={j} className="flex items-center gap-2 text-xs md:text-sm">
                         <span className="material-symbols-outlined scale-75 text-primary">bolt</span>
                         <span>{b}</span>
                       </div>
@@ -181,18 +181,18 @@ export default function Treatments({ onBookClick }) {
       </section>
 
       {/* Process */}
-      <section className="py-20 bg-white">
-        <div className="max-w-container-max mx-auto px-6 md:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold">Your Path to Renewed Confidence</h2>
+      <section className="py-10 md:py-14 bg-white">
+        <div className="max-w-container-max mx-auto px-4 md:px-8">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold">Your Path to Renewed Confidence</h2>
           </div>
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
             {['Book Appointment', 'Expert Consultation', 'Tailored Treatment', 'Glowing Results'].map((step, i) => (
               <div key={i} className="text-center">
-                <div className="w-20 h-20 bg-surface-container rounded-full mx-auto flex items-center justify-center mb-6 border-4 border-secondary hover:scale-110 transition">
-                  <span className="text-2xl font-bold text-secondary">0{i + 1}</span>
+                <div className="w-16 h-16 md:w-20 md:h-20 bg-surface-container rounded-full mx-auto flex items-center justify-center mb-4 border-2 md:border-4 border-secondary hover:scale-110 transition">
+                  <span className="text-xl md:text-2xl font-bold text-secondary">0{i + 1}</span>
                 </div>
-                <h4 className="font-bold text-lg mb-2">{step}</h4>
+                <h4 className="font-bold text-sm md:text-lg mb-2">{step}</h4>
               </div>
             ))}
           </div>

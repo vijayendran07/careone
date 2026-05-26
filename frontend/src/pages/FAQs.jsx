@@ -27,16 +27,16 @@ export default function FAQs() {
   ]
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-16">
-      <div className="text-center mb-12">
-        <span className="text-secondary font-semibold uppercase tracking-wider">Help Center</span>
-        <h1 className="text-4xl sm:text-5xl font-bold mt-2 text-on-surface">Frequently Asked Questions</h1>
-        <p className="text-on-surface-variant mt-3 max-w-xl mx-auto">
+    <div className="max-w-4xl mx-auto px-4 md:px-6 py-10 md:py-14">
+      <div className="text-center mb-8">
+        <span className="text-secondary font-semibold uppercase tracking-wider text-sm md:text-base">Help Center</span>
+        <h1 className="text-3xl sm:text-4xl font-bold mt-2 text-on-surface">Frequently Asked Questions</h1>
+        <p className="text-sm md:text-base text-on-surface-variant mt-2 md:mt-3 max-w-xl mx-auto">
           Find rapid answers to appointments, schedules, clinical treatments, and aftercare.
         </p>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-3 md:space-y-4">
         {faqs.map((faq, i) => {
           const isOpen = openIndex === i
           return (
@@ -46,7 +46,7 @@ export default function FAQs() {
             >
               <button
                 onClick={() => setOpenIndex(isOpen ? null : i)}
-                className="w-full px-6 py-5 text-left font-bold text-on-surface flex justify-between items-center hover:bg-surface-container-low transition"
+                className="w-full px-4 md:px-6 py-4 md:py-5 text-left font-bold text-on-surface flex justify-between items-center hover:bg-surface-container-low transition text-sm md:text-base"
               >
                 <span>{faq.q}</span>
                 <span className={`material-symbols-outlined transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
@@ -56,8 +56,8 @@ export default function FAQs() {
               
               <div 
                 className={`transition-all duration-300 ease-in-out ${
-                  isOpen ? 'max-h-48 border-t border-outline-variant/20 py-5 px-6' : 'max-h-0 py-0 px-6'
-                } overflow-hidden text-on-surface-variant text-sm leading-relaxed bg-surface-container-lowest`}
+                  isOpen ? 'max-h-60 border-t border-outline-variant/20 py-4 md:py-5 px-4 md:px-6' : 'max-h-0 py-0 px-4 md:px-6'
+                } overflow-hidden text-on-surface-variant text-xs md:text-sm leading-relaxed bg-surface-container-lowest`}
               >
                 {faq.a}
               </div>

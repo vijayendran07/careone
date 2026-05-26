@@ -23,23 +23,23 @@ export default function PatientResults({ onBookClick }) {
   return (
     <main className="flex-1">
       {/* Hero */}
-      <section className="py-20 bg-gradient-to-r from-primary/10 to-secondary/10">
-        <div className="max-w-container-max mx-auto px-6 md:px-8 text-center">
+      <section className="py-10 md:py-16 bg-gradient-to-r from-primary/10 to-secondary/10">
+        <div className="max-w-container-max mx-auto px-4 md:px-8 text-center">
           <div className="text-label-md text-primary mb-2">Real Transformations</div>
-          <h1 className="text-5xl md:text-6xl font-bold text-on-surface mb-6 font-headline-xl">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-on-surface mb-4 md:mb-6 font-headline-xl">
             See the Difference Care One Makes
           </h1>
-          <p className="text-xl text-on-surface-variant max-w-2xl mx-auto">
+          <p className="text-base md:text-xl text-on-surface-variant max-w-2xl mx-auto">
             Real patients, real results. These transformative outcomes speak to our commitment to excellence and your trust in us.
           </p>
         </div>
       </section>
 
       {/* Before & After Gallery */}
-      <section className="py-20 bg-white">
-        <div className="max-w-container-max mx-auto px-6 md:px-8">
-          <h2 className="text-4xl font-bold text-on-surface mb-12 text-center font-headline-xl">Hair Restoration Results</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+      <section className="py-10 md:py-14 bg-white">
+        <div className="max-w-container-max mx-auto px-4 md:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-on-surface mb-8 md:mb-12 text-center font-headline-xl">Hair Restoration Results</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             {[
               {
                 before: getImage('hair-result-1-before', 'https://images.unsplash.com/photo-1599599810694-f3f415eaf82f?auto=format&fit=crop&w=400&q=80'),
@@ -64,22 +64,22 @@ export default function PatientResults({ onBookClick }) {
               }
             ].map((result, idx) => (
               <div key={idx} className="rounded-2xl overflow-hidden shadow-sm border border-outline-variant/20">
-                <div className="space-y-2">
-                  <div className="flex gap-2">
+                <div className="space-y-1 md:space-y-2">
+                  <div className="flex gap-1 md:gap-2">
                     <div className="flex-1">
-                      <p className="text-xs text-on-surface-variant px-3 py-2 bg-surface-container-low">Before</p>
-                      <img src={result.before} alt="Before" className="w-full h-64 object-cover" />
+                      <p className="text-xs text-on-surface-variant px-2 py-1 md:px-3 md:py-2 bg-surface-container-low text-center font-semibold">Before</p>
+                      <img src={result.before} alt="Before" className="w-full h-48 md:h-64 object-cover" />
                     </div>
                     <div className="flex-1">
-                      <p className="text-xs text-on-surface-variant px-3 py-2 bg-surface-container-low">After</p>
-                      <img src={result.after} alt="After" className="w-full h-64 object-cover" />
+                      <p className="text-xs text-on-surface-variant px-2 py-1 md:px-3 md:py-2 bg-surface-container-low text-center font-semibold">After</p>
+                      <img src={result.after} alt="After" className="w-full h-48 md:h-64 object-cover" />
                     </div>
                   </div>
                 </div>
-                <div className="p-6 bg-surface">
+                <div className="p-4 md:p-6 bg-surface">
                   <h3 className="font-bold text-on-surface mb-1">{result.name}</h3>
-                  <p className="text-sm text-primary mb-2">{result.treatment}</p>
-                  <p className="text-sm text-on-surface-variant">{result.result}</p>
+                  <p className="text-xs md:text-sm text-primary mb-2">{result.treatment}</p>
+                  <p className="text-xs md:text-sm text-on-surface-variant">{result.result}</p>
                 </div>
               </div>
             ))}
@@ -88,10 +88,10 @@ export default function PatientResults({ onBookClick }) {
       </section>
 
       {/* Skin Rejuvenation Results */}
-      <section className="py-20 bg-surface-container-low">
-        <div className="max-w-container-max mx-auto px-6 md:px-8">
-          <h2 className="text-4xl font-bold text-on-surface mb-12 text-center font-headline-xl">Skin Rejuvenation & Chemical Peels</h2>
-          <div className="grid md:grid-cols-2 gap-12">
+      <section className="py-10 md:py-14 bg-surface-container-low">
+        <div className="max-w-container-max mx-auto px-4 md:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-on-surface mb-8 md:mb-12 text-center font-headline-xl">Skin Rejuvenation & Chemical Peels</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {[
               {
                 before: getImage('skin-result-1-before', 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80'),
@@ -123,14 +123,14 @@ export default function PatientResults({ onBookClick }) {
               }
             ].map((result, idx) => (
               <div key={idx} className="bg-surface rounded-2xl overflow-hidden shadow-sm border border-outline-variant/20 hover:shadow-md transition">
-                <div className="flex gap-3 p-3 bg-surface-container-highest">
-                  <img src={result.before} alt="Before" className="w-1/2 h-32 object-cover rounded-lg" />
-                  <img src={result.after} alt="After" className="w-1/2 h-32 object-cover rounded-lg" />
+                <div className="flex gap-2 md:gap-3 p-2 md:p-3 bg-surface-container-highest">
+                  <img src={result.before} alt="Before" className="w-1/2 h-24 md:h-32 object-cover rounded-lg" />
+                  <img src={result.after} alt="After" className="w-1/2 h-24 md:h-32 object-cover rounded-lg" />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-on-surface mb-1">{result.name}</h3>
-                  <p className="text-primary text-sm font-semibold mb-3">{result.treatment}</p>
-                  <p className="text-on-surface-variant text-sm leading-relaxed">{result.description}</p>
+                <div className="p-4 md:p-6">
+                  <h3 className="text-lg md:text-xl font-bold text-on-surface mb-1">{result.name}</h3>
+                  <p className="text-primary text-xs md:text-sm font-semibold mb-2 md:mb-3">{result.treatment}</p>
+                  <p className="text-on-surface-variant text-xs md:text-sm leading-relaxed">{result.description}</p>
                 </div>
               </div>
             ))}
@@ -139,10 +139,10 @@ export default function PatientResults({ onBookClick }) {
       </section>
 
       {/* Laser Therapy Results */}
-      <section className="py-20 bg-white">
-        <div className="max-w-container-max mx-auto px-6 md:px-8">
-          <h2 className="text-4xl font-bold text-on-surface mb-12 text-center font-headline-xl">Laser Hair Removal & Resurfacing</h2>
-          <div className="grid md:grid-cols-2 gap-8">
+      <section className="py-10 md:py-14 bg-white">
+        <div className="max-w-container-max mx-auto px-4 md:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-on-surface mb-8 md:mb-12 text-center font-headline-xl">Laser Hair Removal & Resurfacing</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {[
               {
                 icon: '✨',
@@ -167,13 +167,13 @@ export default function PatientResults({ onBookClick }) {
                 ]
               }
             ].map((treatment, idx) => (
-              <div key={idx} className="p-8 rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/5 border border-primary/10">
-                <div className="text-4xl mb-4">{treatment.icon}</div>
-                <h3 className="text-2xl font-bold text-on-surface mb-6">{treatment.title}</h3>
-                <ul className="space-y-3">
+              <div key={idx} className="p-6 md:p-8 rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/5 border border-primary/10">
+                <div className="text-3xl md:text-4xl mb-3 md:mb-4">{treatment.icon}</div>
+                <h3 className="text-xl md:text-2xl font-bold text-on-surface mb-4 md:mb-6">{treatment.title}</h3>
+                <ul className="space-y-2 md:space-y-3">
                   {treatment.results.map((result, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <span className="text-primary font-bold mt-1">✓</span>
+                    <li key={i} className="flex items-start gap-2 md:gap-3 text-sm md:text-base">
+                      <span className="text-primary font-bold mt-0.5 md:mt-1">✓</span>
                       <span className="text-on-surface-variant">{result}</span>
                     </li>
                   ))}
@@ -187,15 +187,15 @@ export default function PatientResults({ onBookClick }) {
 
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-primary to-primary/80">
-        <div className="max-w-container-max mx-auto px-6 md:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6 font-headline-xl">Ready for Your Transformation?</h2>
-          <p className="text-white/90 mb-8 text-lg max-w-2xl mx-auto">
+      <section className="py-12 md:py-16 bg-gradient-to-r from-primary to-primary/80">
+        <div className="max-w-container-max mx-auto px-4 md:px-8 text-center">
+          <h2 className="text-2xl md:text-4xl font-bold text-white mb-4 md:mb-6 font-headline-xl">Ready for Your Transformation?</h2>
+          <p className="text-white/90 mb-6 md:mb-8 text-sm md:text-lg max-w-2xl mx-auto">
             Book your consultation today and discover how Care One can help you achieve your aesthetic goals.
           </p>
           <button 
             onClick={onBookClick}
-            className="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"
+            className="bg-white text-primary px-6 md:px-8 py-2.5 md:py-3 rounded-lg font-semibold hover:bg-gray-100 transition text-sm md:text-base w-full sm:w-auto"
           >
             Schedule Your Consultation
           </button>
