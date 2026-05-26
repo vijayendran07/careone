@@ -52,7 +52,7 @@ export default function ContactPage() {
   const city = settings?.city || 'City Center, SC 56789'
 
   return (
-    <div className="max-w-6xl mx-auto px-4 md:px-8 py-10 md:py-14">
+    <div className="max-w-5xl mx-auto px-4 md:px-8 py-10 md:py-14">
       <div className="text-center mb-8 md:mb-12">
         <span className="text-secondary font-semibold uppercase tracking-wider text-sm md:text-base">Get In Touch</span>
         <h1 className="text-3xl sm:text-4xl font-bold mt-2 text-on-surface">Contact {clinicName}</h1>

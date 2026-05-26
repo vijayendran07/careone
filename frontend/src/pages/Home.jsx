@@ -44,7 +44,7 @@ export default function Home({ onBookClick }) {
     <main>
       {/* Hero Section */}
       <section className="py-10 md:py-14 bg-white">
-        <div className="max-w-container-max mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div className="max-w-5xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-6 md:gap-8 items-center">
           <div className="space-y-4 md:space-y-6">
             <span className="text-secondary font-semibold uppercase tracking-wider text-sm md:text-base">Redefining Aesthetics</span>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">Expert Skin & Hair <span className="text-primary">Care You Can Trust</span></h1>
@@ -68,7 +68,7 @@ export default function Home({ onBookClick }) {
 
       {/* About Section */}
       <section className="py-10 md:py-14 bg-surface-container-low">
-        <div className="max-w-container-max mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div className="max-w-5xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-6 md:gap-8 items-center">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Your trusted partner for <span className="text-primary">transformative care.</span></h2>
             <p className="text-sm md:text-base text-on-surface-variant mb-6 md:mb-8">We blend cutting-edge technology with expert dermatology to ensure you leave feeling rejuvenated and empowered.</p>
@@ -100,7 +100,7 @@ export default function Home({ onBookClick }) {
 
       {/* Services Section */}
       <section id="services" className="py-10 md:py-14 bg-primary text-white">
-        <div className="max-w-container-max mx-auto px-4 md:px-8">
+        <div className="max-w-5xl mx-auto px-4 md:px-8">
           <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold mb-3 md:mb-4">Transformative Solutions for Your Best Self</h2>
             <div className="h-1 w-16 md:w-20 bg-secondary mx-auto"></div>
@@ -124,7 +124,7 @@ export default function Home({ onBookClick }) {
 
       {/* Process Section */}
       <section className="py-10 md:py-14 bg-white">
-        <div className="max-w-container-max mx-auto px-4 md:px-8">
+        <div className="max-w-5xl mx-auto px-4 md:px-8">
           <div className="text-center mb-8">
             <span className="text-secondary font-semibold uppercase tracking-wider text-sm md:text-base">Our Process</span>
             <h2 className="text-3xl md:text-4xl font-bold mt-2">Your path to renewed confidence</h2>

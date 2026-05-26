@@ -74,7 +74,7 @@ export default function Treatments({ onBookClick }) {
     <main>
       {/* Hero */}
       <section className="py-10 md:py-16 bg-white">
-        <div className="max-w-container-max mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-8 items-center">
+        <div className="max-w-5xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-6 md:gap-8 items-center">
           <div>
             <span className="text-secondary font-semibold uppercase tracking-wider text-sm md:text-base">Clinical Excellence</span>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-2 md:mt-4 mb-4 md:mb-6">Advanced Clinical Solutions for Skin & Hair</h1>
@@ -91,7 +91,7 @@ export default function Treatments({ onBookClick }) {
 
       {/* Hair Restoration */}
       <section id="hair-restoration" className="py-10 md:py-14 bg-surface-container-low">
-        <div className="max-w-container-max mx-auto px-4 md:px-8">
+        <div className="max-w-5xl mx-auto px-4 md:px-8">
           <div className="mb-8">
             <h2 className="text-3xl md:text-4xl font-bold mb-3 md:mb-4">Hair Restoration & Vitality</h2>
             <p className="text-sm md:text-base text-on-surface-variant max-w-2xl">Advanced therapeutic interventions to combat thinning and promote robust follicular health.</p>
@@ -120,7 +120,7 @@ export default function Treatments({ onBookClick }) {
 
       {/* Skin Rejuvenation */}
       <section id="skin-rejuvenation" className="py-10 md:py-14 bg-white">
-        <div className="max-w-container-max mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div className="max-w-5xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-6 md:gap-8 items-center">
           <div className="space-y-3 md:space-y-4 order-2 md:order-1">
             {skinTreatments.map((t, i) => (
               <img key={i} src={t.image} alt={t.title} className="rounded-xl w-full h-40 sm:h-64 object-cover" />
@@ -147,7 +147,7 @@ export default function Treatments({ onBookClick }) {
 
       {/* Laser Therapy */}
       <section id="laser-therapy" className="py-10 md:py-14 bg-surface-container-low">
-        <div className="max-w-container-max mx-auto px-4 md:px-8">
+        <div className="max-w-5xl mx-auto px-4 md:px-8">
           <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold mb-3 md:mb-4">Next-Gen Laser Therapy</h2>
             <p className="text-sm md:text-base text-on-surface-variant max-w-2xl mx-auto">
@@ -182,7 +182,7 @@ export default function Treatments({ onBookClick }) {
 
       {/* Process */}
       <section className="py-10 md:py-14 bg-white">
-        <div className="max-w-container-max mx-auto px-4 md:px-8">
+        <div className="max-w-5xl mx-auto px-4 md:px-8">
           <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold">Your Path to Renewed Confidence</h2>
           </div>

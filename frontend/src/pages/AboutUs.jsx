@@ -45,7 +45,7 @@ export default function AboutUs({ onBookClick }) {
     <main className="flex-1">
       {/* Hero */}
       <section className="py-10 md:py-14 bg-gradient-to-r from-primary/10 to-secondary/10">
-        <div className="max-w-container-max mx-auto px-4 md:px-8">
+        <div className="max-w-5xl mx-auto px-4 md:px-8">
           <div className="text-center mb-8">
             <div className="text-label-md text-primary mb-2">About Care One</div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-on-surface mb-4 font-headline-xl">
@@ -74,7 +74,7 @@ export default function AboutUs({ onBookClick }) {
 
       {/* Our Story */}
       <section className="py-10 md:py-14 bg-white">
-        <div className="max-w-container-max mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div className="max-w-5xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-6 md:gap-8 items-center">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-on-surface mb-4 font-headline-xl">Our Story</h2>
             <p className="text-sm md:text-base text-on-surface-variant mb-4 leading-relaxed">
@@ -97,7 +97,7 @@ export default function AboutUs({ onBookClick }) {
 
       {/* Our Team */}
       <section className="py-10 md:py-14 bg-surface-container-low">
-        <div className="max-w-container-max mx-auto px-4 md:px-8">
+        <div className="max-w-5xl mx-auto px-4 md:px-8">
           <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-on-surface mb-3 font-headline-xl">Meet Our Expert Team</h2>
             <p className="text-sm md:text-base text-on-surface-variant max-w-2xl mx-auto">
@@ -121,7 +121,7 @@ export default function AboutUs({ onBookClick }) {
 
       {/* Our Values */}
       <section className="py-10 md:py-14 bg-white">
-        <div className="max-w-container-max mx-auto px-4 md:px-8">
+        <div className="max-w-5xl mx-auto px-4 md:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-on-surface mb-8 text-center font-headline-xl">Our Core Values</h2>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {[
@@ -142,7 +142,7 @@ export default function AboutUs({ onBookClick }) {
 
       {/* CTA */}
       <section className="py-12 md:py-16 bg-gradient-to-r from-primary to-primary/80">
-        <div className="max-w-container-max mx-auto px-4 md:px-8 text-center">
+        <div className="max-w-5xl mx-auto px-4 md:px-8 text-center">
           <h2 className="text-2xl md:text-4xl font-bold text-white mb-4 font-headline-xl">Ready to Experience Care One?</h2>
           <p className="text-white/90 mb-6 md:mb-8 text-sm md:text-lg max-w-2xl mx-auto">
             Schedule your consultation with one of our experts and discover how we can help you look and feel your best.

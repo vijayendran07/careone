@@ -24,7 +24,7 @@ export default function PatientResults({ onBookClick }) {
     <main className="flex-1">
       {/* Hero */}
       <section className="py-10 md:py-16 bg-gradient-to-r from-primary/10 to-secondary/10">
-        <div className="max-w-container-max mx-auto px-4 md:px-8 text-center">
+        <div className="max-w-5xl mx-auto px-4 md:px-8 text-center">
           <div className="text-label-md text-primary mb-2">Real Transformations</div>
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-on-surface mb-4 md:mb-6 font-headline-xl">
             See the Difference Care One Makes
@@ -37,7 +37,7 @@ export default function PatientResults({ onBookClick }) {
 
       {/* Before & After Gallery */}
       <section className="py-10 md:py-14 bg-white">
-        <div className="max-w-container-max mx-auto px-4 md:px-8">
+        <div className="max-w-5xl mx-auto px-4 md:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-on-surface mb-8 md:mb-12 text-center font-headline-xl">Hair Restoration Results</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             {[
@@ -89,7 +89,7 @@ export default function PatientResults({ onBookClick }) {
 
       {/* Skin Rejuvenation Results */}
       <section className="py-10 md:py-14 bg-surface-container-low">
-        <div className="max-w-container-max mx-auto px-4 md:px-8">
+        <div className="max-w-5xl mx-auto px-4 md:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-on-surface mb-8 md:mb-12 text-center font-headline-xl">Skin Rejuvenation & Chemical Peels</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {[
@@ -140,7 +140,7 @@ export default function PatientResults({ onBookClick }) {
 
       {/* Laser Therapy Results */}
       <section className="py-10 md:py-14 bg-white">
-        <div className="max-w-container-max mx-auto px-4 md:px-8">
+        <div className="max-w-5xl mx-auto px-4 md:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-on-surface mb-8 md:mb-12 text-center font-headline-xl">Laser Hair Removal & Resurfacing</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {[
@@ -188,7 +188,7 @@ export default function PatientResults({ onBookClick }) {
 
       {/* CTA */}
       <section className="py-12 md:py-16 bg-gradient-to-r from-primary to-primary/80">
-        <div className="max-w-container-max mx-auto px-4 md:px-8 text-center">
+        <div className="max-w-5xl mx-auto px-4 md:px-8 text-center">
           <h2 className="text-2xl md:text-4xl font-bold text-white mb-4 md:mb-6 font-headline-xl">Ready for Your Transformation?</h2>
           <p className="text-white/90 mb-6 md:mb-8 text-sm md:text-lg max-w-2xl mx-auto">
             Book your consultation today and discover how Care One can help you achieve your aesthetic goals.
