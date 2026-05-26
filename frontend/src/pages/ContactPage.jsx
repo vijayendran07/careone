@@ -18,14 +18,31 @@ export default function ContactPage() {
       .catch(console.error)
   }, [])
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
-    setTimeout(() => {
-      setStatus({ type: 'success', message: '✅ Message sent! Our team will contact you shortly.' })
-      setForm({ name: '', email: '', subject: '', message: '' })
+    setStatus(null)
+
+    try {
+      const res = await fetch(`${API_URL}/api/messages`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form)
+      })
+      const data = await res.json()
+
+      if (data.success) {
+        setStatus({ type: 'success', message: '✅ Message sent! Our team will contact you shortly.' })
+        setForm({ name: '', email: '', subject: '', message: '' })
+      } else {
+        setStatus({ type: 'error', message: data.message || '❌ Failed to send message. Please try again.' })
+      }
+    } catch (error) {
+      console.error(error)
+      setStatus({ type: 'error', message: '❌ An error occurred. Please try again later.' })
+    } finally {
       setLoading(false)
-    }, 1200)
+    }
   }
 
   const clinicName = settings?.clinicName || 'Care One'
@@ -136,7 +153,9 @@ export default function ContactPage() {
           </div>
 
           {status && (
-            <div className="p-3 bg-green-100 text-green-900 rounded-lg text-sm font-semibold">
+            <div className={`p-3 rounded-lg text-sm font-semibold ${
+              status.type === 'success' ? 'bg-green-100 text-green-900' : 'bg-red-100 text-red-900'
+            }`}>
               {status.message}
             </div>
           )}

@@ -17,6 +17,7 @@ export default function AdminDashboard() {
   const [appointments, setAppointments] = useState([])
   const [gallery, setGallery] = useState([])
   const [settings, setSettings] = useState({ clinicName: '', email: '', phone: '', city: '', address: '' })
+  const [messages, setMessages] = useState([])
   const [loading, setLoading] = useState(true)
   const [settingsSaved, setSettingsSaved] = useState(null)
   const [toast, setToast] = useState(null)
@@ -113,11 +114,19 @@ export default function AdminDashboard() {
     } catch (e) { console.error(e) }
   }, [])
 
+  const fetchMessages = useCallback(async () => {
+    try {
+      const res = await fetch(`${API_URL}/api/messages`, { headers: authHeaders() })
+      const data = await res.json()
+      if (data.success) setMessages(data.messages || [])
+    } catch (e) { console.error(e) }
+  }, [])
+
   const fetchAll = useCallback(async () => {
     setLoading(true)
-    await Promise.all([fetchAppointments(), fetchGallery(), fetchSettings()])
+    await Promise.all([fetchAppointments(), fetchGallery(), fetchSettings(), fetchMessages()])
     setLoading(false)
-  }, [fetchAppointments, fetchGallery, fetchSettings])
+  }, [fetchAppointments, fetchGallery, fetchSettings, fetchMessages])
 
   useEffect(() => { fetchAll() }, [fetchAll])
 
@@ -183,6 +192,36 @@ export default function AdminDashboard() {
         showToast('Appointment deleted')
       }
     } catch (e) { showToast('Failed to delete', 'error') }
+  }
+
+  const markMessageRead = async (id) => {
+    try {
+      const res = await fetch(`${API_URL}/api/messages/${id}`, {
+        method: 'PUT',
+        headers: authHeaders(),
+        body: JSON.stringify({ status: 'read' })
+      })
+      const data = await res.json()
+      if (data.success) {
+        setMessages(prev => prev.map(m => m._id === id ? data.message : m))
+        showToast('Message marked as read')
+      }
+    } catch (e) { showToast('Failed to update message', 'error') }
+  }
+
+  const deleteMessage = async (id) => {
+    if (!window.confirm('Delete this message?')) return
+    try {
+      const res = await fetch(`${API_URL}/api/messages/${id}`, {
+        method: 'DELETE',
+        headers: authHeaders(),
+      })
+      const data = await res.json()
+      if (data.success) {
+        setMessages(prev => prev.filter(m => m._id !== id))
+        showToast('Message deleted')
+      }
+    } catch (e) { showToast('Failed to delete message', 'error') }
   }
 
   const saveSettings = async () => {
@@ -359,6 +398,7 @@ export default function AdminDashboard() {
   const navItems = [
     { id: 'dashboard',    label: 'Dashboard',           icon: 'dashboard' },
     { id: 'appointments', label: 'Patient Appointments', icon: 'calendar_month' },
+    { id: 'messages',     label: 'Messages',            icon: 'mail' },
     { id: 'content',      label: 'Content Management',  icon: 'edit_note' },
     { id: 'settings',     label: 'Settings',            icon: 'settings' },
   ]
@@ -407,14 +447,21 @@ export default function AdminDashboard() {
                 setActiveTab(item.id)
                 setIsSidebarOpen(false)
               }}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition text-sm font-medium ${
+              className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition text-sm font-medium ${
                 activeTab === item.id
                   ? 'bg-primary/10 text-primary border-r-4 border-primary'
                   : 'text-on-surface-variant hover:bg-gray-100'
               }`}
             >
-              <span className="material-symbols-outlined text-xl">{item.icon}</span>
-              {item.label}
+              <div className="flex items-center gap-3">
+                <span className="material-symbols-outlined text-xl">{item.icon}</span>
+                {item.label}
+              </div>
+              {item.id === 'messages' && messages.filter(m => m.status === 'unread').length > 0 && (
+                <span className="bg-primary text-white text-xs px-2 py-0.5 rounded-full">
+                  {messages.filter(m => m.status === 'unread').length}
+                </span>
+              )}
             </button>
           ))}
         </nav>
@@ -786,6 +833,76 @@ export default function AdminDashboard() {
                       </div>
                     )
                   })}
+                </div>
+              )}
+
+              {/* ── MESSAGES ── */}
+              {activeTab === 'messages' && (
+                <div>
+                  <div className="mb-8 flex items-start justify-between">
+                    <div>
+                      <h3 className="text-3xl font-bold text-on-surface mb-1">Contact Messages</h3>
+                      <p className="text-on-surface-variant">View messages from the Contact Us page.</p>
+                    </div>
+                    <button onClick={fetchMessages} className="flex items-center gap-2 border border-outline-variant px-4 py-2 rounded-lg text-sm hover:bg-surface-container-low transition">
+                      <span className="material-symbols-outlined text-sm">refresh</span> Refresh
+                    </button>
+                  </div>
+
+                  <div className="bg-white rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+                    {messages.length === 0 ? (
+                      <div className="p-12 text-center text-on-surface-variant">No messages found.</div>
+                    ) : (
+                      <div className="overflow-x-auto">
+                        <table className="w-full">
+                          <thead className="bg-surface-container-low">
+                            <tr>
+                              <th className="px-5 py-4 text-left text-xs font-semibold text-on-surface-variant uppercase">Sender</th>
+                              <th className="px-5 py-4 text-left text-xs font-semibold text-on-surface-variant uppercase">Subject</th>
+                              <th className="px-5 py-4 text-left text-xs font-semibold text-on-surface-variant uppercase">Date</th>
+                              <th className="px-5 py-4 text-left text-xs font-semibold text-on-surface-variant uppercase">Actions</th>
+                            </tr>
+                          </thead>
+                          <tbody className="divide-y divide-outline-variant">
+                            {messages.map(msg => (
+                              <tr key={msg._id} className={`transition ${msg.status === 'unread' ? 'bg-blue-50' : 'hover:bg-surface-container-low'}`}>
+                                <td className="px-5 py-4">
+                                  <p className={`font-semibold text-on-surface text-sm ${msg.status === 'unread' ? 'font-bold' : ''}`}>{msg.name}</p>
+                                  <p className="text-xs text-on-surface-variant">{msg.email}</p>
+                                </td>
+                                <td className="px-5 py-4 max-w-md">
+                                  <p className={`text-sm text-on-surface ${msg.status === 'unread' ? 'font-bold' : ''}`}>{msg.subject}</p>
+                                  <p className="text-sm text-on-surface-variant mt-1 whitespace-pre-wrap">{msg.message}</p>
+                                </td>
+                                <td className="px-5 py-4 text-sm text-on-surface">
+                                  {new Date(msg.createdAt).toLocaleDateString()}
+                                </td>
+                                <td className="px-5 py-4">
+                                  <div className="flex items-center gap-2">
+                                    {msg.status === 'unread' && (
+                                      <button
+                                        onClick={() => markMessageRead(msg._id)}
+                                        className="bg-primary/10 text-primary hover:bg-primary/20 text-xs px-3 py-1.5 rounded-lg font-semibold transition"
+                                      >
+                                        Mark Read
+                                      </button>
+                                    )}
+                                    <button
+                                      onClick={() => deleteMessage(msg._id)}
+                                      className="text-red-400 hover:text-red-600 transition p-1"
+                                      title="Delete"
+                                    >
+                                      <span className="material-symbols-outlined text-base">delete</span>
+                                    </button>
+                                  </div>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+                  </div>
                 </div>
               )}
 

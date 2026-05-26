@@ -43,6 +43,7 @@ const authRoutes = require('./routes/authRoutes');
 const mediaRoutes = require('./routes/mediaRoutes');
 const settingsRoutes = require('./routes/settingsRoutes');
 const galleryRoutes = require('./routes/galleryRoutes');
+const messageRoutes = require('./routes/messageRoutes');
 
 // Mount routers
 app.use('/api/appointments', appointmentRoutes);
@@ -51,6 +52,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/media', mediaRoutes);
 app.use('/api/settings', settingsRoutes);
 app.use('/api/gallery', galleryRoutes);
+app.use('/api/messages', messageRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
