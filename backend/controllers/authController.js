@@ -98,3 +98,30 @@ exports.getMe = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+// @desc    Reset password directly for a patient
+// @route   POST /api/auth/reset-password
+exports.resetPassword = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'No registered account found with this email address' });
+    }
+
+    if (user.role === 'admin') {
+      return res.status(403).json({ success: false, message: 'Admin password reset is restricted for security reasons' });
+    }
+
+    user.password = password;
+    await user.save();
+
+    res.json({
+      success: true,
+      message: 'Your password has been successfully reset. You can now log in with your new password.'
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};

@@ -14,6 +14,8 @@ export default function Login() {
   // Forgot Password state
   const [showForgotPassword, setShowForgotPassword] = useState(false)
   const [resetEmail, setResetEmail] = useState('')
+  const [newPassword, setNewPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
   const [resetStatus, setResetStatus] = useState(null)
 
   const handleSubmit = async (e) => {
@@ -64,23 +66,46 @@ export default function Login() {
     }
   }
 
-  const handleForgotPasswordSubmit = (e) => {
+  const handleForgotPasswordSubmit = async (e) => {
     e.preventDefault()
-    setLoading(true)
     setResetStatus(null)
 
-    // Simulate sending reset link with a realistic loading state
-    setTimeout(() => {
-      setLoading(false)
+    if (newPassword !== confirmPassword) {
+      setResetStatus({ type: 'error', message: '❌ Passwords do not match' })
+      return
+    }
+
+    if (newPassword.length < 6) {
+      setResetStatus({ type: 'error', message: '❌ Password must be at least 6 characters long' })
+      return
+    }
+
+    setLoading(true)
+    try {
+      const response = await fetch(`${API_URL}/api/auth/reset-password`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: resetEmail, password: newPassword })
+      })
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Password reset failed')
+      }
+
       setResetStatus({
         type: 'success',
-        message: `✅ A secure reset link has been dispatched to ${resetEmail}. Please check your inbox and spam folders.`
+        message: '✅ Your password has been successfully reset! You can now log in with your new password.'
       })
       setResetEmail('')
-    }, 1200)
+      setNewPassword('')
+      setConfirmPassword('')
+    } catch (err) {
+      setResetStatus({ type: 'error', message: err.message || 'An error occurred. Please try again.' })
+    } finally {
+      setLoading(false)
+    }
   }
-
-
 
   if (showForgotPassword) {
     return (
@@ -98,7 +123,7 @@ export default function Login() {
               Reset Patient Password
             </h2>
             <p className="text-xs sm:text-sm text-on-surface-variant text-center mb-6 leading-relaxed">
-              Enter your registered email address and we will send you a secure link to reset your password.
+              Enter your registered email and your new desired password to update it directly in our clinic records.
             </p>
 
             <form onSubmit={handleForgotPasswordSubmit} className="space-y-6">
@@ -113,6 +138,36 @@ export default function Login() {
                   value={resetEmail}
                   onChange={(e) => setResetEmail(e.target.value)}
                   placeholder="your@email.com"
+                  className="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="newPassword" className="block text-sm font-semibold text-on-surface mb-2">
+                  New Password
+                </label>
+                <input
+                  id="newPassword"
+                  type="password"
+                  required
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  placeholder="••••••••"
+                  className="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="confirmPassword" className="block text-sm font-semibold text-on-surface mb-2">
+                  Confirm New Password
+                </label>
+                <input
+                  id="confirmPassword"
+                  type="password"
+                  required
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder="••••••••"
                   className="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 />
               </div>
@@ -132,7 +187,7 @@ export default function Login() {
                 disabled={loading}
                 className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:opacity-90 transition disabled:opacity-50"
               >
-                {loading ? 'Sending link...' : 'Send Reset Link'}
+                {loading ? 'Resetting Password...' : 'Reset Password'}
               </button>
             </form>
 
@@ -142,6 +197,8 @@ export default function Login() {
                 onClick={() => {
                   setShowForgotPassword(false)
                   setResetEmail('')
+                  setNewPassword('')
+                  setConfirmPassword('')
                   setResetStatus(null)
                   setError('')
                 }}
