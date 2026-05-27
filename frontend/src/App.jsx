@@ -498,37 +498,37 @@ function Footer({ settings }) {
   const city = settings?.city || 'City Center, SC 56789'
 
   return (
-    <footer className="bg-surface-container-highest border-t border-outline-variant/20">
+    <footer className="bg-gradient-to-br from-[#004d4d] via-[#003333] to-[#004d4d] text-white border-t border-teal-950/50">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-14">
         <div className="space-y-6">
-          <div className="text-2xl font-bold text-primary">{clinicName}</div>
-          <p className="text-on-surface-variant text-sm">Providing world-class clinical excellence in skin and hair care.</p>
+          <div className="text-2xl font-bold text-secondary">{clinicName}</div>
+          <p className="text-teal-100/80 text-sm">Providing world-class clinical excellence in skin and hair care.</p>
         </div>
         <div>
-          <h4 className="font-bold text-on-surface mb-6">Treatments</h4>
-          <ul className="space-y-3 text-sm text-on-surface-variant">
-            <li><Link to="/treatments#hair-restoration" className="hover:text-primary transition">Hair Restoration</Link></li>
-            <li><Link to="/treatments#skin-rejuvenation" className="hover:text-primary transition">Skin Rejuvenation</Link></li>
-            <li><Link to="/treatments#laser-therapy" className="hover:text-primary transition">Laser Therapy</Link></li>
-            <li><Link to="/treatments#skin-rejuvenation" className="hover:text-primary transition">Advanced Aesthetics</Link></li>
+          <h4 className="font-bold text-white mb-6">Treatments</h4>
+          <ul className="space-y-3 text-sm text-teal-100/70">
+            <li><Link to="/treatments#hair-restoration" className="hover:text-secondary transition">Hair Restoration</Link></li>
+            <li><Link to="/treatments#skin-rejuvenation" className="hover:text-secondary transition">Skin Rejuvenation</Link></li>
+            <li><Link to="/treatments#laser-therapy" className="hover:text-secondary transition">Laser Therapy</Link></li>
+            <li><Link to="/treatments#skin-rejuvenation" className="hover:text-secondary transition">Advanced Aesthetics</Link></li>
           </ul>
         </div>
         <div>
-          <h4 className="font-bold text-on-surface mb-6">Support</h4>
-          <ul className="space-y-3 text-sm text-on-surface-variant">
-            <li><Link to="/privacy" className="hover:text-primary transition">Privacy Policy</Link></li>
-            <li><Link to="/terms" className="hover:text-primary transition">Terms of Service</Link></li>
-            <li><Link to="/faqs" className="hover:text-primary transition">FAQs</Link></li>
-            <li><Link to="/contact" className="hover:text-primary transition">Contact</Link></li>
+          <h4 className="font-bold text-white mb-6">Support</h4>
+          <ul className="space-y-3 text-sm text-teal-100/70">
+            <li><Link to="/privacy" className="hover:text-secondary transition">Privacy Policy</Link></li>
+            <li><Link to="/terms" className="hover:text-secondary transition">Terms of Service</Link></li>
+            <li><Link to="/faqs" className="hover:text-secondary transition">FAQs</Link></li>
+            <li><Link to="/contact" className="hover:text-secondary transition">Contact</Link></li>
           </ul>
         </div>
         <div>
-          <h4 className="font-bold text-on-surface mb-6">Location</h4>
-          <p className="text-xs text-on-surface-variant">{address}<br/>{city}</p>
+          <h4 className="font-bold text-white mb-6">Location</h4>
+          <p className="text-xs text-teal-100/80 leading-relaxed">{address}<br/>{city}</p>
         </div>
       </div>
-      <div className="border-t border-outline-variant/10 py-6 text-center">
-        <p className="text-xs text-on-surface-variant">© {new Date().getFullYear()} {clinicName} Clinical Excellence. All rights reserved.</p>
+      <div className="border-t border-white/10 py-6 text-center">
+        <p className="text-xs text-teal-100/60">© {new Date().getFullYear()} {clinicName} Clinical Excellence. All rights reserved.</p>
       </div>
     </footer>
   )
