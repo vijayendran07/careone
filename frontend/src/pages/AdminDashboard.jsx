@@ -302,10 +302,21 @@ export default function AdminDashboard() {
       xhr.addEventListener('load', () => {
         if (xhr.status === 201) {
           const data = JSON.parse(xhr.responseText)
-          setImageFormData(prev => ({
-            ...prev,
-            imageUrl: data.url
-          }))
+          setImageFormData(prev => {
+            if (prev.section === 'home-hero-banner' || prev.section === 'treatments-hero') {
+              const currentUrls = prev.imageUrl ? prev.imageUrl.split(',').map(u => u.trim()).filter(Boolean) : []
+              const newUrls = [...currentUrls, data.url].join(',')
+              return {
+                ...prev,
+                imageUrl: newUrls
+              }
+            } else {
+              return {
+                ...prev,
+                imageUrl: data.url
+              }
+            }
+          })
           showToast('Image uploaded successfully!')
         } else {
           const error = JSON.parse(xhr.responseText)
@@ -988,20 +999,62 @@ export default function AdminDashboard() {
                 />
               </div>
 
-              {/* Image Preview */}
+              {/* Image Preview & Slider Management */}
               {imageFormData.imageUrl && (
-                <div className="mt-4">
-                  <label className="block text-sm font-semibold text-on-surface mb-2">Preview</label>
-                  <img src={imageFormData.imageUrl} alt="Preview" className="w-full h-48 object-cover rounded-lg border border-outline-variant" />
+                <div className="mt-4 space-y-4">
+                  {imageFormData.section === 'home-hero-banner' || imageFormData.section === 'treatments-hero' ? (
+                    <div className="space-y-3">
+                      <label className="block text-sm font-semibold text-on-surface">
+                        Banner Slider Images ({imageFormData.imageUrl.split(',').map(u => u.trim()).filter(Boolean).length})
+                      </label>
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        {imageFormData.imageUrl.split(',').map(u => u.trim()).filter(Boolean).map((url, idx) => (
+                          <div key={idx} className="relative group h-24 border border-outline-variant rounded-lg overflow-hidden bg-gray-50 shadow-sm">
+                            <img src={url} alt={`Slide ${idx + 1}`} className="w-full h-full object-cover" />
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const urls = imageFormData.imageUrl.split(',').map(u => u.trim()).filter(Boolean)
+                                const filtered = urls.filter((_, i) => i !== idx)
+                                setImageFormData(prev => ({
+                                  ...prev,
+                                  imageUrl: filtered.join(',')
+                                }))
+                              }}
+                              className="absolute top-1 right-1 w-6 h-6 bg-red-600/90 text-white rounded-full flex items-center justify-center hover:bg-red-700 hover:scale-105 active:scale-95 transition-all shadow-md"
+                              title="Delete Slide"
+                            >
+                              <span className="material-symbols-outlined text-[14px] font-bold">close</span>
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <div>
+                      <label className="block text-sm font-semibold text-on-surface mb-2">Preview</label>
+                      <img src={imageFormData.imageUrl} alt="Preview" className="w-full h-48 object-cover rounded-lg border border-outline-variant" />
+                    </div>
+                  )}
                 </div>
               )}
 
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 text-sm text-blue-800">
                 <p className="font-semibold mb-1">💡 Tips:</p>
                 <ul className="text-xs space-y-1 list-disc list-inside">
-                  <li>Use high-quality images for best appearance</li>
-                  <li>Recommended sizes: Hero 1200x600px, Other 800x600px</li>
-                  <li>Supported formats: PNG, JPG, GIF (max 5MB)</li>
+                  {imageFormData.section === 'home-hero-banner' || imageFormData.section === 'treatments-hero' ? (
+                    <>
+                      <li>You can upload multiple images to append them to the banner slider</li>
+                      <li>Click the "✕" button on any slide thumbnail above to remove it from the slider</li>
+                      <li>Use landscape 16:9 high-resolution images for the best visual aesthetics</li>
+                    </>
+                  ) : (
+                    <>
+                      <li>Use high-quality images for best appearance</li>
+                      <li>Recommended sizes: Hero 1200x600px, Other 800x600px</li>
+                      <li>Supported formats: PNG, JPG, GIF (max 5MB)</li>
+                    </>
+                  )}
                 </ul>
               </div>
             </div>
