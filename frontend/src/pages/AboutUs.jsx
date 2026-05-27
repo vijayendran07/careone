@@ -44,37 +44,40 @@ export default function AboutUs({ onBookClick }) {
   return (
     <main>
       {/* ═══════════════ HERO ═══════════════ */}
-      <section className="min-h-[60vh] flex items-center bg-gradient-to-br from-primary/5 via-white to-secondary/5">
-        <div className="w-full max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-16 lg:py-0">
+      <section className="min-h-[55vh] flex items-center bg-gradient-to-br from-[#004d4d] via-[#003333] to-[#004d4d] text-white relative overflow-hidden">
+        {/* Abstract shapes for premium depth */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-primary/15 to-secondary/15 rounded-full blur-3xl -z-10" />
+        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-gradient-to-tr from-secondary/15 to-primary/15 rounded-full blur-2xl -z-10" />
+        
+        <div className="w-full max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-16 lg:py-20 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="space-y-6">
-              <span className="inline-block bg-primary/10 text-primary font-semibold uppercase tracking-widest text-xs px-4 py-2 rounded-full">
+              <span className="inline-block bg-secondary/30 border border-secondary/50 text-[#f5ebd5] font-semibold uppercase tracking-widest text-xs px-4 py-2 rounded-full">
                 About Care One
               </span>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                Your Trusted Partner in{' '}
-                <span className="text-primary">Clinical Excellence</span>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight drop-shadow-sm">
+                Your Trusted Partner in <span className="text-secondary">Clinical Excellence</span>
               </h1>
-              <p className="text-base lg:text-xl text-on-surface-variant leading-relaxed">
+              <p className="text-base lg:text-xl text-teal-100/80 leading-relaxed">
                 Since 2015, Care One has been pioneering advanced dermatological treatments with a commitment to excellence, safety, and patient transformation.
               </p>
               <button
                 onClick={onBookClick}
-                className="bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:-translate-y-1 hover:shadow-lg transition-all duration-200 text-base"
+                className="bg-secondary text-white px-8 py-4 rounded-xl font-semibold hover:bg-secondary/90 hover:-translate-y-1 hover:shadow-lg transition-all duration-200 text-base"
               >
                 Book a Consultation
               </button>
             </div>
-            {/* Stats */}
+            {/* Stats - Premium Glassmorphism */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
               {[
                 { value: '500+', label: 'Monthly Treatments' },
                 { value: '98%', label: 'Satisfaction Rate' },
                 { value: '2000+', label: 'Happy Patients' }
               ].map((stat, i) => (
-                <div key={i} className="bg-white rounded-2xl p-5 md:p-6 shadow-sm border border-outline-variant/20 text-center hover:shadow-md transition duration-200">
-                  <div className="text-3xl lg:text-4xl font-extrabold text-primary mb-2">{stat.value}</div>
-                  <p className="text-xs sm:text-sm text-on-surface-variant font-medium leading-snug">{stat.label}</p>
+                <div key={i} className="bg-white/10 backdrop-blur-md rounded-2xl p-5 md:p-6 shadow-lg border border-white/10 text-center hover:scale-105 transition-all duration-300">
+                  <div className="text-3xl lg:text-4xl font-extrabold text-secondary mb-2">{stat.value}</div>
+                  <p className="text-xs sm:text-sm text-teal-50/80 font-medium leading-snug">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -83,13 +86,13 @@ export default function AboutUs({ onBookClick }) {
       </section>
 
       {/* ═══════════════ OUR STORY ═══════════════ */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-16 lg:py-24 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <span className="inline-block bg-secondary/10 text-secondary font-semibold uppercase tracking-widest text-xs px-4 py-2 rounded-full">
               Our Story
             </span>
-            <h2 className="text-3xl lg:text-5xl font-bold leading-tight">A Decade of Transforming Lives</h2>
+            <h2 className="text-3xl lg:text-5xl font-bold leading-tight text-on-surface">A Decade of Transforming Lives</h2>
             <p className="text-on-surface-variant text-base lg:text-lg leading-relaxed">
               Founded in 2015, Care One emerged from a vision to bring world-class dermatological treatments to our community. Our founder, Dr. Rajesh Kumar, spent years in advanced training with leading clinics internationally before establishing this center of excellence.
             </p>
@@ -104,22 +107,22 @@ export default function AboutUs({ onBookClick }) {
       </section>
 
       {/* ═══════════════ TEAM ═══════════════ */}
-      <section className="py-16 lg:py-24 bg-gray-50">
+      <section className="py-16 lg:py-24 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
           <div className="text-center mb-12 lg:mb-16">
             <span className="inline-block bg-primary/10 text-primary font-semibold uppercase tracking-widest text-xs px-4 py-2 rounded-full mb-4">
               Our Experts
             </span>
-            <h2 className="text-3xl lg:text-5xl font-bold">Meet Our Expert Team</h2>
+            <h2 className="text-3xl lg:text-5xl font-bold text-on-surface">Meet Our Expert Team</h2>
             <p className="text-on-surface-variant text-base lg:text-lg max-w-2xl mx-auto mt-4 leading-relaxed">
               Our dermatologists and aestheticians bring decades of combined experience and passion for transforming lives.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
             {team.map((member, idx) => (
-              <div key={idx} className="bg-white rounded-3xl overflow-hidden shadow-sm border border-outline-variant/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
-                <img src={member.image} alt={member.name} className="w-full h-64 lg:h-80 object-contain bg-gray-50" />
-                <div className="p-6 lg:p-8">
+              <div key={idx} className="bg-white rounded-3xl overflow-hidden shadow-md border border-outline-variant/30 hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 flex flex-col">
+                <img src={member.image} alt={member.name} className="w-full h-64 lg:h-80 object-contain bg-gray-50/50" />
+                <div className="p-6 lg:p-8 border-t border-gray-100">
                   <h3 className="text-xl font-bold text-on-surface mb-1">{member.name}</h3>
                   <p className="text-primary text-sm font-semibold mb-3">{member.title}</p>
                   <p className="text-on-surface-variant text-sm leading-relaxed">{member.expertise}</p>
@@ -134,7 +137,7 @@ export default function AboutUs({ onBookClick }) {
       <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl lg:text-5xl font-bold">Our Core Values</h2>
+            <h2 className="text-3xl lg:text-5xl font-bold text-on-surface">Our Core Values</h2>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {[
@@ -143,8 +146,8 @@ export default function AboutUs({ onBookClick }) {
               { icon: '🔬', title: 'Innovation', desc: 'Latest technologies and cutting-edge techniques' },
               { icon: '🛡️', title: 'Safety', desc: 'Rigorous protocols and full clinical certification' }
             ].map((value, idx) => (
-              <div key={idx} className="text-center p-6 lg:p-8 rounded-2xl border border-outline-variant/20 hover:bg-primary/5 hover:border-primary/30 transition-all duration-300">
-                <div className="text-4xl lg:text-5xl mb-4">{value.icon}</div>
+              <div key={idx} className="text-center p-6 lg:p-8 rounded-2xl bg-gradient-to-br from-white to-gray-50/50 border border-outline-variant/30 shadow-sm hover:shadow-xl hover:bg-gradient-to-br hover:from-primary/5 hover:to-secondary/5 hover:border-primary/30 transition-all duration-300">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto text-3xl mb-4">{value.icon}</div>
                 <h3 className="text-lg lg:text-xl font-bold text-on-surface mb-2">{value.title}</h3>
                 <p className="text-sm text-on-surface-variant leading-relaxed">{value.desc}</p>
               </div>
@@ -172,7 +175,7 @@ export default function AboutUs({ onBookClick }) {
               </button>
               <a
                 href="/contact"
-                className="border-2 border-white/40 text-white px-8 py-4 rounded-xl font-semibold text-base text-center hover:bg-white/10 transition-all duration-200"
+                className="border-2 border-white/40 text-white px-8 py-4 rounded-xl font-semibold text-base text-center hover:bg-white/10 transition-all duration-200 flex items-center justify-center"
               >
                 Contact Us
               </a>
