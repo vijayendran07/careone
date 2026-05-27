@@ -33,39 +33,39 @@ export default function AdminDashboard() {
 
   const imageSections = [
     // Home Page
-    { id: 'home-hero-banner', label: '🏠 Home Hero Banner', category: 'Home Page' },
-    { id: 'clinic-image-1', label: '🏥 Clinic Image 1', category: 'Home Page' },
-    { id: 'clinic-image-2', label: '🏥 Clinic Image 2', category: 'Home Page' },
+    { id: 'home-hero-banner', label: 'Home Hero Banner', category: 'Home Page' },
+    { id: 'clinic-image-1', label: 'Clinic Image 1', category: 'Home Page' },
+    { id: 'clinic-image-2', label: 'Clinic Image 2', category: 'Home Page' },
 
     // Treatments Page
-    { id: 'treatments-hero', label: '💇 Treatments Hero', category: 'Treatments Page' },
-    { id: 'skin-treatment-before', label: '💆 Chemical Peels', category: 'Treatments Page' },
-    { id: 'skin-treatment-after', label: '💆 Mesotherapy', category: 'Treatments Page' },
-    { id: 'laser-treatment-1', label: '⚡ Laser Hair Removal', category: 'Treatments Page' },
-    { id: 'laser-treatment-2', label: '⚡ Fractional Resurfacing', category: 'Treatments Page' },
+    { id: 'treatments-hero', label: 'Treatments Hero', category: 'Treatments Page' },
+    { id: 'skin-treatment-before', label: 'Chemical Peels', category: 'Treatments Page' },
+    { id: 'skin-treatment-after', label: 'Mesotherapy', category: 'Treatments Page' },
+    { id: 'laser-treatment-1', label: 'Laser Hair Removal', category: 'Treatments Page' },
+    { id: 'laser-treatment-2', label: 'Fractional Resurfacing', category: 'Treatments Page' },
 
     // About Us Page
-    { id: 'doctor-image-1', label: '👨‍⚕️ Dr. Rajesh Kumar', category: 'About Us Page' },
-    { id: 'doctor-image-2', label: '👩‍⚕️ Dr. Priya Sharma', category: 'About Us Page' },
-    { id: 'doctor-image-3', label: '👨‍⚕️ Dr. Amit Patel', category: 'About Us Page' },
+    { id: 'doctor-image-1', label: 'Dr. Rajesh Kumar', category: 'About Us Page' },
+    { id: 'doctor-image-2', label: 'Dr. Priya Sharma', category: 'About Us Page' },
+    { id: 'doctor-image-3', label: 'Dr. Amit Patel', category: 'About Us Page' },
 
     // Patient Results Page (Hair)
-    { id: 'hair-result-1-before', label: '✂️ Hair Result 1 (Before)', category: 'Patient Results Page' },
-    { id: 'hair-result-1-after', label: '✂️ Hair Result 1 (After)', category: 'Patient Results Page' },
-    { id: 'hair-result-2-before', label: '✂️ Hair Result 2 (Before)', category: 'Patient Results Page' },
-    { id: 'hair-result-2-after', label: '✂️ Hair Result 2 (After)', category: 'Patient Results Page' },
-    { id: 'hair-result-3-before', label: '✂️ Hair Result 3 (Before)', category: 'Patient Results Page' },
-    { id: 'hair-result-3-after', label: '✂️ Hair Result 3 (After)', category: 'Patient Results Page' },
+    { id: 'hair-result-1-before', label: 'Hair Result 1 (Before)', category: 'Patient Results Page' },
+    { id: 'hair-result-1-after', label: 'Hair Result 1 (After)', category: 'Patient Results Page' },
+    { id: 'hair-result-2-before', label: 'Hair Result 2 (Before)', category: 'Patient Results Page' },
+    { id: 'hair-result-2-after', label: 'Hair Result 2 (After)', category: 'Patient Results Page' },
+    { id: 'hair-result-3-before', label: 'Hair Result 3 (Before)', category: 'Patient Results Page' },
+    { id: 'hair-result-3-after', label: 'Hair Result 3 (After)', category: 'Patient Results Page' },
 
     // Patient Results Page (Skin)
-    { id: 'skin-result-1-before', label: '💆 Skin Result 1 (Before)', category: 'Patient Results Page' },
-    { id: 'skin-result-1-after', label: '💆 Skin Result 1 (After)', category: 'Patient Results Page' },
-    { id: 'skin-result-2-before', label: '💆 Skin Result 2 (Before)', category: 'Patient Results Page' },
-    { id: 'skin-result-2-after', label: '💆 Skin Result 2 (After)', category: 'Patient Results Page' },
-    { id: 'skin-result-3-before', label: '💆 Skin Result 3 (Before)', category: 'Patient Results Page' },
-    { id: 'skin-result-3-after', label: '💆 Skin Result 3 (After)', category: 'Patient Results Page' },
-    { id: 'skin-result-4-before', label: '💆 Skin Result 4 (Before)', category: 'Patient Results Page' },
-    { id: 'skin-result-4-after', label: '💆 Skin Result 4 (After)', category: 'Patient Results Page' },
+    { id: 'skin-result-1-before', label: 'Skin Result 1 (Before)', category: 'Patient Results Page' },
+    { id: 'skin-result-1-after', label: 'Skin Result 1 (After)', category: 'Patient Results Page' },
+    { id: 'skin-result-2-before', label: 'Skin Result 2 (Before)', category: 'Patient Results Page' },
+    { id: 'skin-result-2-after', label: 'Skin Result 2 (After)', category: 'Patient Results Page' },
+    { id: 'skin-result-3-before', label: 'Skin Result 3 (Before)', category: 'Patient Results Page' },
+    { id: 'skin-result-3-after', label: 'Skin Result 3 (After)', category: 'Patient Results Page' },
+    { id: 'skin-result-4-before', label: 'Skin Result 4 (Before)', category: 'Patient Results Page' },
+    { id: 'skin-result-4-after', label: 'Skin Result 4 (After)', category: 'Patient Results Page' },
   ]
 
   const getToken = () => {
@@ -562,15 +562,17 @@ export default function AdminDashboard() {
                   {/* Stats */}
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
                     {[
-                      { label: 'Total Appointments', value: total,     icon: '📅', color: 'text-primary' },
-                      { label: 'Pending',            value: pending,   icon: '⏳', color: 'text-yellow-600' },
-                      { label: 'Confirmed',          value: confirmed, icon: '✅', color: 'text-green-600' },
-                      { label: 'Completed',          value: appointments.filter(a=>a.status==='completed').length, icon: '🏆', color: 'text-blue-600' },
+                      { label: 'Total Appointments', value: total,     icon: 'calendar_month', color: 'text-primary' },
+                      { label: 'Pending',            value: pending,   icon: 'pending_actions', color: 'text-yellow-600' },
+                      { label: 'Confirmed',          value: confirmed, icon: 'check_circle', color: 'text-green-600' },
+                      { label: 'Completed',          value: appointments.filter(a=>a.status==='completed').length, icon: 'emoji_events', color: 'text-blue-600' },
                     ].map((s, i) => (
-                      <div key={i} className="bg-white rounded-xl border border-outline-variant p-4 sm:p-6 shadow-sm">
-                        <p className="text-2xl mb-2">{s.icon}</p>
-                        <p className={`text-3xl font-bold ${s.color} mb-1`}>{s.value}</p>
-                        <p className="text-xs text-on-surface-variant font-semibold">{s.label}</p>
+                      <div key={i} className="bg-white rounded-xl border border-outline-variant p-4 sm:p-6 shadow-sm flex flex-col justify-between">
+                        <span className={`material-symbols-outlined text-3xl mb-2 ${s.color}`}>{s.icon}</span>
+                        <div>
+                          <p className={`text-3xl font-bold ${s.color} mb-1`}>{s.value}</p>
+                          <p className="text-xs text-on-surface-variant font-semibold">{s.label}</p>
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -1032,7 +1034,7 @@ export default function AdminDashboard() {
                           settingsSaved ? 'bg-green-500 text-white' : 'bg-primary text-white hover:opacity-90'
                         }`}
                       >
-                        {settingsSaved ? '✓ Saved!' : 'Save Changes'}
+                        {settingsSaved ? 'Saved!' : 'Save Changes'}
                       </button>
                     </div>
 
@@ -1177,7 +1179,7 @@ export default function AdminDashboard() {
               )}
 
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 text-sm text-blue-800">
-                <p className="font-semibold mb-1">💡 Tips:</p>
+                <p className="font-semibold mb-1">Tips:</p>
                 <ul className="text-xs space-y-1 list-disc list-inside">
                   {imageFormData.section === 'home-hero-banner' || imageFormData.section === 'treatments-hero' ? (
                     <>
