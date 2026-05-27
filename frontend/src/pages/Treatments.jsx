@@ -3,6 +3,7 @@ import API_URL from '../config/api'
 
 export default function Treatments({ onBookClick }) {
   const [gallery, setGallery] = useState([])
+  const [currentSlide, setCurrentSlide] = useState(0)
 
   useEffect(() => {
     fetch(`${API_URL}/api/gallery`)
@@ -18,6 +19,30 @@ export default function Treatments({ onBookClick }) {
   const getImage = (sectionId, fallback) => {
     const img = gallery.find(g => g.section === sectionId)
     return img?.imageUrl || fallback
+  }
+
+  const heroSlides = [
+    getImage('treatments-hero', 'https://lh3.googleusercontent.com/aida-public/AB6AXuDZSjr9ffFKDccUSvb4gr1uFpIOgSxF4OjsSKoQsmPGtNUKTyHPUTV5GTa9lUcQmhge3sEH29AH1yUlOZgZal6M84EzaAtb7mUrQKFqI9WOa-UVekJU6uTQLD7IlYIWOX9C0c0UWMl7aUyTvGlw4qTms_4-ssQfzRFvXrszjHMm8sxGJ9nyKMMtTXKBGPyIsmilPVo8JFCRbUN5X9ce5whW9SpUKlWStYDhaNU6EkMXHOsBmui0_Nbpch70KR7Tyd7ACd-dMK7wCw'),
+    'https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&q=80&w=1600',
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1600',
+    'https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?auto=format&fit=crop&q=80&w=1600'
+  ]
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide(prev => (prev + 1) % heroSlides.length)
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [heroSlides.length])
+
+  const nextSlide = (e) => {
+    e.stopPropagation()
+    setCurrentSlide(prev => (prev + 1) % heroSlides.length)
+  }
+
+  const prevSlide = (e) => {
+    e.stopPropagation()
+    setCurrentSlide(prev => (prev - 1 + heroSlides.length) % heroSlides.length)
   }
 
   const hairTreatments = [
@@ -73,17 +98,48 @@ export default function Treatments({ onBookClick }) {
     <main>
       {/* ═══════════════ HERO BANNER ═══════════════ */}
       <section className="relative w-full aspect-square sm:aspect-auto sm:min-h-[60vh] lg:min-h-[70vh] flex flex-col items-center justify-center overflow-hidden">
-        {/* Background image, fully displayed */}
-        <div className="absolute inset-0 w-full h-full flex items-center justify-center lg:justify-end">
+        {/* Full-width background images with premium cross-fade transition */}
+        {heroSlides.map((slideUrl, idx) => (
           <img
-            src={getImage('treatments-hero', 'https://lh3.googleusercontent.com/aida-public/AB6AXuDZSjr9ffFKDccUSvb4gr1uFpIOgSxF4OjsSKoQsmPGtNUKTyHPUTV5GTa9lUcQmhge3sEH29AH1yUlOZgZal6M84EzaAtb7mUrQKFqI9WOa-UVekJU6uTQLD7IlYIWOX9C0c0UWMl7aUyTvGlw4qTms_4-ssQfzRFvXrszjHMm8sxGJ9nyKMMtTXKBGPyIsmilPVo8JFCRbUN5X9ce5whW9SpUKlWStYDhaNU6EkMXHOsBmui0_Nbpch70KR7Tyd7ACd-dMK7wCw')}
-            alt="Treatments Hero"
-            className="w-full h-full object-cover object-center"
+            key={idx}
+            src={slideUrl}
+            alt={`Care One Treatments Slide ${idx + 1}`}
+            className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ease-in-out ${currentSlide === idx ? 'opacity-100 z-0' : 'opacity-0 z-0'}`}
           />
+        ))}
+
+        {/* Left Arrow Button */}
+        <button
+          onClick={prevSlide}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-white/70 hover:bg-white text-gray-800 hover:text-primary rounded-full flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+          aria-label="Previous Slide"
+        >
+          <span className="material-symbols-outlined font-bold text-lg md:text-xl">arrow_back_ios_new</span>
+        </button>
+
+        {/* Right Arrow Button */}
+        <button
+          onClick={nextSlide}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-white/70 hover:bg-white text-gray-800 hover:text-primary rounded-full flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+          aria-label="Next Slide"
+        >
+          <span className="material-symbols-outlined font-bold text-lg md:text-xl">arrow_forward_ios</span>
+        </button>
+
+        {/* Slide Navigation Dots */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+          {heroSlides.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrentSlide(idx)}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${currentSlide === idx ? 'bg-primary w-6' : 'bg-gray-400/60 hover:bg-gray-400'}`}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
         </div>
-        
+
         {/* Overlay for text readability */}
-        <div className="absolute inset-0 bg-white/60 sm:bg-white/50" />
+        <div className="absolute inset-0 bg-white/60 sm:bg-white/50 z-10 pointer-events-none" />
 
         {/* Centered text content */}
         <div className="relative z-10 w-full text-center px-4 sm:px-6 md:px-10 lg:px-16 py-8 sm:py-16">
