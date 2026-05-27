@@ -54,14 +54,18 @@ export default function ContactPage() {
   return (
     <main>
       {/* ═══════════════ HERO ═══════════════ */}
-      <section className="min-h-[40vh] flex items-center bg-gradient-to-br from-primary/5 via-white to-secondary/5">
-        <div className="w-full max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-16 lg:py-0">
+      <section className="min-h-[40vh] flex items-center bg-gradient-to-br from-[#004d4d] via-[#003333] to-[#004d4d] text-white relative overflow-hidden">
+        {/* Ambient shapes */}
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-to-br from-primary/15 to-secondary/15 rounded-full blur-3xl -z-10" />
+        <div className="absolute bottom-0 left-0 w-[200px] h-[200px] bg-gradient-to-tr from-secondary/15 to-primary/15 rounded-full blur-2xl -z-10" />
+        
+        <div className="w-full max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-16 lg:py-20 relative z-10">
           <div className="text-center max-w-3xl mx-auto space-y-4">
-            <span className="inline-block bg-primary/10 text-primary font-semibold uppercase tracking-widest text-xs px-4 py-2 rounded-full">
+            <span className="inline-block bg-secondary/30 border border-secondary/50 text-[#f5ebd5] font-semibold uppercase tracking-widest text-xs px-4 py-2 rounded-full">
               Get In Touch
             </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold">Contact {clinicName}</h1>
-            <p className="text-on-surface-variant text-base lg:text-xl leading-relaxed">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold drop-shadow-sm">Contact <span className="text-secondary">{clinicName}</span></h1>
+            <p className="text-teal-100/80 text-base lg:text-xl leading-relaxed">
               Reach out to our clinical reception, dermatological consultants, or medical specialists today.
             </p>
           </div>

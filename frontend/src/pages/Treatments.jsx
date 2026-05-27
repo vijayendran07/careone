@@ -136,7 +136,7 @@ export default function Treatments({ onBookClick }) {
       </section>
 
       {/* ═══════════════ SKIN REJUVENATION ═══════════════ */}
-      <section id="skin-rejuvenation" className="py-16 lg:py-24 bg-white">
+      <section id="skin-rejuvenation" className="py-16 lg:py-24 bg-primary text-white">
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="grid grid-cols-2 gap-4 h-[380px] lg:h-[480px]">
@@ -145,24 +145,24 @@ export default function Treatments({ onBookClick }) {
               ))}
             </div>
             <div className="space-y-6">
-              <span className="inline-block bg-secondary/10 text-secondary font-semibold uppercase tracking-widest text-xs px-4 py-2 rounded-full">
+              <span className="inline-block bg-white/20 border border-white/30 text-white font-semibold uppercase tracking-widest text-xs px-4 py-2 rounded-full">
                 Skin Science
               </span>
               <h2 className="text-3xl lg:text-5xl font-bold leading-tight">Skin Rejuvenation &amp; Chemical Peels</h2>
-              <p className="text-on-surface-variant text-base lg:text-lg leading-relaxed">
+              <p className="text-teal-100/80 text-base lg:text-lg leading-relaxed">
                 Our dermatological experts craft bespoke peel protocols and rejuvenation cycles to address pigmentation and signs of aging.
               </p>
-              <div className="space-y-4">
+              <div className="space-y-4 text-on-surface">
                 {skinTreatments.map((t, i) => (
-                  <div key={i} className="p-5 bg-gray-50 rounded-2xl border border-outline-variant/20 hover:border-primary/30 hover:bg-primary/5 transition-all">
-                    <h4 className="text-base lg:text-lg font-bold mb-2">{t.title}</h4>
+                  <div key={i} className="p-5 bg-white rounded-2xl border border-outline-variant/20 hover:border-primary/30 hover:shadow-lg transition-all duration-300">
+                    <h4 className="text-base lg:text-lg font-bold mb-2 text-primary">{t.title}</h4>
                     <p className="text-on-surface-variant text-sm leading-relaxed">{t.desc}</p>
                   </div>
                 ))}
               </div>
               <button
                 onClick={onBookClick}
-                className="bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:opacity-90 hover:-translate-y-1 transition-all duration-200 text-base"
+                className="bg-secondary text-white px-8 py-4 rounded-xl font-semibold hover:bg-secondary/90 hover:-translate-y-1 transition-all duration-200 text-base"
               >
                 Book Appointment
               </button>
