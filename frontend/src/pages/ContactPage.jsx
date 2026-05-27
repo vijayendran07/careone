@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import API_URL from '../config/api'
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
+  const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' })
   const [loading, setLoading] = useState(false)
   const [status, setStatus] = useState(null)
   const [settings, setSettings] = useState(null)
@@ -33,7 +33,7 @@ export default function ContactPage() {
 
       if (data.success) {
         setStatus({ type: 'success', message: '✅ Message sent! Our team will contact you shortly.' })
-        setForm({ name: '', email: '', subject: '', message: '' })
+        setForm({ name: '', email: '', phone: '', subject: '', message: '' })
       } else {
         setStatus({ type: 'error', message: data.message || '❌ Failed to send message. Please try again.' })
       }
@@ -162,16 +162,29 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div>
-                <label className="block text-sm font-semibold mb-2 text-on-surface">Subject</label>
-                <input
-                  type="text"
-                  required
-                  value={form.subject}
-                  onChange={e => setForm(f => ({ ...f, subject: e.target.value }))}
-                  placeholder="How can we help?"
-                  className="w-full border border-outline-variant/50 p-3.5 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 text-sm transition-all"
-                />
+              <div className="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label className="block text-sm font-semibold mb-2 text-on-surface">Mobile Number</label>
+                  <input
+                    type="tel"
+                    required
+                    value={form.phone}
+                    onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
+                    placeholder="Your mobile number"
+                    className="w-full border border-outline-variant/50 p-3.5 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 text-sm transition-all"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold mb-2 text-on-surface">Subject</label>
+                  <input
+                    type="text"
+                    required
+                    value={form.subject}
+                    onChange={e => setForm(f => ({ ...f, subject: e.target.value }))}
+                    placeholder="How can we help?"
+                    className="w-full border border-outline-variant/50 p-3.5 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 text-sm transition-all"
+                  />
+                </div>
               </div>
 
               <div>

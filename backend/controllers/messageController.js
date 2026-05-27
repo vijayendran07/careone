@@ -5,11 +5,12 @@ const Message = require('../models/Message');
 // @access  Public
 exports.createMessage = async (req, res) => {
   try {
-    const { name, email, subject, message } = req.body;
+    const { name, email, phone, subject, message } = req.body;
     
     const newMessage = await Message.create({
       name,
       email,
+      phone,
       subject,
       message
     });

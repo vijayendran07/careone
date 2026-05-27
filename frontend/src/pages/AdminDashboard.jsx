@@ -863,6 +863,7 @@ export default function AdminDashboard() {
                                 <td className="px-5 py-4">
                                   <p className={`font-semibold text-on-surface text-sm ${msg.status === 'unread' ? 'font-bold' : ''}`}>{msg.name}</p>
                                   <p className="text-xs text-on-surface-variant">{msg.email}</p>
+                                  {msg.phone && <p className="text-xs text-on-surface-variant mt-0.5">📱 {msg.phone}</p>}
                                 </td>
                                 <td className="px-5 py-4 max-w-md">
                                   <p className={`text-sm text-on-surface ${msg.status === 'unread' ? 'font-bold' : ''}`}>{msg.subject}</p>
