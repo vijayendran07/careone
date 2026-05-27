@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react'
 import API_URL from '../config/api'
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' })
-  const [loading, setLoading] = useState(false)
-  const [status, setStatus] = useState(null)
   const [settings, setSettings] = useState(null)
 
   useEffect(() => {
@@ -17,33 +14,6 @@ export default function ContactPage() {
       })
       .catch(console.error)
   }, [])
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setLoading(true)
-    setStatus(null)
-
-    try {
-      const res = await fetch(`${API_URL}/api/messages`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form)
-      })
-      const data = await res.json()
-
-      if (data.success) {
-        setStatus({ type: 'success', message: '✅ Message sent! Our team will contact you shortly.' })
-        setForm({ name: '', email: '', phone: '', subject: '', message: '' })
-      } else {
-        setStatus({ type: 'error', message: data.message || '❌ Failed to send message. Please try again.' })
-      }
-    } catch (error) {
-      console.error(error)
-      setStatus({ type: 'error', message: '❌ An error occurred. Please try again later.' })
-    } finally {
-      setLoading(false)
-    }
-  }
 
   const clinicName = settings?.clinicName || 'Care One'
   const email = settings?.email || 'support@careone.com'
@@ -134,91 +104,55 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Right: Form */}
-            <form onSubmit={handleSubmit} className="bg-white p-8 lg:p-10 rounded-3xl border border-outline-variant/30 shadow-sm space-y-6">
+            {/* Right: Location & Google Maps redirection */}
+            <div className="bg-white p-8 lg:p-10 rounded-3xl border border-outline-variant/30 shadow-sm space-y-6 flex flex-col justify-between min-h-[480px]">
               <div>
-                <h3 className="text-2xl font-bold text-on-surface mb-2">Send a Message</h3>
-                <p className="text-on-surface-variant text-sm">We'll get back to you within 24 hours.</p>
+                <h3 className="text-2xl font-bold text-on-surface mb-2">Our Location</h3>
+                <p className="text-on-surface-variant text-sm">Visit our clinical center of excellence. Click the map below to open directly in Google Maps.</p>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label className="block text-sm font-semibold mb-2 text-on-surface">Full Name</label>
-                  <input
-                    type="text"
-                    required
-                    value={form.name}
-                    onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                    placeholder="Your name"
-                    className="w-full border border-outline-variant/50 p-3.5 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 text-sm transition-all"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold mb-2 text-on-surface">Email Address</label>
-                  <input
-                    type="email"
-                    required
-                    value={form.email}
-                    onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                    placeholder="your@email.com"
-                    className="w-full border border-outline-variant/50 p-3.5 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 text-sm transition-all"
-                  />
-                </div>
-              </div>
-
-              <div className="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label className="block text-sm font-semibold mb-2 text-on-surface">Mobile Number</label>
-                  <input
-                    type="tel"
-                    required
-                    value={form.phone}
-                    onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
-                    placeholder="Your mobile number"
-                    className="w-full border border-outline-variant/50 p-3.5 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 text-sm transition-all"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold mb-2 text-on-surface">Subject</label>
-                  <input
-                    type="text"
-                    required
-                    value={form.subject}
-                    onChange={e => setForm(f => ({ ...f, subject: e.target.value }))}
-                    placeholder="How can we help?"
-                    className="w-full border border-outline-variant/50 p-3.5 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 text-sm transition-all"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold mb-2 text-on-surface">Message</label>
-                <textarea
-                  required
-                  rows={5}
-                  value={form.message}
-                  onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-                  placeholder="Tell us about your concerns or desired treatment..."
-                  className="w-full border border-outline-variant/50 p-3.5 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 text-sm resize-none transition-all"
-                />
-              </div>
-
-              {status && (
-                <div className={`p-4 rounded-xl text-sm font-semibold ${
-                  status.type === 'success' ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'
-                }`}>
-                  {status.message}
-                </div>
-              )}
-
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-primary text-white py-4 rounded-xl font-semibold hover:opacity-90 hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-50 text-base"
+              {/* Map Preview Container */}
+              <a 
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address + ', ' + city)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative block rounded-2xl overflow-hidden border border-outline-variant/20 shadow-inner h-[260px] transition duration-300"
               >
-                {loading ? 'Sending...' : 'Send Message'}
-              </button>
-            </form>
+                {/* Embedded dynamic iframe representing the location map */}
+                <iframe
+                  title="Care One Location Map"
+                  src={`https://maps.google.com/maps?q=${encodeURIComponent(address + ', ' + city)}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
+                  className="w-full h-full border-0 absolute inset-0 pointer-events-none group-hover:scale-105 transition-all duration-700"
+                  allowFullScreen
+                  loading="lazy"
+                />
+                {/* Glass overlay that prompts click to redirect */}
+                <div className="absolute inset-0 bg-[#004d4d]/10 group-hover:bg-transparent transition-all duration-300 flex items-center justify-center pointer-events-none">
+                  <div className="bg-primary/95 text-white px-5 py-2.5 rounded-full shadow-lg text-sm font-semibold tracking-wider uppercase opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-y-2 group-hover:translate-y-0 flex items-center gap-2">
+                    <span className="material-symbols-outlined text-sm">open_in_new</span>
+                    Open in Google Maps
+                  </div>
+                </div>
+              </a>
+
+              {/* Address detail */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <span className="material-symbols-outlined text-primary">location_on</span>
+                  <span className="text-sm sm:text-base font-semibold text-on-surface">{address}, {city}</span>
+                </div>
+                
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address + ', ' + city)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-primary text-white py-4 rounded-xl font-semibold hover:opacity-90 hover:-translate-y-0.5 transition-all duration-200 text-center flex items-center justify-center gap-2 text-base"
+                >
+                  <span className="material-symbols-outlined text-xl">map</span>
+                  Get Directions on Google Maps
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
