@@ -82,8 +82,8 @@ export default function Treatments({ onBookClick }) {
           />
         </div>
         
-        {/* Gradient overlay for readability - made very subtle as per reference */}
-        <div className="absolute inset-0 bg-white/30 sm:bg-transparent" />
+        {/* Overlay for text readability */}
+        <div className="absolute inset-0 bg-white/60 sm:bg-white/50" />
 
         {/* Centered text content */}
         <div className="relative z-10 w-full text-center px-4 sm:px-6 md:px-10 lg:px-16 py-8 sm:py-16">
