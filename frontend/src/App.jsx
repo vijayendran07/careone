@@ -369,6 +369,13 @@ function Header({ onBookClick, navigate }) {
               >
                 Patient Results
               </Link>
+              <Link 
+                to="/contact" 
+                onClick={() => setIsMenuOpen(false)}
+                className={location.pathname === '/contact' ? "text-primary text-lg font-semibold" : "text-on-surface-variant text-lg hover:text-primary transition"}
+              >
+                Contact
+              </Link>
             </nav>
             
             <div className="border-t border-outline-variant/20 pt-6 space-y-4">
