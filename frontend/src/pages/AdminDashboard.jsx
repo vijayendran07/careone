@@ -400,7 +400,6 @@ export default function AdminDashboard() {
   const navItems = [
     { id: 'dashboard',    label: 'Dashboard',           icon: 'dashboard' },
     { id: 'appointments', label: 'Patient Appointments', icon: 'calendar_month' },
-    { id: 'messages',     label: 'Messages',            icon: 'mail' },
     { id: 'content',      label: 'Content Management',  icon: 'edit_note' },
     { id: 'settings',     label: 'Settings',            icon: 'settings' },
   ]
@@ -835,71 +834,7 @@ export default function AdminDashboard() {
                 </div>
               )}
 
-              {/* ── MESSAGES ── */}
-              {activeTab === 'messages' && (
-                <div>
-                  <div className="mb-8">
-                    <h3 className="text-3xl font-bold text-on-surface mb-1">Contact Messages</h3>
-                    <p className="text-on-surface-variant">View messages from the Contact Us page.</p>
-                  </div>
 
-                  <div className="bg-white rounded-xl border border-outline-variant shadow-sm overflow-hidden">
-                    {messages.length === 0 ? (
-                      <div className="p-12 text-center text-on-surface-variant">No messages found.</div>
-                    ) : (
-                      <div className="overflow-x-auto">
-                        <table className="w-full">
-                          <thead className="bg-surface-container-low">
-                            <tr>
-                              <th className="px-5 py-4 text-left text-xs font-semibold text-on-surface-variant uppercase">Sender</th>
-                              <th className="px-5 py-4 text-left text-xs font-semibold text-on-surface-variant uppercase">Subject</th>
-                              <th className="px-5 py-4 text-left text-xs font-semibold text-on-surface-variant uppercase">Date</th>
-                              <th className="px-5 py-4 text-left text-xs font-semibold text-on-surface-variant uppercase">Actions</th>
-                            </tr>
-                          </thead>
-                          <tbody className="divide-y divide-outline-variant">
-                            {messages.map(msg => (
-                              <tr key={msg._id} className={`transition ${msg.status === 'unread' ? 'bg-blue-50' : 'hover:bg-surface-container-low'}`}>
-                                <td className="px-5 py-4">
-                                  <p className={`font-semibold text-on-surface text-sm ${msg.status === 'unread' ? 'font-bold' : ''}`}>{msg.name}</p>
-                                  <p className="text-xs text-on-surface-variant">{msg.email}</p>
-                                  {msg.phone && <p className="text-xs text-on-surface-variant mt-0.5">📱 {msg.phone}</p>}
-                                </td>
-                                <td className="px-5 py-4 max-w-md">
-                                  <p className={`text-sm text-on-surface ${msg.status === 'unread' ? 'font-bold' : ''}`}>{msg.subject}</p>
-                                  <p className="text-sm text-on-surface-variant mt-1 whitespace-pre-wrap">{msg.message}</p>
-                                </td>
-                                <td className="px-5 py-4 text-sm text-on-surface">
-                                  {new Date(msg.createdAt).toLocaleDateString()}
-                                </td>
-                                <td className="px-5 py-4">
-                                  <div className="flex items-center gap-2">
-                                    {msg.status === 'unread' && (
-                                      <button
-                                        onClick={() => markMessageRead(msg._id)}
-                                        className="bg-primary/10 text-primary hover:bg-primary/20 text-xs px-3 py-1.5 rounded-lg font-semibold transition"
-                                      >
-                                        Mark Read
-                                      </button>
-                                    )}
-                                    <button
-                                      onClick={() => deleteMessage(msg._id)}
-                                      className="text-red-400 hover:text-red-600 transition p-1"
-                                      title="Delete"
-                                    >
-                                      <span className="material-symbols-outlined text-base">delete</span>
-                                    </button>
-                                  </div>
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              )}
 
               {/* ── SETTINGS ── */}
               {activeTab === 'settings' && (
