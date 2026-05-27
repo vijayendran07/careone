@@ -5,6 +5,13 @@ const Appointment = require('../models/Appointment');
 exports.createAppointment = async (req, res) => {
   try {
     const { fullName, email, phone, treatment, preferredDate, preferredTime, notes } = req.body;
+    
+    // Generate unique booking ID: emailPrefix + phoneSuffix + randomPart
+    const emailPrefix = email.split('@')[0].replace(/[^a-zA-Z0-9]/g, '').slice(0, 4).toUpperCase();
+    const phoneSuffix = phone.replace(/[^0-9]/g, '').slice(-4);
+    const randomPart = Math.floor(100 + Math.random() * 900); // 3-digit random
+    const bookingId = `C1-${emailPrefix}-${phoneSuffix}-${randomPart}`;
+
     const appointment = await Appointment.create({
       fullName,
       email,
@@ -13,6 +20,7 @@ exports.createAppointment = async (req, res) => {
       preferredDate,
       preferredTime: preferredTime || '',
       notes,
+      bookingId,
       patient: req.user ? req.user._id : null,
     });
     res.status(201).json({ success: true, appointment });
@@ -99,6 +107,21 @@ exports.getMyAppointments = async (req, res) => {
       ]
     }).sort({ createdAt: -1 });
     res.json({ success: true, appointments });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// @desc    Get appointment by bookingId (Public status check)
+// @route   GET /api/appointments/status/:bookingId
+exports.getAppointmentStatus = async (req, res) => {
+  try {
+    const { bookingId } = req.params;
+    const appointment = await Appointment.findOne({ bookingId });
+    if (!appointment) {
+      return res.status(404).json({ success: false, message: 'Appointment not found with this booking ID' });
+    }
+    res.json({ success: true, appointment });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

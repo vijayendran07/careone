@@ -6,11 +6,13 @@ const {
   updateAppointment,
   deleteAppointment,
   getMyAppointments,
+  getAppointmentStatus,
 } = require('../controllers/appointmentController');
 const { protect, adminOnly } = require('../middleware/auth');
 
 // Public - anyone can book
 router.post('/', createAppointment);
+router.get('/status/:bookingId', getAppointmentStatus);
 
 // Protected - patient's own appointments
 router.get('/my', protect, getMyAppointments);

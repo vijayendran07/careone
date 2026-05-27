@@ -565,6 +565,7 @@ export default function AdminDashboard() {
                               <tr key={apt._id} className="hover:bg-surface-container-low transition">
                                 <td className="px-6 py-4">
                                   <p className="font-semibold text-on-surface text-sm">{apt.fullName}</p>
+                                  {apt.bookingId && <p className="text-[10px] bg-primary/10 text-primary px-1.5 py-0.5 rounded font-mono font-bold inline-block mt-0.5">{apt.bookingId}</p>}
                                   <p className="text-xs text-on-surface-variant">{apt.phone}</p>
                                 </td>
                                 <td className="px-6 py-4 text-sm text-on-surface-variant">{apt.treatment}</td>
@@ -627,6 +628,7 @@ export default function AdminDashboard() {
                               <tr key={apt._id} className="hover:bg-surface-container-low transition">
                                 <td className="px-5 py-4">
                                   <p className="font-semibold text-on-surface text-sm">{apt.fullName}</p>
+                                  {apt.bookingId && <p className="text-[10px] bg-primary/10 text-primary px-1.5 py-0.5 rounded font-mono font-bold inline-block mt-0.5">{apt.bookingId}</p>}
                                   <p className="text-xs text-on-surface-variant">{apt.email}</p>
                                 </td>
                                 <td className="px-5 py-4 text-sm text-on-surface-variant">{apt.phone}</td>
@@ -889,7 +891,6 @@ export default function AdminDashboard() {
                     <div className="bg-white rounded-xl border border-outline-variant p-6 shadow-sm">
                       <h4 className="font-bold text-on-surface mb-2">Admin Account</h4>
                       <p className="text-sm text-on-surface-variant mb-1">Email: <span className="font-semibold">admin@careone.com</span></p>
-                      <p className="text-sm text-on-surface-variant">To change the password, update it directly in the database or via the admin-setup API endpoint.</p>
                     </div>
                   </div>
                 </div>

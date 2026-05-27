@@ -13,6 +13,7 @@ export default function BookingModal({ onClose }) {
   })
   const [loading, setLoading] = useState(false)
   const [status, setStatus] = useState(null)
+  const [bookedAppointment, setBookedAppointment] = useState(null)
 
   const services = ['Hair Restoration', 'Laser Therapy', 'Skin Rejuvenation', 'Chemical Peels', 'Micro-needling']
 
@@ -49,13 +50,76 @@ export default function BookingModal({ onClose }) {
 
       if (!response.ok) throw new Error(data.message || 'Failed to book')
 
+      setBookedAppointment(data.appointment)
       setStatus({ type: 'success', message: '✅ Appointment booked successfully!' })
-      setTimeout(() => onClose(), 2000)
     } catch (error) {
       setStatus({ type: 'error', message: `❌ ${error.message}` })
     } finally {
       setLoading(false)
     }
+  }
+
+  if (bookedAppointment) {
+    return (
+      <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 overflow-y-auto animate-in fade-in duration-200">
+        <div className="bg-white w-full max-w-[700px] rounded-3xl shadow-2xl flex flex-row overflow-hidden border border-outline-variant/20 max-h-[95vh] md:max-h-[85vh]">
+          {/* Left Column Accent */}
+          <div className="bg-gradient-to-br from-[#004d4d] via-[#003c3c] to-[#002626] text-white p-6 md:p-8 flex flex-col justify-between w-[35%] shrink-0 text-left">
+            <div>
+              <span className="text-[9px] uppercase tracking-widest font-extrabold text-white/50">Confirmed</span>
+              <h2 className="text-base sm:text-xl md:text-2xl font-black mt-2 leading-tight">Thank You!</h2>
+            </div>
+            <div className="mt-8">
+              <span className="material-symbols-outlined text-4xl text-white/20">verified</span>
+            </div>
+          </div>
+          {/* Right Column Success Details */}
+          <div className="flex-1 p-5 md:p-8 space-y-4 text-left bg-surface-container-lowest flex flex-col justify-between overflow-y-auto">
+            <div className="space-y-4">
+              <div className="flex justify-start">
+                <div className="w-10 h-10 bg-green-50 rounded-full flex items-center justify-center text-green-600 border border-green-200">
+                  <span className="material-symbols-outlined text-xl font-bold">check_circle</span>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-base md:text-lg font-bold text-on-surface">Appointment Request Received</h3>
+                <p className="text-[11px] text-on-surface-variant mt-0.5">Your appointment has been registered. You do not need to register or log in; check status at any time using your unique Booking ID.</p>
+              </div>
+              
+              <div className="bg-primary/5 border border-primary/20 p-3.5 rounded-2xl space-y-1">
+                <span className="text-[9px] uppercase font-extrabold text-primary tracking-wider block">Your Unique Booking ID</span>
+                <div className="flex items-center justify-between gap-3 bg-white border border-outline-variant/40 px-3 py-1.5 rounded-xl">
+                  <code className="text-xs md:text-sm font-mono font-bold text-on-surface tracking-wider">{bookedAppointment.bookingId}</code>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      navigator.clipboard.writeText(bookedAppointment.bookingId)
+                      alert('Booking ID copied to clipboard!')
+                    }}
+                    className="text-primary hover:text-[#003c3c] font-bold text-[10px] flex items-center gap-1 shrink-0"
+                  >
+                    <span className="material-symbols-outlined text-xs">content_copy</span>
+                    Copy
+                  </button>
+                </div>
+              </div>
+
+              <div className="text-[11px] text-on-surface-variant leading-normal space-y-1 bg-surface-container-low/50 p-3 rounded-xl border border-outline-variant/30">
+                <p>💆 Treatment: <strong className="text-on-surface font-semibold">{bookedAppointment.treatment}</strong></p>
+                <p>📅 Date Preference: <strong className="text-on-surface font-semibold">{new Date(bookedAppointment.preferredDate).toLocaleDateString()} {bookedAppointment.preferredTime ? `at ${bookedAppointment.preferredTime}` : ''}</strong></p>
+              </div>
+            </div>
+
+            <button
+              onClick={onClose}
+              className="w-full bg-primary text-white py-2.5 md:py-3 rounded-xl font-extrabold hover:opacity-95 transition-all text-xs uppercase tracking-wider mt-4"
+            >
+              Done & Close
+            </button>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   return (

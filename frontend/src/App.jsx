@@ -9,6 +9,7 @@ import PatientResults from './pages/PatientResults'
 import Login from './pages/Login'
 import AdminDashboard from './pages/AdminDashboard'
 import BookingModal from './components/BookingModal'
+import StatusCheckModal from './components/StatusCheckModal'
 import API_URL from './config/api'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
@@ -27,6 +28,7 @@ function App() {
 
 function AppContent() {
   const [showBooking, setShowBooking] = useState(false)
+  const [showStatusModal, setShowStatusModal] = useState(false)
   const { user } = useAuth()
   const location = useLocation()
   const navigate = useNavigate()
@@ -82,7 +84,7 @@ function AppContent() {
 
   return (
     <div className="min-h-screen bg-mesh text-on-surface font-body-md flex flex-col">
-      <Header onBookClick={() => setShowBooking(true)} navigate={navigate} />
+      <Header onBookClick={() => setShowBooking(true)} onStatusCheckClick={() => setShowStatusModal(true)} navigate={navigate} />
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home onBookClick={() => setShowBooking(true)} />} />
@@ -97,11 +99,12 @@ function AppContent() {
       </main>
       <Footer settings={settings} />
       {showBooking && <BookingModal onClose={() => setShowBooking(false)} />}
+      {showStatusModal && <StatusCheckModal onClose={() => setShowStatusModal(false)} />}
     </div>
   )
 }
 
-function Header({ onBookClick, navigate }) {
+function Header({ onBookClick, onStatusCheckClick, navigate }) {
   const { user } = useAuth()
   const location = useLocation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -333,12 +336,20 @@ function Header({ onBookClick, navigate }) {
               </Link>
             )}
             {(!user || user.type !== 'admin') && (
-              <button
-                onClick={onBookClick}
-                className="bg-[#29a89d] text-white px-8 py-2.5 rounded-lg hover:opacity-90 transition font-medium"
-              >
-                Appointment
-              </button>
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={onStatusCheckClick}
+                  className="text-primary border border-primary px-4 py-2.5 rounded-lg hover:bg-primary/5 transition font-semibold text-sm"
+                >
+                  Check Booking Status
+                </button>
+                <button
+                  onClick={onBookClick}
+                  className="bg-[#29a89d] text-white px-8 py-2.5 rounded-lg hover:opacity-90 transition font-medium"
+                >
+                  Appointment
+                </button>
+              </div>
             )}
             {user && (
               <div className="flex items-center gap-3">
@@ -443,15 +454,26 @@ function Header({ onBookClick, navigate }) {
                 </Link>
               )}
               {(!user || user.type !== 'admin') && (
-                <button
-                  onClick={() => {
-                    setIsMenuOpen(false)
-                    onBookClick()
-                  }}
-                  className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:opacity-90 transition shadow-sm"
-                >
-                  Book Appointment
-                </button>
+                <div className="space-y-3">
+                  <button
+                    onClick={() => {
+                      setIsMenuOpen(false)
+                      onStatusCheckClick()
+                    }}
+                    className="w-full text-center text-primary border border-primary py-3 rounded-lg hover:bg-primary/5 transition font-semibold"
+                  >
+                    Check Booking Status
+                  </button>
+                  <button
+                    onClick={() => {
+                      setIsMenuOpen(false)
+                      onBookClick()
+                    }}
+                    className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:opacity-90 transition shadow-sm"
+                  >
+                    Book Appointment
+                  </button>
+                </div>
               )}
               {user && (
                 <div className="space-y-3">

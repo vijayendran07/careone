@@ -54,6 +54,11 @@ const appointmentSchema = new mongoose.Schema({
     ref: 'User',
     default: null,
   },
+  bookingId: {
+    type: String,
+    unique: true,
+    sparse: true,
+  },
 }, { timestamps: true });
 
 module.exports = mongoose.model('Appointment', appointmentSchema);
