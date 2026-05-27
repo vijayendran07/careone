@@ -340,7 +340,7 @@ function Header({ onBookClick, navigate }) {
                 Appointment
               </button>
             )}
-            {user ? (
+            {user && (
               <div className="flex items-center gap-3">
                 <span className="text-sm text-on-surface-variant">Hi, {user.name.split(' ')[0]}</span>
                 <button
@@ -349,15 +349,6 @@ function Header({ onBookClick, navigate }) {
                 >
                   Logout
                 </button>
-              </div>
-            ) : (
-              <div className="flex items-center gap-2">
-                <Link
-                  to="/login"
-                  className="text-primary border border-primary px-4 py-2 rounded-lg hover:bg-primary/5 transition"
-                >
-                  Login
-                </Link>
               </div>
             )}
           </div>
@@ -462,7 +453,7 @@ function Header({ onBookClick, navigate }) {
                   Book Appointment
                 </button>
               )}
-              {user ? (
+              {user && (
                 <div className="space-y-3">
                   <p className="text-sm text-on-surface-variant text-center font-medium">Signed in as <span className="text-on-surface font-semibold">{user.name}</span></p>
                   <button
@@ -475,14 +466,6 @@ function Header({ onBookClick, navigate }) {
                     Logout
                   </button>
                 </div>
-              ) : (
-                <Link
-                  to="/login"
-                  onClick={() => setIsMenuOpen(false)}
-                  className="block text-center text-primary border border-primary py-3 rounded-lg hover:bg-primary/5 transition font-semibold"
-                >
-                  Login
-                </Link>
               )}
             </div>
           </div>
