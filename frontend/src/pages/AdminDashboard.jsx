@@ -590,14 +590,9 @@ export default function AdminDashboard() {
               {/* ── APPOINTMENTS ── */}
               {activeTab === 'appointments' && (
                 <div>
-                  <div className="mb-8 flex items-start justify-between">
-                    <div>
-                      <h3 className="text-3xl font-bold text-on-surface mb-1">Patient Appointments</h3>
-                      <p className="text-on-surface-variant">Manage all incoming appointment requests.</p>
-                    </div>
-                    <button onClick={fetchAppointments} className="flex items-center gap-2 border border-outline-variant px-4 py-2 rounded-lg text-sm hover:bg-surface-container-low transition">
-                      <span className="material-symbols-outlined text-sm">refresh</span> Refresh
-                    </button>
+                  <div className="mb-8">
+                    <h3 className="text-3xl font-bold text-on-surface mb-1">Patient Appointments</h3>
+                    <p className="text-on-surface-variant">Manage all incoming appointment requests.</p>
                   </div>
 
                   {/* Filter tabs */}
@@ -843,14 +838,9 @@ export default function AdminDashboard() {
               {/* ── MESSAGES ── */}
               {activeTab === 'messages' && (
                 <div>
-                  <div className="mb-8 flex items-start justify-between">
-                    <div>
-                      <h3 className="text-3xl font-bold text-on-surface mb-1">Contact Messages</h3>
-                      <p className="text-on-surface-variant">View messages from the Contact Us page.</p>
-                    </div>
-                    <button onClick={fetchMessages} className="flex items-center gap-2 border border-outline-variant px-4 py-2 rounded-lg text-sm hover:bg-surface-container-low transition">
-                      <span className="material-symbols-outlined text-sm">refresh</span> Refresh
-                    </button>
+                  <div className="mb-8">
+                    <h3 className="text-3xl font-bold text-on-surface mb-1">Contact Messages</h3>
+                    <p className="text-on-surface-variant">View messages from the Contact Us page.</p>
                   </div>
 
                   <div className="bg-white rounded-xl border border-outline-variant shadow-sm overflow-hidden">

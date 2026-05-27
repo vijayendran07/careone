@@ -108,6 +108,38 @@ function Header({ onBookClick, navigate }) {
   const [myAppointments, setMyAppointments] = useState([])
   const [isNotifOpen, setIsNotifOpen] = useState(false)
 
+  const [readNotifs, setReadNotifs] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('read_notifications') || '[]')
+    } catch {
+      return []
+    }
+  })
+  const [deletedNotifs, setDeletedNotifs] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('deleted_notifications') || '[]')
+    } catch {
+      return []
+    }
+  })
+
+  const handleMarkRead = (id) => {
+    if (readNotifs.includes(id)) return
+    const updated = [...readNotifs, id]
+    setReadNotifs(updated)
+    localStorage.setItem('read_notifications', JSON.stringify(updated))
+  }
+
+  const handleDeleteNotif = (id) => {
+    if (deletedNotifs.includes(id)) return
+    const updated = [...deletedNotifs, id]
+    setDeletedNotifs(updated)
+    localStorage.setItem('deleted_notifications', JSON.stringify(updated))
+  }
+
+  const visibleNotifs = myAppointments.filter(apt => !deletedNotifs.includes(apt._id))
+  const unreadNotifsCount = visibleNotifs.filter(apt => !readNotifs.includes(apt._id)).length
+
   const handleLogout = () => {
     localStorage.removeItem('authToken')
     navigate('/')
@@ -172,11 +204,11 @@ function Header({ onBookClick, navigate }) {
                 aria-label="View notifications"
               >
                 <span className="material-symbols-outlined text-2xl">notifications</span>
-                {myAppointments.filter(a => a.status !== 'pending').length > 0 && (
+                {unreadNotifsCount > 0 && (
                   <span className="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-primary rounded-full animate-pulse"></span>
                 )}
               </button>
-
+ 
               {/* High-end Notifications Dropdown */}
               {isNotifOpen && (
                 <>
@@ -190,25 +222,29 @@ function Header({ onBookClick, navigate }) {
                         Appointments Schedule
                       </h4>
                       <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full font-semibold">
-                        {myAppointments.length} Booked
+                        {visibleNotifs.length} Updates
                       </span>
                     </div>
-
+ 
                     <div className="max-h-96 overflow-y-auto divide-y divide-outline-variant/20">
-                      {myAppointments.length === 0 ? (
+                      {visibleNotifs.length === 0 ? (
                         <div className="p-8 text-center text-on-surface-variant text-sm flex flex-col items-center gap-2">
                           <span className="material-symbols-outlined text-4xl text-outline">calendar_today</span>
-                          No appointments booked yet.
+                          No updates at the moment.
                         </div>
                       ) : (
-                        myAppointments.map(apt => {
+                        visibleNotifs.map(apt => {
+                          const isUnread = !readNotifs.includes(apt._id);
                           const hasConfirmedSchedule = apt.confirmedDate && apt.confirmedTime;
                           return (
-                            <div key={apt._id} className="p-4 hover:bg-surface-container-lowest transition space-y-2">
+                            <div key={apt._id} className={`p-4 hover:bg-surface-container-lowest transition space-y-2 ${isUnread ? 'bg-primary/5' : ''}`}>
                               <div className="flex justify-between items-start">
-                                <span className="font-semibold text-sm text-on-surface truncate max-w-[120px] sm:max-w-[200px]">
-                                  {apt.treatment}
-                                </span>
+                                <div className="flex items-center gap-1.5">
+                                  {isUnread && <span className="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0" title="Unread update"></span>}
+                                  <span className="font-semibold text-sm text-on-surface truncate max-w-[120px] sm:max-w-[200px]">
+                                    {apt.treatment}
+                                  </span>
+                                </div>
                                 <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
                                   apt.status === 'confirmed' ? 'bg-green-100 text-green-800' :
                                   apt.status === 'cancelled' ? 'bg-red-100 text-red-800' :
@@ -218,7 +254,7 @@ function Header({ onBookClick, navigate }) {
                                   {apt.status}
                                 </span>
                               </div>
-
+ 
                               <div className="text-xs text-on-surface-variant space-y-1">
                                 <p><strong>Requested:</strong> {new Date(apt.preferredDate).toLocaleDateString()} {apt.preferredTime ? `at ${apt.preferredTime}` : ''}</p>
                                 
@@ -233,7 +269,7 @@ function Header({ onBookClick, navigate }) {
                                     {apt.adminNote && <p className="mt-1 text-[11px] italic text-green-800">"{apt.adminNote}"</p>}
                                   </div>
                                 )}
-
+ 
                                 {apt.status === 'cancelled' && (
                                   <div className="mt-2 p-2.5 bg-red-50 rounded-lg border border-red-100 text-red-900">
                                     <p className="font-bold flex items-center gap-1">
@@ -243,13 +279,40 @@ function Header({ onBookClick, navigate }) {
                                     {apt.adminNote && <p className="mt-1 text-[11px] italic text-red-800">Reason: "{apt.adminNote}"</p>}
                                   </div>
                                 )}
-
+ 
                                 {apt.status === 'pending' && (
                                   <p className="text-[11px] text-yellow-800 italic mt-1 bg-yellow-50 p-2 rounded-lg border border-yellow-100 flex items-center gap-1">
                                     <span className="material-symbols-outlined text-sm animate-spin text-yellow-600">sync</span>
                                     Waiting for slot confirmation from clinic...
                                   </p>
                                 )}
+                              </div>
+
+                              <div className="flex justify-end items-center gap-3 pt-2 mt-1 border-t border-outline-variant/10">
+                                {isUnread && (
+                                  <button
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      handleMarkRead(apt._id);
+                                    }}
+                                    className="flex items-center gap-0.5 text-[11px] font-semibold text-primary hover:text-primary-dark transition"
+                                    title="Mark as read"
+                                  >
+                                    <span className="material-symbols-outlined text-sm">done</span>
+                                    Mark read
+                                  </button>
+                                )}
+                                <button
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleDeleteNotif(apt._id);
+                                  }}
+                                  className="flex items-center gap-0.5 text-[11px] font-semibold text-red-500 hover:text-red-700 transition"
+                                  title="Delete update notification"
+                                >
+                                  <span className="material-symbols-outlined text-sm">delete</span>
+                                  Delete
+                                </button>
                               </div>
                             </div>
                           )
