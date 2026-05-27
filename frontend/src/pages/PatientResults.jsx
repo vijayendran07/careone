@@ -98,14 +98,14 @@ export default function PatientResults({ onBookClick }) {
       </section>
 
       {/* ═══════════════ SKIN RESULTS ═══════════════ */}
-      <section className="py-16 lg:py-24 bg-gradient-to-b from-white to-gray-50">
+      <section className="py-16 lg:py-24 bg-primary text-white">
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
           <div className="text-center mb-12 lg:mb-16">
-            <span className="inline-block bg-secondary/10 text-secondary font-semibold uppercase tracking-widest text-xs px-4 py-2 rounded-full mb-4">Skin Results</span>
-            <h2 className="text-3xl lg:text-5xl font-bold text-on-surface">Skin Rejuvenation &amp; Chemical Peels</h2>
-            <p className="text-on-surface-variant text-sm sm:text-base mt-2">Unparalleled transformations in skin luminosity, tone correction, and acne resurfacing.</p>
+            <span className="inline-block bg-white/20 border border-white/30 text-white font-semibold uppercase tracking-widest text-xs px-4 py-2 rounded-full mb-4">Skin Results</span>
+            <h2 className="text-3xl lg:text-5xl font-bold">Skin Rejuvenation &amp; Chemical Peels</h2>
+            <p className="text-white/80 text-sm sm:text-base mt-2">Unparalleled transformations in skin luminosity, tone correction, and acne resurfacing.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 text-on-surface">
             {[
               {
                 before: getImage('skin-result-1-before', 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80'),

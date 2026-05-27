@@ -107,18 +107,18 @@ export default function AboutUs({ onBookClick }) {
       </section>
 
       {/* ═══════════════ TEAM ═══════════════ */}
-      <section className="py-16 lg:py-24 bg-gradient-to-b from-white to-gray-50">
+      <section className="py-16 lg:py-24 bg-primary text-white">
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
           <div className="text-center mb-12 lg:mb-16">
-            <span className="inline-block bg-primary/10 text-primary font-semibold uppercase tracking-widest text-xs px-4 py-2 rounded-full mb-4">
+            <span className="inline-block bg-white/20 border border-white/30 text-white font-semibold uppercase tracking-widest text-xs px-4 py-2 rounded-full mb-4">
               Our Experts
             </span>
-            <h2 className="text-3xl lg:text-5xl font-bold text-on-surface">Meet Our Expert Team</h2>
-            <p className="text-on-surface-variant text-base lg:text-lg max-w-2xl mx-auto mt-4 leading-relaxed">
+            <h2 className="text-3xl lg:text-5xl font-bold">Meet Our Expert Team</h2>
+            <p className="text-white/80 text-base lg:text-lg max-w-2xl mx-auto mt-4 leading-relaxed">
               Our dermatologists and aestheticians bring decades of combined experience and passion for transforming lives.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 text-on-surface">
             {team.map((member, idx) => (
               <div key={idx} className="bg-white rounded-3xl overflow-hidden shadow-md border border-outline-variant/30 hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 flex flex-col">
                 <img src={member.image} alt={member.name} className="w-full h-64 lg:h-80 object-contain bg-gray-50/50" />
