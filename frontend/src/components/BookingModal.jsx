@@ -82,11 +82,11 @@ export default function BookingModal({ onClose }) {
                 </div>
               </div>
               <div>
-                <h3 className="text-base md:text-lg font-bold text-on-surface">Appointment Request Received</h3>
-                <p className="text-[11px] text-on-surface-variant mt-0.5">Your appointment has been registered. You do not need to register or log in; check status at any time using your unique Booking ID.</p>
+                <h3 className="text-base md:text-xl font-black text-on-surface">Booking Successful</h3>
+                <p className="text-[11px] text-on-surface-variant mt-0.5">Your appointment request has been logged successfully.</p>
               </div>
               
-              <div className="bg-primary/5 border border-primary/20 p-3.5 rounded-2xl space-y-1">
+              <div className="bg-primary/5 border border-primary/20 p-3.5 rounded-2xl space-y-2">
                 <span className="text-[9px] uppercase font-extrabold text-primary tracking-wider block">Your Unique Booking ID</span>
                 <div className="flex items-center justify-between gap-3 bg-white border border-outline-variant/40 px-3 py-1.5 rounded-xl">
                   <code className="text-xs md:text-sm font-mono font-bold text-on-surface tracking-wider">{bookedAppointment.bookingId}</code>
@@ -102,6 +102,10 @@ export default function BookingModal({ onClose }) {
                     Copy
                   </button>
                 </div>
+                <p className="text-[10px] font-bold text-primary flex items-center gap-1">
+                  <span className="material-symbols-outlined text-xs">info</span>
+                  Note: Copy this Booking ID to check your booking status
+                </p>
               </div>
 
               <div className="text-[11px] text-on-surface-variant leading-normal space-y-1 bg-surface-container-low/50 p-3 rounded-xl border border-outline-variant/30">
