@@ -454,14 +454,15 @@ function Header({ onBookClick, onStatusCheckClick, navigate }) {
                 </Link>
               )}
               {(!user || user.type !== 'admin') && (
-                <div className="space-y-3">
+                <div className="flex flex-col gap-3 w-full">
                   <button
                     onClick={() => {
                       setIsMenuOpen(false)
                       onStatusCheckClick()
                     }}
-                    className="w-full text-center text-primary border border-primary py-3 rounded-lg hover:bg-primary/5 transition font-semibold"
+                    className="w-full text-center text-primary border border-primary py-3 rounded-xl hover:bg-primary/5 transition font-semibold text-sm flex items-center justify-center gap-2"
                   >
+                    <span className="material-symbols-outlined text-lg">event_available</span>
                     Check Booking Status
                   </button>
                   <button
@@ -469,8 +470,9 @@ function Header({ onBookClick, onStatusCheckClick, navigate }) {
                       setIsMenuOpen(false)
                       onBookClick()
                     }}
-                    className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:opacity-90 transition shadow-sm"
+                    className="w-full bg-primary text-white py-3 rounded-xl font-bold hover:opacity-90 transition shadow-sm flex items-center justify-center gap-2 text-sm"
                   >
+                    <span className="material-symbols-outlined text-lg">calendar_month</span>
                     Book Appointment
                   </button>
                 </div>
