@@ -156,8 +156,8 @@ function Header({ onBookClick, navigate }) {
         <div className="hidden lg:flex items-center gap-8">
           <Link to="/" className={location.pathname === '/' ? "text-gray-900 border-b-2 border-primary pb-1 font-semibold" : "text-gray-600 hover:text-primary transition font-medium"}>Home</Link>
           <Link to="/treatments" className={location.pathname === '/treatments' ? "text-gray-900 border-b-2 border-primary pb-1 font-semibold" : "text-gray-600 hover:text-primary transition font-medium"}>Treatments</Link>
-          <Link to="/about" className={location.pathname === '/about' ? "text-gray-900 border-b-2 border-primary pb-1 font-semibold" : "text-gray-600 hover:text-primary transition font-medium"}>About us</Link>
           <Link to="/patient-results" className={location.pathname === '/patient-results' ? "text-gray-900 border-b-2 border-primary pb-1 font-semibold" : "text-gray-600 hover:text-primary transition font-medium"}>Patient Results</Link>
+          <Link to="/about" className={location.pathname === '/about' ? "text-gray-900 border-b-2 border-primary pb-1 font-semibold" : "text-gray-600 hover:text-primary transition font-medium"}>About us</Link>
           <Link to="/contact" className={location.pathname === '/contact' ? "text-gray-900 border-b-2 border-primary pb-1 font-semibold" : "text-gray-600 hover:text-primary transition font-medium"}>Contact</Link>
         </div>
 
@@ -356,18 +356,18 @@ function Header({ onBookClick, navigate }) {
                 Treatments
               </Link>
               <Link 
-                to="/about" 
-                onClick={() => setIsMenuOpen(false)}
-                className={location.pathname === '/about' ? "text-primary text-lg font-semibold" : "text-on-surface-variant text-lg hover:text-primary transition"}
-              >
-                About Us
-              </Link>
-              <Link 
                 to="/patient-results" 
                 onClick={() => setIsMenuOpen(false)}
                 className={location.pathname === '/patient-results' ? "text-primary text-lg font-semibold" : "text-on-surface-variant text-lg hover:text-primary transition"}
               >
                 Patient Results
+              </Link>
+              <Link 
+                to="/about" 
+                onClick={() => setIsMenuOpen(false)}
+                className={location.pathname === '/about' ? "text-primary text-lg font-semibold" : "text-on-surface-variant text-lg hover:text-primary transition"}
+              >
+                About Us
               </Link>
               <Link 
                 to="/contact" 
