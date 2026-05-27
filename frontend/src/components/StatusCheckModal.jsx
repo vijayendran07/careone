@@ -37,7 +37,7 @@ export default function StatusCheckModal({ onClose }) {
       <div className="bg-white w-full max-w-[750px] rounded-3xl shadow-2xl flex flex-col md:flex-row overflow-hidden border border-outline-variant/20 max-h-none md:max-h-[85vh]">
         
         {/* Left Column Sidebar */}
-        <div className="bg-gradient-to-br from-[#004d4d] via-[#003c3c] to-[#002626] text-white p-5 md:p-8 flex flex-col justify-between w-full md:w-[38%] shrink-0">
+        <div className="bg-gradient-to-br from-[#004d4d] via-[#003c3c] to-[#002626] text-white p-5 md:p-8 hidden md:flex flex-col justify-between md:w-[38%] shrink-0">
           <div>
             <div className="mb-4">
               <span className="text-[10px] uppercase tracking-widest font-extrabold text-white/50">Schedule Status</span>

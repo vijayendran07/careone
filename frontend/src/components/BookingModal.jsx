@@ -64,7 +64,7 @@ export default function BookingModal({ onClose }) {
       <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 overflow-y-auto animate-in fade-in duration-200">
         <div className="bg-white w-full max-w-[700px] rounded-3xl shadow-2xl flex flex-col md:flex-row overflow-hidden border border-outline-variant/20 max-h-none md:max-h-[85vh]">
           {/* Left Column Accent */}
-          <div className="bg-gradient-to-br from-[#004d4d] via-[#003c3c] to-[#002626] text-white p-6 md:p-8 flex flex-col justify-between w-full md:w-[35%] shrink-0 text-left">
+          <div className="bg-gradient-to-br from-[#004d4d] via-[#003c3c] to-[#002626] text-white p-6 md:p-8 hidden md:flex flex-col justify-between md:w-[35%] shrink-0 text-left">
             <div>
               <span className="text-[9px] uppercase tracking-widest font-extrabold text-white/50">Confirmed</span>
               <h2 className="text-base sm:text-xl md:text-2xl font-black mt-2 leading-tight">Thank You!</h2>
@@ -132,7 +132,7 @@ export default function BookingModal({ onClose }) {
       <div className="bg-white w-full max-w-[850px] rounded-3xl shadow-2xl flex flex-col md:flex-row overflow-hidden border border-outline-variant/20 max-h-none md:max-h-[85vh]">
         
         {/* Left Column: Brand Colored sidebar (Always side-by-side with form) */}
-        <div className="bg-gradient-to-br from-[#004d4d] via-[#003c3c] to-[#002626] text-white p-5 md:p-10 flex flex-col justify-between w-full md:w-[38%] shrink-0">
+        <div className="bg-gradient-to-br from-[#004d4d] via-[#003c3c] to-[#002626] text-white p-5 md:p-10 hidden md:flex flex-col justify-between md:w-[38%] shrink-0">
           <div>
             <div className="mb-4">
               <span className="text-[10px] uppercase tracking-widest font-extrabold text-white/50">Clinical Center</span>
