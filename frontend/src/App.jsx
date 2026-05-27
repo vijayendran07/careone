@@ -177,14 +177,7 @@ function Header({ onBookClick, onStatusCheckClick, navigate }) {
       <nav className="flex justify-between items-center max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-2 lg:py-3">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 flex-shrink-0">
-          <div className="flex flex-col leading-none items-center">
-            <span className="text-2xl lg:text-3xl font-extrabold tracking-widest text-gray-900" style={{fontFamily:'Georgia,serif'}}>CARE ONE</span>
-            <div className="flex items-center w-full mt-1.5">
-              <div className="h-[1px] flex-grow bg-gray-300"></div>
-              <span className="text-[9px] lg:text-[10px] text-[#29a89d] tracking-[0.2em] uppercase font-bold px-2">Skin &amp; Hair Clinic</span>
-              <div className="h-[1px] flex-grow bg-gray-300"></div>
-            </div>
-          </div>
+          <img src="/logo.png" alt="Care One Skin & Hair Clinic Logo" className="h-10 lg:h-12 w-auto object-contain" />
         </Link>
         
         {/* Desktop Navigation Links */}
@@ -387,14 +380,7 @@ function Header({ onBookClick, onStatusCheckClick, navigate }) {
           <div className="fixed right-0 top-0 h-screen w-80 bg-white shadow-2xl z-[101] p-6 flex flex-col md:hidden transition duration-300 overflow-y-auto">
             <div className="flex justify-between items-center mb-8">
             <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2">
-              <div className="flex flex-col leading-none items-center">
-                <span className="text-2xl font-extrabold tracking-widest text-gray-900" style={{fontFamily:'Georgia,serif'}}>CARE ONE</span>
-                <div className="flex items-center w-full mt-1.5">
-                  <div className="h-[1px] flex-grow bg-gray-300"></div>
-                  <span className="text-[9px] text-[#29a89d] tracking-[0.2em] uppercase font-bold px-2">Skin &amp; Hair Clinic</span>
-                  <div className="h-[1px] flex-grow bg-gray-300"></div>
-                </div>
-              </div>
+              <img src="/logo.png" alt="Care One Skin & Hair Clinic Logo" className="h-9 w-auto object-contain" />
             </Link>
               <button 
                 onClick={() => setIsMenuOpen(false)}
