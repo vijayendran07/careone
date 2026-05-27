@@ -376,6 +376,30 @@ export default function AdminDashboard() {
     }
   }
 
+  const updateSliderImages = async (sectionId, urlsList) => {
+    try {
+      const res = await fetch(`${API_URL}/api/gallery/${sectionId}`, {
+        method: 'PUT',
+        headers: authHeaders(),
+        body: JSON.stringify({
+          section: sectionId,
+          imageUrl: urlsList.join(','),
+          title: sectionId === 'home-hero-banner' ? 'Home Hero Banner' : 'Treatments Hero'
+        }),
+      })
+      const data = await res.json()
+      if (data.success) {
+        showToast('Slider updated!')
+        fetchGallery()
+      } else {
+        showToast(data.message || 'Failed to update slider', 'error')
+      }
+    } catch (e) {
+      showToast('Failed to update slider', 'error')
+      console.error(e)
+    }
+  }
+
   const deleteGalleryImage = async (section) => {
     if (!window.confirm('Delete this image?')) return
     try {
@@ -786,14 +810,127 @@ export default function AdminDashboard() {
                     <p className="text-on-surface-variant">Manage images displayed across your website.</p>
                   </div>
 
-                  {/* Group images by category */}
+                  {/* ═══════════════ Dedicated Home Hero Banner Slider Section ═══════════════ */}
+                  <div className="mb-10 bg-white rounded-xl border border-outline-variant p-6 shadow-sm">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                      <div>
+                        <h4 className="text-xl font-bold text-on-surface flex items-center gap-2">
+                          <span className="material-symbols-outlined text-primary text-2xl">home_repair_service</span>
+                          Home Hero Banner Slider
+                        </h4>
+                        <p className="text-sm text-on-surface-variant mt-1">Manage multiple slides displayed in the Home page main hero section.</p>
+                      </div>
+                      <button
+                        onClick={() => openImageModal(imageSections.find(s => s.id === 'home-hero-banner'))}
+                        className="bg-primary text-white hover:opacity-90 px-4 py-2.5 rounded-lg text-sm font-semibold flex items-center justify-center gap-2 shadow-sm transition"
+                      >
+                        <span className="material-symbols-outlined text-sm font-bold">add</span>
+                        Add Image to Home Banner
+                      </button>
+                    </div>
+
+                    {/* Slides Grid */}
+                    {(() => {
+                      const imgObj = gallery.find(g => g.section === 'home-hero-banner')
+                      const urls = imgObj?.imageUrl ? imgObj.imageUrl.split(',').map(u => u.trim()).filter(Boolean) : []
+                      if (urls.length === 0) {
+                        return (
+                          <div className="p-8 text-center bg-gray-50 rounded-xl border border-dashed border-outline-variant text-on-surface-variant italic">
+                            No custom images added yet. The home banner is currently displaying default fallback slides.
+                          </div>
+                        )
+                      }
+                      return (
+                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                          {urls.map((url, idx) => (
+                            <div key={idx} className="relative group h-32 border border-outline-variant rounded-xl overflow-hidden bg-gray-50 shadow-sm hover:shadow transition">
+                              <img src={url} alt={`Home Slide ${idx + 1}`} className="w-full h-full object-cover" />
+                              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                                <button
+                                  onClick={() => {
+                                    if (window.confirm('Remove this slide from the Home banner?')) {
+                                      const filtered = urls.filter((_, i) => i !== idx)
+                                      updateSliderImages('home-hero-banner', filtered)
+                                    }
+                                  }}
+                                  className="w-8 h-8 bg-red-600 hover:bg-red-700 text-white rounded-full flex items-center justify-center shadow hover:scale-105 active:scale-95 transition-all"
+                                  title="Remove Slide"
+                                >
+                                  <span className="material-symbols-outlined text-sm font-bold">delete</span>
+                                </button>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )
+                    })()}
+                  </div>
+
+                  {/* ═══════════════ Dedicated Treatments Hero Banner Slider Section ═══════════════ */}
+                  <div className="mb-10 bg-white rounded-xl border border-outline-variant p-6 shadow-sm">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                      <div>
+                        <h4 className="text-xl font-bold text-on-surface flex items-center gap-2">
+                          <span className="material-symbols-outlined text-primary text-2xl">content_cut</span>
+                          Treatments Hero Banner Slider
+                        </h4>
+                        <p className="text-sm text-on-surface-variant mt-1">Manage multiple slides displayed in the Treatments page main hero section.</p>
+                      </div>
+                      <button
+                        onClick={() => openImageModal(imageSections.find(s => s.id === 'treatments-hero'))}
+                        className="bg-primary text-white hover:opacity-90 px-4 py-2.5 rounded-lg text-sm font-semibold flex items-center justify-center gap-2 shadow-sm transition"
+                      >
+                        <span className="material-symbols-outlined text-sm font-bold">add</span>
+                        Add Image to Treatments Banner
+                      </button>
+                    </div>
+
+                    {/* Slides Grid */}
+                    {(() => {
+                      const imgObj = gallery.find(g => g.section === 'treatments-hero')
+                      const urls = imgObj?.imageUrl ? imgObj.imageUrl.split(',').map(u => u.trim()).filter(Boolean) : []
+                      if (urls.length === 0) {
+                        return (
+                          <div className="p-8 text-center bg-gray-50 rounded-xl border border-dashed border-outline-variant text-on-surface-variant italic">
+                            No custom images added yet. The treatments banner is currently displaying default fallback slides.
+                          </div>
+                        )
+                      }
+                      return (
+                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                          {urls.map((url, idx) => (
+                            <div key={idx} className="relative group h-32 border border-outline-variant rounded-xl overflow-hidden bg-gray-50 shadow-sm hover:shadow transition">
+                              <img src={url} alt={`Treatments Slide ${idx + 1}`} className="w-full h-full object-cover" />
+                              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                                <button
+                                  onClick={() => {
+                                    if (window.confirm('Remove this slide from the Treatments banner?')) {
+                                      const filtered = urls.filter((_, i) => i !== idx)
+                                      updateSliderImages('treatments-hero', filtered)
+                                    }
+                                  }}
+                                  className="w-8 h-8 bg-red-600 hover:bg-red-700 text-white rounded-full flex items-center justify-center shadow hover:scale-105 active:scale-95 transition-all"
+                                  title="Remove Slide"
+                                >
+                                  <span className="material-symbols-outlined text-sm font-bold">delete</span>
+                                </button>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )
+                    })()}
+                  </div>
+
+                  {/* Group standard images by category (excluding hero sliders) */}
                   {['Home Page', 'Treatments Page', 'About Us Page', 'Patient Results Page'].map(category => {
-                    const categoryImages = imageSections.filter(s => s.category === category)
+                    const categoryImages = imageSections.filter(s => s.category === category && s.id !== 'home-hero-banner' && s.id !== 'treatments-hero')
+                    if (categoryImages.length === 0) return null
                     return (
                       <div key={category} className="mb-12">
                         <h4 className="text-xl font-bold text-on-surface mb-4 flex items-center gap-2">
                           <span className="h-1 w-6 bg-primary rounded-full"></span>
-                          {category}
+                          Static Images: {category}
                         </h4>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                           {categoryImages.map(section => {
