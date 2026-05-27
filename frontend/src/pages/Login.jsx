@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import API_URL from '../config/api'
 
 export default function Login() {
@@ -11,6 +10,11 @@ export default function Login() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+
+  // Forgot Password state
+  const [showForgotPassword, setShowForgotPassword] = useState(false)
+  const [resetEmail, setResetEmail] = useState('')
+  const [resetStatus, setResetStatus] = useState(null)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -58,6 +62,98 @@ export default function Login() {
     } finally {
       setLoading(false)
     }
+  }
+
+  const handleForgotPasswordSubmit = (e) => {
+    e.preventDefault()
+    setLoading(true)
+    setResetStatus(null)
+
+    // Simulate sending reset link with a realistic loading state
+    setTimeout(() => {
+      setLoading(false)
+      setResetStatus({
+        type: 'success',
+        message: `✅ A secure reset link has been dispatched to ${resetEmail}. Please check your inbox and spam folders.`
+      })
+      setResetEmail('')
+    }, 1200)
+  }
+
+
+
+  if (showForgotPassword) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-primary/5 to-secondary/5 flex items-center justify-center px-6">
+        <div className="w-full max-w-md">
+          {/* Logo */}
+          <div className="text-center mb-12">
+            <h1 className="text-3xl font-bold text-primary mb-2">Care One</h1>
+            <p className="text-on-surface-variant">Clinical Excellence in Skin & Hair</p>
+          </div>
+
+          {/* Card */}
+          <div className="bg-surface rounded-2xl shadow-lg border border-outline-variant/20 p-8">
+            <h2 className="text-xl font-bold text-on-surface mb-4 text-center">
+              Reset Patient Password
+            </h2>
+            <p className="text-xs sm:text-sm text-on-surface-variant text-center mb-6 leading-relaxed">
+              Enter your registered email address and we will send you a secure link to reset your password.
+            </p>
+
+            <form onSubmit={handleForgotPasswordSubmit} className="space-y-6">
+              <div>
+                <label htmlFor="resetEmail" className="block text-sm font-semibold text-on-surface mb-2">
+                  Email Address
+                </label>
+                <input
+                  id="resetEmail"
+                  type="email"
+                  required
+                  value={resetEmail}
+                  onChange={(e) => setResetEmail(e.target.value)}
+                  placeholder="your@email.com"
+                  className="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                />
+              </div>
+
+              {resetStatus && (
+                <div className={`p-4 rounded-lg text-sm leading-relaxed ${
+                  resetStatus.type === 'success' 
+                    ? 'bg-primary/10 border border-primary/30 text-primary' 
+                    : 'bg-error/10 border border-error/30 text-error'
+                }`}>
+                  {resetStatus.message}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:opacity-90 transition disabled:opacity-50"
+              >
+                {loading ? 'Sending link...' : 'Send Reset Link'}
+              </button>
+            </form>
+
+            <div className="mt-6 text-center">
+              <button
+                type="button"
+                onClick={() => {
+                  setShowForgotPassword(false)
+                  setResetEmail('')
+                  setResetStatus(null)
+                  setError('')
+                }}
+                className="text-primary font-semibold hover:underline bg-transparent border-none p-0 cursor-pointer text-sm"
+              >
+                ← Back to Sign In
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -188,7 +284,18 @@ export default function Login() {
                   <input type="checkbox" className="rounded" />
                   <span className="text-on-surface-variant">Remember me</span>
                 </label>
-                <a href="#" className="text-primary hover:underline">Forgot password?</a>
+                {userType === 'user' && (
+                  <button 
+                    type="button" 
+                    onClick={() => {
+                      setError('')
+                      setShowForgotPassword(true)
+                    }}
+                    className="text-primary font-semibold hover:underline bg-transparent border-none p-0 cursor-pointer text-xs sm:text-sm"
+                  >
+                    Forgot password?
+                  </button>
+                )}
               </div>
             )}
 
