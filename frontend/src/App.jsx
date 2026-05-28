@@ -517,10 +517,10 @@ function Footer({ settings }) {
   return (
     <footer className="bg-gradient-to-br from-[#004d4d] via-[#003333] to-[#004d4d] text-white border-t border-teal-950/50">
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-14">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10">
 
-          {/* Column 1 — Brand */}
-          <div className="space-y-4">
+          {/* Column 1 — Brand (spans full width on mobile) */}
+          <div className="col-span-2 lg:col-span-1 space-y-4">
             <div className="bg-white rounded-xl p-3 inline-block">
               <img src="/footer-logo.jpg" alt={`${clinicName} - Skin Hair Laser Clinic`} className="h-16 w-auto object-contain" />
             </div>
@@ -563,7 +563,7 @@ function Footer({ settings }) {
 
           {/* Column 2 — Treatments */}
           <div>
-            <h4 className="font-bold text-white text-sm uppercase tracking-widest mb-5">Treatments</h4>
+            <h4 className="font-extrabold text-white text-base mb-5 border-b border-white/10 pb-3">Treatments</h4>
             <ul className="space-y-3 text-sm text-teal-100/70">
               <li><Link to="/treatments#hair-restoration" className="hover:text-secondary transition">Hair Restoration</Link></li>
               <li><Link to="/treatments#skin-rejuvenation" className="hover:text-secondary transition">Skin Rejuvenation</Link></li>
@@ -574,7 +574,7 @@ function Footer({ settings }) {
 
           {/* Column 3 — Support */}
           <div>
-            <h4 className="font-bold text-white text-sm uppercase tracking-widest mb-5">Support</h4>
+            <h4 className="font-extrabold text-white text-base mb-5 border-b border-white/10 pb-3">Support</h4>
             <ul className="space-y-3 text-sm text-teal-100/70">
               <li><Link to="/privacy" className="hover:text-secondary transition">Privacy Policy</Link></li>
               <li><Link to="/terms" className="hover:text-secondary transition">Terms of Service</Link></li>
@@ -583,19 +583,21 @@ function Footer({ settings }) {
             </ul>
           </div>
 
-          {/* Column 4 — Location & Hours */}
+          {/* Column 4 — Location */}
           <div>
-            <h4 className="font-bold text-white text-sm uppercase tracking-widest mb-5">Location</h4>
-            <p className="text-sm text-teal-100/80 leading-relaxed mb-4">
+            <h4 className="font-extrabold text-white text-base mb-5 border-b border-white/10 pb-3">Location</h4>
+            <p className="text-sm text-teal-100/80 leading-relaxed">
               {address}<br />{city}
             </p>
-            <div className="border-t border-white/10 pt-4">
-              <p className="font-bold text-white text-sm uppercase tracking-widest mb-5">Working Hours</p>
-              <p className="text-sm text-teal-100/90 flex items-center gap-1.5">
-                <span className="material-symbols-outlined text-base text-secondary">schedule</span>
-                Serving You Every Day &bull; 9:30 AM – 9:00 PM
-              </p>
-            </div>
+          </div>
+
+          {/* Column 5 — Working Hours */}
+          <div>
+            <h4 className="font-extrabold text-white text-base mb-5 border-b border-white/10 pb-3">Working Hours</h4>
+            <p className="text-sm text-teal-100/90 flex items-start gap-2">
+              <span className="material-symbols-outlined text-lg text-secondary mt-0.5 flex-shrink-0">schedule</span>
+              <span>Serving You Every Day<br />9:30 AM – 9:00 PM</span>
+            </p>
           </div>
 
         </div>
