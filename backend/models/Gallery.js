@@ -9,6 +9,7 @@ const gallerySchema = new mongoose.Schema({
       'home-hero-banner',
       'clinic-image-1',
       'clinic-image-2',
+      'clinic-image-3',
       'treatments-hero',
       'skin-treatment-before',
       'skin-treatment-after',
