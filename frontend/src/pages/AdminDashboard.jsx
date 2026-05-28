@@ -37,6 +37,7 @@ export default function AdminDashboard() {
     { id: 'home-hero-banner', label: 'Home Hero Banner', category: 'Home Page' },
     { id: 'clinic-image-1', label: 'Clinic Image 1', category: 'Home Page' },
     { id: 'clinic-image-2', label: 'Clinic Image 2', category: 'Home Page' },
+    { id: 'clinic-image-3', label: 'Clinic Image 3', category: 'Home Page' },
 
     // Treatments Page
     { id: 'treatments-hero', label: 'Treatments Hero', category: 'Treatments Page' },

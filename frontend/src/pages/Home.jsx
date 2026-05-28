@@ -169,12 +169,11 @@ export default function Home({ onBookClick }) {
                 alt="Treatment"
                 className="rounded-2xl w-full h-full object-cover"
               />
-              <div className="rounded-2xl bg-primary flex items-center justify-center p-6">
-                <div className="text-white text-center">
-                  <div className="text-3xl font-bold">100%</div>
-                  <div className="text-sm text-white/80 mt-1">RESULTS</div>
-                </div>
-              </div>
+              <img
+                src={getImage('clinic-image-3', '/clinic-image-3-fallback.png')}
+                alt="Results"
+                className="rounded-2xl w-full h-full object-cover"
+              />
             </div>
 
             {/* Text */}
