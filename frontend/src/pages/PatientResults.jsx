@@ -34,7 +34,7 @@ export default function PatientResults({ onBookClick }) {
               Real Transformations
             </span>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight drop-shadow-sm">
-              See the Difference <span className="text-secondary">Care One Makes</span>
+              See the Difference <span className="text-white">Care One Makes</span>
             </h1>
             <p className="text-base lg:text-xl text-teal-100/80 leading-relaxed max-w-2xl mx-auto">
               Real patients, real results. These transformative outcomes speak to our commitment to excellence and your trust in us.

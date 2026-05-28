@@ -34,7 +34,7 @@ export default function ContactPage() {
             <span className="inline-block bg-secondary/30 border border-secondary/50 text-[#f5ebd5] font-semibold uppercase tracking-widest text-xs px-4 py-2 rounded-full">
               Get In Touch
             </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold drop-shadow-sm">Contact <span className="text-secondary">{clinicName}</span></h1>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold drop-shadow-sm">Contact <span className="text-white">{clinicName}</span></h1>
             <p className="text-teal-100/80 text-base lg:text-xl leading-relaxed">
               Reach out to our clinical reception, dermatological consultants, or medical specialists today.
             </p>

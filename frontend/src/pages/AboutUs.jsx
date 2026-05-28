@@ -17,7 +17,7 @@ export default function AboutUs({ onBookClick }) {
                 About Care One
               </span>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight drop-shadow-sm">
-                Your Trusted Partner in <span className="text-secondary">Clinical Excellence</span>
+                Your Trusted Partner in <span className="text-white">Clinical Excellence</span>
               </h1>
               <p className="text-base lg:text-xl text-teal-100/80 leading-relaxed">
                 Since 2015, Care One has been pioneering advanced dermatological treatments with a commitment to excellence, safety, and patient transformation.
