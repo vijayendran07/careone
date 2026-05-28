@@ -302,7 +302,9 @@ export default function Home({ onBookClick }) {
               {[
                 { q: 'What makes Care One different?', a: 'We combine board-certified expertise with FDA-approved technologies and a highly personalized care approach for every patient.' },
                 { q: 'Are treatments permanent?', a: 'Many of our treatments are designed for long-term permanence. Hair restoration and laser therapy provide lasting results.' },
-                { q: "What's the recovery time?", a: 'Most procedures have minimal downtime. You can typically return to your daily routine immediately after your session.' }
+                { q: "What's the recovery time?", a: 'Most procedures have minimal downtime. You can typically return to your daily routine immediately after your session.' },
+                { q: 'What do patients think about Care One?', a: 'Our patients consistently rate us 5 stars! Over 2,000 happy patients have experienced life-changing results at Care One. They love our warm, professional staff, clean and modern clinic environment, and most importantly — the visible, lasting results. Many patients say their skin and hair transformations have boosted their confidence tremendously and that they feel genuinely cared for at every step of their journey with us.' },
+                { q: 'How affordable is Care One?', a: 'At Care One, we believe world-class skin and hair care should be accessible to everyone. We offer competitive, transparent pricing with no hidden fees. Our consultations are complimentary, and we provide flexible treatment packages tailored to your budget. We also run seasonal offers and payment plan options so you can start your transformation without financial stress. Quality care at fair prices — that\'s our promise.' }
               ].map((faq, i) => (
                 <details key={i} className="group bg-white rounded-2xl border border-outline-variant/20 overflow-hidden shadow-sm">
                   <summary className="flex justify-between items-center font-semibold text-base p-6 cursor-pointer hover:bg-gray-50 transition-colors">
