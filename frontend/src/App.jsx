@@ -517,7 +517,7 @@ function Footer({ settings }) {
 
   return (
     <footer className="bg-gradient-to-br from-[#004d4d] via-[#003333] to-[#004d4d] text-white border-t border-teal-950/50">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-10">
+      <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
 
           {/* Column 1 — Brand Box (Left Column) */}
