@@ -204,7 +204,9 @@ export default function Treatments({ onBookClick }) {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="grid grid-cols-2 gap-4 h-[380px] lg:h-[480px]">
               {skinTreatments.map((t, i) => (
-                <img key={i} src={t.image} alt={t.title} className="rounded-2xl w-full h-full object-cover" />
+                <div key={i} className="relative rounded-2xl overflow-hidden shadow-sm">
+                  <img src={t.image} alt={t.title} className="absolute inset-0 w-full h-full object-cover" />
+                </div>
               ))}
             </div>
             <div className="space-y-6">
