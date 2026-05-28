@@ -61,13 +61,13 @@ export default function Treatments({ onBookClick }) {
     },
     {
       title: 'Follicular Restoration',
-      desc: 'Multi-modality approach combining laser stimulation with advanced pharmaceutical serums.',
+      desc: 'Follicular Restoration is an advanced hair restoration treatment focused on revitalizing weakened or damaged hair follicles to promote healthier, thicker, and natural-looking hair growth. Using modern regenerative and non-surgical techniques, the treatment helps improve scalp health, strengthen existing follicles, reduce hair thinning, and support long-term hair density restoration for both men and women..',
       benefits: ['Reverses early thinning', 'Relaxing clinical environment'],
       featured: true
     },
     {
       title: 'Exosome therapy ',
-      desc: 'Exosome Therapy is an emerging regenerative medicine treatment that uses tiny extracellular vesicles called exosomes, which are naturally released by cells to carry proteins, RNA, lipids, and signaling molecules throughout the body. These exosomes are believed to help with cell communication, tissue repair, inflammation control, and regeneration.',
+      desc: 'Exosome Therapy is an emerging regenerative medicine treatment that uses tiny extracellular vesicles called exosomes, which are naturally released by cells to carry proteins, RNA, lipids, and signaling molecules throughout the body. These exosomes are believed to help with cell communication, tissue repair, inflammation control, and regeneration.Requires further scientific validation before becoming a widely accepted standard medical treatment.',
       benefits: ['Improved absorption', 'Slight redness for 24 hours'],
       featured: false
     }
