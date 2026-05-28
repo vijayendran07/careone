@@ -527,7 +527,7 @@ function Footer({ settings }) {
                 <img src="/footer-logo.jpg" alt={`${clinicName} - Skin Hair Laser Clinic`} className="h-10 w-auto object-contain" />
               </div>
               <p className="text-teal-100/75 text-xs leading-relaxed">
-                Providing world-class clinical excellence in skin & hair care.Expert Skin & Hair care you can trust
+                Providing world-class clinical excellence in skin & hair care.Expert Skin & Hair care you can trust Reclaim your confidence with advanced, dermatologist-led treatments customized for your unique skin and hair goals. 
               </p> 
             </div>
             {/* Social Media Icons */}
