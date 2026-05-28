@@ -141,7 +141,7 @@ export default function Home({ onBookClick }) {
             {[
               { value: '2000+', label: 'Happy Patients' },
               { value: '500+', label: 'Monthly Treatments' },
-              { value: '98%', label: 'Satisfaction Rate' },
+              { value: '100%', label: 'Results' },
               { value: '10+', label: 'Years Experience' }
             ].map((stat, i) => (
               <div key={i}>
@@ -171,8 +171,8 @@ export default function Home({ onBookClick }) {
               />
               <div className="rounded-2xl bg-primary flex items-center justify-center p-6">
                 <div className="text-white text-center">
-                  <div className="text-3xl font-bold">98%</div>
-                  <div className="text-sm text-white/80 mt-1">Patient Satisfaction</div>
+                  <div className="text-3xl font-bold">100%</div>
+                  <div className="text-sm text-white/80 mt-1">RESULTS</div>
                 </div>
               </div>
             </div>
@@ -187,7 +187,7 @@ export default function Home({ onBookClick }) {
                 <span className="text-primary">transformative care.</span>
               </h2>
               <p className="text-base lg:text-lg text-on-surface-variant leading-relaxed">
-                We blend cutting-edge technology with expert dermatology to ensure you leave feeling rejuvenated and empowered. Founded in 2015, we've helped thousands achieve their aesthetic goals.
+                We blend cutting-edge technology with expert dermatology to ensure you leave feeling rejuvenated and empowered. Founded in 2025, we've helped thousands achieve their aesthetic goals.
               </p>
               <div className="grid grid-cols-2 gap-4">
                 {['FDA-Approved', 'Custom Plans', 'Expert Staff', 'Post-Care Support'].map((item, i) => (
