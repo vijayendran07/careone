@@ -6,7 +6,7 @@ export default function BookingModal({ onClose }) {
     name: '',
     email: '',
     phone: '',
-    service: 'Hair Restoration',
+    service: 'Hair',
     date: '',
     time: '',
     message: ''
@@ -15,7 +15,7 @@ export default function BookingModal({ onClose }) {
   const [status, setStatus] = useState(null)
   const [bookedAppointment, setBookedAppointment] = useState(null)
 
-  const services = ['Hair Restoration', 'Laser Therapy', 'Skin Rejuvenation', 'Chemical Peels', 'Micro-needling']
+  const services = ['Hair', 'laser', 'Skin', 'Botox', 'Fillers']
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -109,8 +109,8 @@ export default function BookingModal({ onClose }) {
               </div>
 
               <div className="text-[11px] text-on-surface-variant leading-normal space-y-1 bg-surface-container-low/50 p-3 rounded-xl border border-outline-variant/30">
-                <p>💆 Treatment: <strong className="text-on-surface font-semibold">{bookedAppointment.treatment}</strong></p>
-                <p>📅 Date Preference: <strong className="text-on-surface font-semibold">{new Date(bookedAppointment.preferredDate).toLocaleDateString()} {bookedAppointment.preferredTime ? `at ${bookedAppointment.preferredTime}` : ''}</strong></p>
+                <p> Treatment: <strong className="text-on-surface font-semibold">{bookedAppointment.treatment}</strong></p>
+                <p> Date Preference: <strong className="text-on-surface font-semibold">{new Date(bookedAppointment.preferredDate).toLocaleDateString()} {bookedAppointment.preferredTime ? `at ${bookedAppointment.preferredTime}` : ''}</strong></p>
               </div>
             </div>
 
