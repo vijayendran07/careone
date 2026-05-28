@@ -23,6 +23,7 @@ export default function AdminDashboard() {
   const [settingsSaved, setSettingsSaved] = useState(null)
   const [toast, setToast] = useState(null)
   const [filterStatus, setFilterStatus] = useState('all')
+  const [searchTerm, setSearchTerm] = useState('')
   const [isImageModalOpen, setIsImageModalOpen] = useState(false)
   const [editingImage, setEditingImage] = useState(null)
   const [imageFormData, setImageFormData] = useState({ section: '', imageUrl: '', title: '', description: '' })
@@ -420,9 +421,15 @@ export default function AdminDashboard() {
     }
   }
 
-  const filtered = filterStatus === 'all'
-    ? appointments
-    : appointments.filter(a => a.status === filterStatus)
+  const filtered = appointments.filter(a => {
+    const matchesStatus = filterStatus === 'all' || a.status === filterStatus
+    const matchesSearch = !searchTerm.trim() ||
+      (a.fullName && a.fullName.toLowerCase().includes(searchTerm.toLowerCase())) ||
+      (a.phone && a.phone.toLowerCase().includes(searchTerm.toLowerCase())) ||
+      (a.email && a.email.toLowerCase().includes(searchTerm.toLowerCase())) ||
+      (a.bookingId && a.bookingId.toLowerCase().includes(searchTerm.toLowerCase()))
+    return matchesStatus && matchesSearch
+  })
 
   const pending   = appointments.filter(a => a.status === 'pending').length
   const confirmed = appointments.filter(a => a.status === 'confirmed').length
@@ -632,19 +639,44 @@ export default function AdminDashboard() {
                     <p className="text-on-surface-variant">Manage all incoming appointment requests.</p>
                   </div>
 
-                  {/* Filter tabs */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {['all', 'pending', 'confirmed', 'completed', 'cancelled'].map(s => (
-                      <button
-                        key={s}
-                        onClick={() => setFilterStatus(s)}
-                        className={`px-4 py-2 rounded-full text-sm font-semibold transition capitalize ${
-                          filterStatus === s ? 'bg-primary text-white' : 'bg-white border border-outline-variant text-on-surface-variant hover:bg-surface-container-low'
-                        }`}
-                      >
-                        {s === 'all' ? `All (${total})` : `${s} (${appointments.filter(a=>a.status===s).length})`}
-                      </button>
-                    ))}
+                  {/* Filter tabs and Search bar */}
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+                    <div className="flex flex-wrap gap-2">
+                      {['all', 'pending', 'confirmed', 'completed', 'cancelled'].map(s => (
+                        <button
+                          key={s}
+                          onClick={() => setFilterStatus(s)}
+                          className={`px-4 py-2 rounded-full text-sm font-semibold transition capitalize ${
+                            filterStatus === s ? 'bg-primary text-white' : 'bg-white border border-outline-variant text-on-surface-variant hover:bg-surface-container-low'
+                          }`}
+                        >
+                          {s === 'all' ? `All (${total})` : `${s} (${appointments.filter(a=>a.status===s).length})`}
+                        </button>
+                      ))}
+                    </div>
+
+                    {/* Search Input */}
+                    <div className="relative w-full md:w-80">
+                      <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant/70 text-lg select-none">
+                        search
+                      </span>
+                      <input
+                        type="text"
+                        placeholder="Search patient, phone..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="w-full pl-10 pr-10 py-2.5 bg-white border border-outline-variant rounded-xl text-sm text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary shadow-sm placeholder:text-on-surface-variant/50 transition"
+                      />
+                      {searchTerm && (
+                        <button
+                          onClick={() => setSearchTerm('')}
+                          className="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-on-surface transition-colors duration-200"
+                          title="Clear search"
+                        >
+                          <span className="material-symbols-outlined text-lg select-none">close</span>
+                        </button>
+                      )}
+                    </div>
                   </div>
 
                   <div className="bg-white rounded-xl border border-outline-variant shadow-sm overflow-hidden">
