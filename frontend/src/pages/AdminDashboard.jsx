@@ -425,9 +425,7 @@ export default function AdminDashboard() {
     const matchesStatus = filterStatus === 'all' || a.status === filterStatus
     const matchesSearch = !searchTerm.trim() ||
       (a.fullName && a.fullName.toLowerCase().includes(searchTerm.toLowerCase())) ||
-      (a.phone && a.phone.toLowerCase().includes(searchTerm.toLowerCase())) ||
-      (a.email && a.email.toLowerCase().includes(searchTerm.toLowerCase())) ||
-      (a.bookingId && a.bookingId.toLowerCase().includes(searchTerm.toLowerCase()))
+      (a.phone && a.phone.toLowerCase().includes(searchTerm.toLowerCase()))
     return matchesStatus && matchesSearch
   })
 
