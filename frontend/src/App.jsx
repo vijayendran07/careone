@@ -513,14 +513,15 @@ function Footer({ settings }) {
   const clinicName = settings?.clinicName || 'Care One'
   const address = settings?.address || '123 Clinical Way, Wellness District'
   const city = settings?.city || 'City Center, SC 56789'
+  const phone = settings?.phone || '+91 83906 56789'
 
   return (
     <footer className="bg-gradient-to-br from-[#004d4d] via-[#003333] to-[#004d4d] text-white border-t border-teal-950/50">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-14">
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10 items-start">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
 
-          {/* Column 1 — Brand (spans full width on mobile) */}
-          <div className="col-span-2 lg:col-span-1 space-y-4">
+          {/* Column 1 — Brand Box (spans 4/12 width) */}
+          <div className="md:col-span-2 lg:col-span-4 bg-[#003c3c]/50 border border-white/5 rounded-3xl p-6 lg:p-8 space-y-4 shadow-xl backdrop-blur-sm">
             <div className="bg-white rounded-xl p-3 inline-block">
               <img src="/footer-logo.jpg" alt={`${clinicName} - Skin Hair Laser Clinic`} className="h-16 w-auto object-contain" />
             </div>
@@ -529,9 +530,9 @@ function Footer({ settings }) {
             </p>
           </div>
 
-          {/* Column 2 — Treatments */}
-          <div className="space-y-4">
-            <h4 className="font-extrabold text-white text-base border-b border-white/10 pb-3 uppercase tracking-wider">Treatments</h4>
+          {/* Column 2 — Useful Links / Treatments (spans 2/12 width) */}
+          <div className="space-y-4 lg:col-span-2">
+            <h4 className="font-bold text-white text-lg">Treatments</h4>
             <ul className="space-y-3 text-sm text-teal-100/70">
               <li><Link to="/treatments#hair-restoration" className="hover:text-secondary transition">Hair Restoration</Link></li>
               <li><Link to="/treatments#skin-rejuvenation" className="hover:text-secondary transition">Skin Rejuvenation</Link></li>
@@ -540,9 +541,9 @@ function Footer({ settings }) {
             </ul>
           </div>
 
-          {/* Column 3 — Support */}
-          <div className="space-y-4">
-            <h4 className="font-extrabold text-white text-base border-b border-white/10 pb-3 uppercase tracking-wider">Support</h4>
+          {/* Column 3 — Customer Support (spans 2/12 width) */}
+          <div className="space-y-4 lg:col-span-2">
+            <h4 className="font-bold text-white text-lg">Support</h4>
             <ul className="space-y-3 text-sm text-teal-100/70">
               <li><Link to="/privacy" className="hover:text-secondary transition">Privacy Policy</Link></li>
               <li><Link to="/terms" className="hover:text-secondary transition">Terms of Service</Link></li>
@@ -551,22 +552,52 @@ function Footer({ settings }) {
             </ul>
           </div>
 
-          {/* Column 4 — Location */}
-          <div className="space-y-4">
-            <h4 className="font-extrabold text-white text-base border-b border-white/10 pb-3 uppercase tracking-wider">Location</h4>
-            <p className="text-sm text-teal-100/80 leading-relaxed">
-              {address}<br />{city}
-            </p>
-          </div>
+          {/* Column 4 — Store Location & Details (spans 4/12 width) */}
+          <div className="md:col-span-2 lg:col-span-4 space-y-6">
+            <h4 className="font-bold text-white text-lg">Clinic Details</h4>
+            
+            <div className="space-y-5">
+              {/* Location Row */}
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-secondary flex-shrink-0">
+                  <span className="material-symbols-outlined text-lg">location_on</span>
+                </div>
+                <div className="space-y-0.5">
+                  <p className="text-[10px] font-extrabold uppercase tracking-widest text-teal-100/40">Location</p>
+                  <p className="text-sm text-teal-100/80 leading-relaxed">
+                    {address}<br />{city}
+                  </p>
+                </div>
+              </div>
 
-          {/* Column 5 — Working Hours */}
-          <div className="space-y-4">
-            <h4 className="font-extrabold text-white text-base border-b border-white/10 pb-3 uppercase tracking-wider">Working Hours</h4>
-            <p className="text-sm text-teal-100/90 flex items-start gap-2">
-              <span className="material-symbols-outlined text-lg text-secondary mt-0.5 flex-shrink-0">schedule</span>
-              <span>Serving You Every Day<br />9:30 AM – 9:00 PM</span>
-            </p>
-            {/* Social Media Icons */}
+              {/* Phone Row */}
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-secondary flex-shrink-0">
+                  <span className="material-symbols-outlined text-lg">call</span>
+                </div>
+                <div className="space-y-0.5">
+                  <p className="text-[10px] font-extrabold uppercase tracking-widest text-teal-100/40">Phone</p>
+                  <p className="text-sm text-teal-100/80 leading-relaxed">
+                    {phone}
+                  </p>
+                </div>
+              </div>
+
+              {/* Working Hours Row */}
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-secondary flex-shrink-0">
+                  <span className="material-symbols-outlined text-lg">schedule</span>
+                </div>
+                <div className="space-y-0.5">
+                  <p className="text-[10px] font-extrabold uppercase tracking-widest text-teal-100/40">Working Hours</p>
+                  <p className="text-sm text-teal-100/80 leading-relaxed">
+                    Serving You Every Day<br />9:30 AM – 9:00 PM
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Social Media Icons under details */}
             <div className="flex items-center gap-3 pt-2">
               {/* Instagram */}
               <a href="https://www.instagram.com/care_one_clinic_?igsh=ZHN3aG44dTJlODlz" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram"
