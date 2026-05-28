@@ -516,38 +516,60 @@ function Footer({ settings }) {
 
   return (
     <footer className="bg-gradient-to-br from-[#004d4d] via-[#003333] to-[#004d4d] text-white border-t border-teal-950/50">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-14">
-        <div className="space-y-6">
-          <div className="bg-white rounded-xl p-3 inline-block">
-            <img src="/footer-logo.jpg" alt={`${clinicName} - Skin Hair Laser Clinic`} className="h-16 w-auto object-contain" />
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+
+          {/* Column 1 — Brand */}
+          <div className="space-y-4">
+            <div className="bg-white rounded-xl p-3 inline-block">
+              <img src="/footer-logo.jpg" alt={`${clinicName} - Skin Hair Laser Clinic`} className="h-16 w-auto object-contain" />
+            </div>
+            <p className="text-teal-100/75 text-sm leading-relaxed">
+              Providing world-class clinical excellence in skin and hair care.
+            </p>
           </div>
-          <p className="text-teal-100/80 text-sm">Providing world-class clinical excellence in skin and hair care.</p>
-        </div>
-        <div>
-          <h4 className="font-bold text-white mb-6">Treatments</h4>
-          <ul className="space-y-3 text-sm text-teal-100/70">
-            <li><Link to="/treatments#hair-restoration" className="hover:text-secondary transition">Hair Restoration</Link></li>
-            <li><Link to="/treatments#skin-rejuvenation" className="hover:text-secondary transition">Skin Rejuvenation</Link></li>
-            <li><Link to="/treatments#laser-therapy" className="hover:text-secondary transition">Laser Therapy</Link></li>
-            <li><Link to="/treatments#skin-rejuvenation" className="hover:text-secondary transition">Advanced Aesthetics</Link></li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="font-bold text-white mb-6">Support</h4>
-          <ul className="space-y-3 text-sm text-teal-100/70">
-            <li><Link to="/privacy" className="hover:text-secondary transition">Privacy Policy</Link></li>
-            <li><Link to="/terms" className="hover:text-secondary transition">Terms of Service</Link></li>
-            <li><Link to="/faqs" className="hover:text-secondary transition">FAQs</Link></li>
-            <li><Link to="/contact" className="hover:text-secondary transition">Contact</Link></li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="font-bold text-white mb-6">Location</h4>
-          <p className="text-xs text-teal-100/80 leading-relaxed">{address}<br/>{city}</p>
+
+          {/* Column 2 — Treatments */}
+          <div>
+            <h4 className="font-bold text-white text-sm uppercase tracking-widest mb-5">Treatments</h4>
+            <ul className="space-y-3 text-sm text-teal-100/70">
+              <li><Link to="/treatments#hair-restoration" className="hover:text-secondary transition">Hair Restoration</Link></li>
+              <li><Link to="/treatments#skin-rejuvenation" className="hover:text-secondary transition">Skin Rejuvenation</Link></li>
+              <li><Link to="/treatments#laser-therapy" className="hover:text-secondary transition">Laser Therapy</Link></li>
+              <li><Link to="/treatments#skin-rejuvenation" className="hover:text-secondary transition">Advanced Aesthetics</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 3 — Support */}
+          <div>
+            <h4 className="font-bold text-white text-sm uppercase tracking-widest mb-5">Support</h4>
+            <ul className="space-y-3 text-sm text-teal-100/70">
+              <li><Link to="/privacy" className="hover:text-secondary transition">Privacy Policy</Link></li>
+              <li><Link to="/terms" className="hover:text-secondary transition">Terms of Service</Link></li>
+              <li><Link to="/faqs" className="hover:text-secondary transition">FAQs</Link></li>
+              <li><Link to="/contact" className="hover:text-secondary transition">Contact</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 4 — Location & Hours */}
+          <div>
+            <h4 className="font-bold text-white text-sm uppercase tracking-widest mb-5">Location</h4>
+            <p className="text-sm text-teal-100/80 leading-relaxed mb-4">
+              {address}<br />{city}
+            </p>
+            <div className="border-t border-white/10 pt-4">
+              <p className="text-xs text-teal-100/60 uppercase tracking-widest font-semibold mb-1">Working Hours</p>
+              <p className="text-sm text-teal-100/90 flex items-center gap-1.5">
+                <span className="material-symbols-outlined text-base text-secondary">schedule</span>
+                Serving You Every Day &bull; 9:30 AM – 9:00 PM
+              </p>
+            </div>
+          </div>
+
         </div>
       </div>
-      <div className="border-t border-white/10 py-6 text-center">
-        <p className="text-xs text-teal-100/60">© {new Date().getFullYear()} {clinicName} Clinical Excellence. All rights reserved.</p>
+      <div className="border-t border-white/10 py-5 text-center">
+        <p className="text-xs text-teal-100/50">© {new Date().getFullYear()} {clinicName} Clinical Excellence. All rights reserved.</p>
       </div>
     </footer>
   )

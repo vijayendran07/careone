@@ -54,8 +54,8 @@ export default function Treatments({ onBookClick }) {
 
   const hairTreatments = [
     {
-      title: 'PRP Hair Therapy',
-      desc: "Platelet-Rich Plasma therapy uses your body's own growth factors to stimulate dormant follicles.",
+      title: 'GFC Hair Therapy',
+      desc: "GFC hair therapy is a non-surgical, regenerative treatment that stimulates hair growth using growth factors extracted from your own blood. GFC therapy is considered a safer and more effective alternative to traditional PRP therapy, especially for those who did not see success with PRP. The treatment is designed to promote natural hair regrowth, improve scalp health, and strengthen hair follicles.",
       benefits: ['Thickens existing hair', '45 min session, minimal downtime'],
       featured: false
     },
@@ -66,8 +66,8 @@ export default function Treatments({ onBookClick }) {
       featured: true
     },
     {
-      title: 'Scalp Micro-Needling',
-      desc: 'Precision micro-channels for enhanced delivery of growth factors directly to the dermal papilla.',
+      title: 'Exosome therapy ',
+      desc: 'Exosome Therapy is an emerging regenerative medicine treatment that uses tiny extracellular vesicles called exosomes, which are naturally released by cells to carry proteins, RNA, lipids, and signaling molecules throughout the body. These exosomes are believed to help with cell communication, tissue repair, inflammation control, and regeneration.',
       benefits: ['Improved absorption', 'Slight redness for 24 hours'],
       featured: false
     }

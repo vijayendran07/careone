@@ -33,7 +33,7 @@ export default function AboutUs({ onBookClick }) {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
               {[
                 { value: '500+', label: 'Monthly Treatments' },
-                { value: '98%', label: 'Satisfaction Rate' },
+                { value: '100%', label: 'Results' },
                 { value: '2000+', label: 'Happy Patients' }
               ].map((stat, i) => (
                 <div key={i} className="bg-white/10 backdrop-blur-md rounded-2xl p-5 md:p-6 shadow-lg border border-white/10 text-center hover:scale-105 transition-all duration-300">
@@ -55,7 +55,7 @@ export default function AboutUs({ onBookClick }) {
             </span>
             <h2 className="text-3xl lg:text-5xl font-bold leading-tight text-on-surface">A Decade of Transforming Lives</h2>
             <p className="text-on-surface-variant text-base lg:text-lg leading-relaxed">
-              Founded in 2015, Care One emerged from a vision to bring world-class dermatological treatments to our community. Our founder, Dr. Rajesh Kumar, spent years in advanced training with leading clinics internationally before establishing this center of excellence.
+              Founded in 2025, Care One emerged from a vision to bring world-class dermatological treatments to our community. Our founder, Dr. Rajesh Kumar, spent years in advanced training with leading clinics internationally before establishing this center of excellence.
             </p>
             <p className="text-on-surface-variant text-base lg:text-lg leading-relaxed">
               What started as a single clinic with 3 staff members has grown into a comprehensive aesthetic and dermatological center with cutting-edge technology and a team of 15+ specialists.
