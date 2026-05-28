@@ -493,7 +493,9 @@ function Footer({ settings }) {
     <footer className="bg-gradient-to-br from-[#004d4d] via-[#003333] to-[#004d4d] text-white border-t border-teal-950/50">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-14">
         <div className="space-y-6">
-          <img src="/footer-logo.png" alt={`${clinicName} - Skin Hair Laser Clinic`} className="h-20 w-auto object-contain brightness-0 invert" />
+          <div className="bg-white rounded-xl p-3 inline-block">
+            <img src="/footer-logo.png.jpg" alt={`${clinicName} - Skin Hair Laser Clinic`} className="h-16 w-auto object-contain" />
+          </div>
           <p className="text-teal-100/80 text-sm">Providing world-class clinical excellence in skin and hair care.</p>
         </div>
         <div>
