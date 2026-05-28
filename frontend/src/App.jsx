@@ -598,12 +598,6 @@ function Footer({ settings }) {
                 </span>
               </div>
 
-              {/* Phone Row */}
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-sm text-secondary">call</span>
-                <span>{phone}</span>
-              </div>
-
               {/* Working Hours Row */}
               <div className="flex items-start gap-2">
                 <span className="material-symbols-outlined text-sm text-secondary mt-0.5">schedule</span>
