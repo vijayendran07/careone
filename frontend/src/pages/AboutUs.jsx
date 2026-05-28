@@ -1,45 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import API_URL from '../config/api'
+import React from 'react'
 
 export default function AboutUs({ onBookClick }) {
-  const [gallery, setGallery] = useState([])
-
-  useEffect(() => {
-    fetch(`${API_URL}/api/gallery`)
-      .then(res => res.json())
-      .then(data => {
-        if (data.success) {
-          setGallery(data.images)
-        }
-      })
-      .catch(console.error)
-  }, [])
-
-  const getImage = (sectionId, fallback) => {
-    const img = gallery.find(g => g.section === sectionId)
-    return img?.imageUrl || fallback
-  }
-
-  const team = [
-    {
-      name: 'Dr. Rajesh Kumar',
-      title: 'Founder & Chief Dermatologist',
-      expertise: 'Advanced Hair Restoration, Laser Therapy',
-      image: getImage('doctor-image-1', 'https://images.unsplash.com/photo-1537368310025-700d6d9b22d3?auto=format&fit=crop&w=400&q=80')
-    },
-    {
-      name: 'Dr. Priya Sharma',
-      title: 'Senior Aesthetician',
-      expertise: 'Chemical Peels, Skin Rejuvenation',
-      image: getImage('doctor-image-2', 'https://images.unsplash.com/photo-1527529482379-91f2883627e9?auto=format&fit=crop&w=400&q=80')
-    },
-    {
-      name: 'Dr. Amit Patel',
-      title: 'Laser Specialist',
-      expertise: 'Fractional Resurfacing, Hair Removal',
-      image: getImage('doctor-image-3', 'https://images.unsplash.com/photo-1535713566543-ab7e9c2b5908?auto=format&fit=crop&w=400&q=80')
-    }
-  ]
 
   return (
     <main>
@@ -102,33 +63,6 @@ export default function AboutUs({ onBookClick }) {
             <p className="text-on-surface-variant text-base lg:text-lg leading-relaxed">
               Today, we're proud to serve over 2,000 satisfied patients and maintain the highest standards of clinical care, patient safety, and aesthetic outcomes.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════ TEAM ═══════════════ */}
-      <section className="py-16 lg:py-24 bg-primary text-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
-          <div className="text-center mb-12 lg:mb-16">
-            <span className="inline-block bg-white/20 border border-white/30 text-white font-semibold uppercase tracking-widest text-xs px-4 py-2 rounded-full mb-4">
-              Our Experts
-            </span>
-            <h2 className="text-3xl lg:text-5xl font-bold">Meet Our Expert Team</h2>
-            <p className="text-white/80 text-base lg:text-lg max-w-2xl mx-auto mt-4 leading-relaxed">
-              Our dermatologists and aestheticians bring decades of combined experience and passion for transforming lives.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 text-on-surface">
-            {team.map((member, idx) => (
-              <div key={idx} className="bg-white rounded-3xl overflow-hidden shadow-md border border-outline-variant/30 hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 flex flex-col">
-                <img src={member.image} alt={member.name} className="w-full h-64 lg:h-80 object-contain bg-gray-50/50" />
-                <div className="p-6 lg:p-8 border-t border-gray-100">
-                  <h3 className="text-xl font-bold text-on-surface mb-1">{member.name}</h3>
-                  <p className="text-primary text-sm font-semibold mb-3">{member.title}</p>
-                  <p className="text-on-surface-variant text-sm leading-relaxed">{member.expertise}</p>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>

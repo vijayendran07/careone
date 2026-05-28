@@ -45,10 +45,6 @@ export default function AdminDashboard() {
     { id: 'laser-treatment-1', label: 'Laser Hair Removal', category: 'Treatments Page' },
     { id: 'laser-treatment-2', label: 'Fractional Resurfacing', category: 'Treatments Page' },
 
-    // About Us Page
-    { id: 'doctor-image-1', label: 'Dr. Rajesh Kumar', category: 'About Us Page' },
-    { id: 'doctor-image-2', label: 'Dr. Priya Sharma', category: 'About Us Page' },
-    { id: 'doctor-image-3', label: 'Dr. Amit Patel', category: 'About Us Page' },
 
     // Patient Results Page (Hair)
     { id: 'hair-result-1-before', label: 'Hair Result 1 (Before)', category: 'Patient Results Page' },
@@ -955,7 +951,7 @@ export default function AdminDashboard() {
                   </div>
 
                   {/* Group standard images by category (excluding hero sliders) */}
-                  {['Home Page', 'Treatments Page', 'About Us Page', 'Patient Results Page'].map(category => {
+                  {['Home Page', 'Treatments Page', 'Patient Results Page'].map(category => {
                     const categoryImages = imageSections.filter(s => s.category === category && s.id !== 'home-hero-banner' && s.id !== 'treatments-hero')
                     if (categoryImages.length === 0) return null
                     return (
