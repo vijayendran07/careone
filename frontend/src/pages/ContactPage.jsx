@@ -88,17 +88,9 @@ export default function ContactPage() {
                   Clinic Opening Hours
                 </h3>
                 <ul className="space-y-3 text-sm">
-                  <li className="flex justify-between items-center py-2 border-b border-primary/10">
-                    <span className="text-on-surface-variant">Monday – Friday</span>
-                    <strong className="text-on-surface">9:00 AM – 7:00 PM</strong>
-                  </li>
-                  <li className="flex justify-between items-center py-2 border-b border-primary/10">
-                    <span className="text-on-surface-variant">Saturday</span>
-                    <strong className="text-on-surface">10:00 AM – 4:00 PM</strong>
-                  </li>
-                  <li className="flex justify-between items-center py-2">
-                    <span className="text-on-surface-variant">Sunday</span>
-                    <strong className="text-primary">Closed</strong>
+                  <li className="flex justify-between items-center py-2.5">
+                    <span className="text-on-surface-variant font-semibold text-sm sm:text-base">Serving You Every Day</span>
+                    <strong className="text-primary font-extrabold text-sm sm:text-base">9:30 AM – 9:00 PM</strong>
                   </li>
                 </ul>
               </div>

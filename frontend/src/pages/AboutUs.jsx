@@ -24,7 +24,7 @@ export default function AboutUs({ onBookClick }) {
               </p>
               <button
                 onClick={onBookClick}
-                className="bg-secondary text-white px-8 py-4 rounded-xl font-semibold hover:bg-secondary/90 hover:-translate-y-1 hover:shadow-lg transition-all duration-200 text-base"
+                className="bg-[#008080] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[#006a6a] hover:-translate-y-1 hover:shadow-lg transition-all duration-200 text-base"
               >
                 Book a Consultation
               </button>
@@ -37,7 +37,7 @@ export default function AboutUs({ onBookClick }) {
                 { value: '2000+', label: 'Happy Patients' }
               ].map((stat, i) => (
                 <div key={i} className="bg-white/10 backdrop-blur-md rounded-2xl p-5 md:p-6 shadow-lg border border-white/10 text-center hover:scale-105 transition-all duration-300">
-                  <div className="text-3xl lg:text-4xl font-extrabold text-secondary mb-2">{stat.value}</div>
+                  <div className="text-3xl lg:text-4xl font-extrabold text-white mb-2">{stat.value}</div>
                   <p className="text-xs sm:text-sm text-teal-50/80 font-medium leading-snug">{stat.label}</p>
                 </div>
               ))}
