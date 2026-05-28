@@ -517,20 +517,18 @@ function Footer({ settings }) {
 
   return (
     <footer className="bg-gradient-to-br from-[#004d4d] via-[#003333] to-[#004d4d] text-white border-t border-teal-950/50">
-      <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8 py-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
 
           {/* Column 1 — Brand Box (Left Column) */}
           <div className="space-y-4">
-            <div className="bg-[#003c3c]/40 border border-white/5 rounded-xl p-4 flex flex-row items-center gap-4 shadow-sm backdrop-blur-xs">
+            <div className="bg-[#003c3c]/40 border border-white/5 rounded-xl p-4 flex flex-col items-start gap-3.5 shadow-sm backdrop-blur-xs w-full h-auto">
               <div className="bg-white rounded-lg p-2 flex-shrink-0">
                 <img src="/footer-logo.jpg" alt={`${clinicName} - Skin Hair Laser Clinic`} className="h-10 w-auto object-contain" />
               </div>
               <p className="text-teal-100/75 text-xs leading-relaxed">
-                Providing world-class clinical excellence in skin & hair care.Expert Skin & Hair
-Care You Can Trust
-Reclaim your confidence with advanced, dermatologist-led treatments customized for your unique skin and hair goals.
-              </p>
+                Providing world-class clinical excellence in skin & hair care.Expert Skin & Hair care you can trust
+              </p> 
             </div>
             {/* Social Media Icons */}
             <div className="flex items-center gap-3 pt-0.5 pl-0.5">
