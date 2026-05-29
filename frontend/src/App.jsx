@@ -527,7 +527,7 @@ function Footer({ settings }) {
                 <img src="/footer-logo.jpg" alt={`${clinicName} - Skin Hair Laser Clinic`} className="h-10 w-auto object-contain" />
               </div>
               <p className="text-white text-[15px] leading-relaxed text-justify">
-                Providing world-class clinical excellence in skin &amp; hair care. We blend cutting-edge technology with expert dermatology to ensure you leave feeling rejuvenated and empowered. Founded in 2025, we've helped thousands achieve their aesthetic goals with a commitment to excellence, safety, and patient transformation.
+                Providing world-class clinical excellence in skin &amp; hair care. We blend cutting-edge technology with expert dermatology to ensure you leave feeling rejuvenated and empowered.We've helped thousands achieve their goals with a commitment to excellence.
               </p>
             </div>
 
@@ -564,7 +564,7 @@ function Footer({ settings }) {
           {/* Column 2 — Treatments */}
           <div className="space-y-5">
             <h4 className="font-bold text-white text-lg tracking-wide">Treatments</h4>
-            <ul className="space-y-3 text-[15px] text-teal-100/70">
+            <ul className="space-y-5 text-[15px] text-teal-100/70">
               <li><Link to="/treatments#hair-restoration" className="hover:text-white transition">Hair Restoration</Link></li>
               <li><Link to="/treatments#skin-rejuvenation" className="hover:text-white transition">Skin Rejuvenation</Link></li>
               <li><Link to="/treatments#laser-therapy" className="hover:text-white transition">Laser Therapy</Link></li>
@@ -575,7 +575,7 @@ function Footer({ settings }) {
           {/* Column 3 — Support */}
           <div className="space-y-5">
             <h4 className="font-bold text-white text-lg tracking-wide">Support</h4>
-            <ul className="space-y-3 text-[15px] text-teal-100/70">
+            <ul className="space-y-5 text-[15px] text-teal-100/70">
               <li><Link to="/privacy" className="hover:text-white transition">Privacy Policy</Link></li>
               <li><Link to="/terms" className="hover:text-white transition">Terms of Service</Link></li>
               <li><Link to="/faqs" className="hover:text-white transition">FAQs</Link></li>
@@ -586,7 +586,7 @@ function Footer({ settings }) {
           {/* Column 4 — Clinic Details */}
           <div className="space-y-5">
             <h4 className="font-bold text-white text-lg tracking-wide">Clinic Details</h4>
-            <div className="space-y-4 text-[15px] text-teal-100/70">
+            <div className="space-y-5 text-[15px] text-teal-100/70">
               <div className="flex items-start gap-2.5">
                 <span className="material-symbols-outlined text-base text-secondary mt-0.5 flex-shrink-0">location_on</span>
                 <span>{address}<br />{city}</span>
