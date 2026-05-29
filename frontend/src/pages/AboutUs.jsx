@@ -38,7 +38,7 @@ export default function AboutUs({ onBookClick }) {
                 Your Trusted Partner in <span className="text-white">Clinical Excellence</span>
               </h1>
               <p className="text-base lg:text-xl text-teal-100/80 leading-relaxed">
-                Since 2015, Care One has been pioneering advanced dermatological treatments with a commitment to excellence, safety, and patient transformation.
+                Since 2025, Care One has been pioneering advanced dermatological treatments with a commitment to excellence, safety, and patient transformation.
               </p>
               <button
                 onClick={onBookClick}
