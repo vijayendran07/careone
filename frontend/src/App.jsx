@@ -568,7 +568,7 @@ function Footer({ settings }) {
           {/* Column 2 — Useful Links / Treatments */}
           <div className="space-y-4">
             <h4 className="font-bold text-white text-base tracking-wide">Treatments</h4>
-            <ul className="space-y-3 text-sm text-teal-100/70">
+            <ul className="space-y-3 text-lg text-teal-100/70">
               <li><Link to="/treatments#hair-restoration" className="hover:text-white transition">Hair Restoration</Link></li>
               <li><Link to="/treatments#skin-rejuvenation" className="hover:text-white transition">Skin Rejuvenation</Link></li>
               <li><Link to="/treatments#laser-therapy" className="hover:text-white transition">Laser Therapy</Link></li>
@@ -579,7 +579,7 @@ function Footer({ settings }) {
           {/* Column 3 — Support */}
           <div className="space-y-4">
             <h4 className="font-bold text-white text-base tracking-wide">Support</h4>
-            <ul className="space-y-3 text-sm text-teal-100/70">
+            <ul className="space-y-3 text-lg text-teal-100/70">
               <li><Link to="/privacy" className="hover:text-white transition">Privacy Policy</Link></li>
               <li><Link to="/terms" className="hover:text-white transition">Terms of Service</Link></li>
               <li><Link to="/faqs" className="hover:text-white transition">FAQs</Link></li>
@@ -590,7 +590,7 @@ function Footer({ settings }) {
           {/* Column 4 — Store Location & Details */}
           <div className="space-y-4">
             <h4 className="font-bold text-white text-base tracking-wide">Clinic Details</h4>
-            <div className="space-y-3 text-sm text-teal-100/70">
+            <div className="space-y-3 text-lg text-teal-100/70">
               {/* Location Row */}
               <div className="flex items-start gap-2.5">
                 <span className="material-symbols-outlined text-base text-secondary mt-0.5">location_on</span>
