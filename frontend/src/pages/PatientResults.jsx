@@ -56,21 +56,21 @@ export default function PatientResults({ onBookClick }) {
               {
                 before: getImage('hair-result-1-before', 'https://images.unsplash.com/photo-1599599810694-f3f415eaf82f?auto=format&fit=crop&w=400&q=80'),
                 after: getImage('hair-result-1-after', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80'),
-                name: 'Rahul M.',
+            
                 treatment: 'PRP Hair Therapy · 6 months',
                 result: 'Significant hair density improvement'
               },
               {
                 before: getImage('hair-result-2-before', 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80'),
                 after: getImage('hair-result-2-after', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80'),
-                name: 'Arjun K.',
+              
                 treatment: 'Follicular Restoration · 8 months',
                 result: 'Natural hair regrowth pattern'
               },
               {
                 before: getImage('hair-result-3-before', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80'),
                 after: getImage('hair-result-3-after', 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80'),
-                name: 'Vikram S.',
+              
                 treatment: 'Scalp Micro-needling · 4 months',
                 result: 'Visible follicle rejuvenation'
               }
@@ -110,28 +110,28 @@ export default function PatientResults({ onBookClick }) {
               {
                 before: getImage('skin-result-1-before', 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80'),
                 after: getImage('skin-result-1-after', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80'),
-                name: 'Sneha P.',
+               
                 treatment: 'Medical Grade Chemical Peels · 3 months',
                 description: 'Dramatic improvement in skin texture and pigmentation. Patient reported noticeable glow and refined pores.'
               },
               {
                 before: getImage('skin-result-2-before', 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80'),
                 after: getImage('skin-result-2-after', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80'),
-                name: 'Kavya R.',
+             
                 treatment: 'Advanced Mesotherapy · 6 sessions',
                 description: 'Skin hydration levels increased dramatically. Fine lines softened and overall radiance enhanced.'
               },
               {
                 before: getImage('skin-result-3-before', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80'),
                 after: getImage('skin-result-3-after', 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80'),
-                name: 'Deepti M.',
+             
                 treatment: 'Combination Protocol · 4 months',
                 description: 'Multi-modality approach resulted in comprehensive skin rejuvenation and natural-looking results.'
               },
               {
                 before: getImage('skin-result-4-before', 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80'),
                 after: getImage('skin-result-4-after', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80'),
-                name: 'Neha S.',
+             
                 treatment: 'Anti-Aging Protocol · 6 months',
                 description: 'Significant reduction in fine lines and age spots. Patient regained youthful glow and skin elasticity.'
               }

@@ -131,14 +131,14 @@ export default function ContactPage() {
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <span className="material-symbols-outlined text-primary">location_on</span>
-                  <span className="text-sm sm:text-base font-semibold text-on-surface">{address}, {city}</span>
+                  <span className="text-sm sm:text-base font-medium text-on-surface">{address}, {city}</span>
                 </div>
                 
                 <a
                   href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address + ', ' + city)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-primary text-white py-4 rounded-xl font-semibold hover:opacity-90 hover:-translate-y-0.5 transition-all duration-200 text-center flex items-center justify-center gap-2 text-base"
+                  className="w-full bg-primary text-white py-4 rounded-xl font-medium hover:opacity-90 hover:-translate-y-0.5 transition-all duration-200 text-center flex items-center justify-center gap-2 text-base"
                 >
                   <span className="material-symbols-outlined text-xl">map</span>
                   Get Directions on Google Maps
