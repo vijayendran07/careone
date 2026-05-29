@@ -150,8 +150,8 @@ export default function BookingModal({ onClose }) {
             <div className="flex items-center gap-2 md:gap-3">
               <span className="material-symbols-outlined text-sm md:text-lg text-white/70">schedule</span>
               <div className="text-[9px] sm:text-xs leading-tight text-white/90">
-                <p className="font-semibold">Mon – Fri: 9am – 7pm</p>
-                <p>Sat: 10am – 4pm</p>
+                <p className="font-semibold">serving you every day</p>
+                <p>9:30am - 9:00pm</p>
               </div>
             </div>
             

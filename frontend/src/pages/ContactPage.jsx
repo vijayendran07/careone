@@ -49,58 +49,58 @@ export default function ContactPage() {
 
             {/* Left: Info */}
             <div className="space-y-8">
-              <div className="bg-gray-50 rounded-3xl p-8 lg:p-10 border border-outline-variant/20">
-                <h3 className="text-2xl font-bold text-on-surface mb-6">Clinic Information</h3>
+              <div className="bg-gradient-to-br from-[#004d4d] to-[#006a6a] rounded-3xl p-8 lg:p-10 border border-teal-700/40 shadow-lg shadow-teal-900/20">
+                <h3 className="text-2xl font-bold text-white mb-6">Clinic Information</h3>
                 <div className="space-y-5">
                   <div className="flex gap-4 items-start">
-                    <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <span className="material-symbols-outlined text-primary text-xl">location_on</span>
+                    <div className="w-10 h-10 bg-white/15 rounded-xl flex items-center justify-center flex-shrink-0 border border-white/20">
+                      <span className="material-symbols-outlined text-white text-xl">location_on</span>
                     </div>
                     <div>
-                      <p className="font-semibold text-on-surface">Main Clinic Address</p>
-                      <p className="text-sm text-on-surface-variant mt-1">{address}, {city}</p>
+                      <p className="font-semibold text-white">Main Clinic Address</p>
+                      <p className="text-sm text-teal-100/80 mt-1">{address}, {city}</p>
                     </div>
                   </div>
                   <div className="flex gap-4 items-start">
-                    <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <span className="material-symbols-outlined text-primary text-xl">call</span>
+                    <div className="w-10 h-10 bg-white/15 rounded-xl flex items-center justify-center flex-shrink-0 border border-white/20">
+                      <span className="material-symbols-outlined text-white text-xl">call</span>
                     </div>
                     <div>
-                      <p className="font-semibold text-on-surface">Phone &amp; Booking Support</p>
-                      <p className="text-sm text-on-surface-variant mt-1">{phone}</p>
+                      <p className="font-semibold text-white">Phone &amp; Booking Support</p>
+                      <p className="text-sm text-teal-100/80 mt-1">{phone}</p>
                     </div>
                   </div>
                   <div className="flex gap-4 items-start">
-                    <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <span className="material-symbols-outlined text-primary text-xl">mail</span>
+                    <div className="w-10 h-10 bg-white/15 rounded-xl flex items-center justify-center flex-shrink-0 border border-white/20">
+                      <span className="material-symbols-outlined text-white text-xl">mail</span>
                     </div>
                     <div>
-                      <p className="font-semibold text-on-surface">Email Inquiries</p>
-                      <p className="text-sm text-on-surface-variant mt-1">{email}</p>
+                      <p className="font-semibold text-white">Email Inquiries</p>
+                      <p className="text-sm text-teal-100/80 mt-1">{email}</p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-primary/5 rounded-3xl p-8 lg:p-10 border border-primary/10">
-                <h3 className="text-xl font-bold text-on-surface mb-5 flex items-center gap-2">
-                  <span className="material-symbols-outlined text-primary">schedule</span>
+              <div className="bg-gradient-to-br from-[#004d4d] to-[#006a6a] rounded-3xl p-8 lg:p-10 border border-teal-700/40 shadow-lg shadow-teal-900/20">
+                <h3 className="text-xl font-bold text-white mb-5 flex items-center gap-2">
+                  <span className="material-symbols-outlined text-white">schedule</span>
                   Clinic Opening Hours
                 </h3>
                 <ul className="space-y-3 text-sm">
                   <li className="flex justify-between items-center py-2.5">
-                    <span className="text-on-surface-variant font-semibold text-sm sm:text-base">Serving You Every Day</span>
-                    <strong className="text-primary font-extrabold text-sm sm:text-base">9:30 AM – 9:00 PM</strong>
+                    <span className="text-teal-100/80 font-semibold text-sm sm:text-base">Serving You Every Day</span>
+                    <strong className="text-white font-extrabold text-sm sm:text-base">9:30 AM – 9:00 PM</strong>
                   </li>
                 </ul>
               </div>
             </div>
 
             {/* Right: Location & Google Maps redirection */}
-            <div className="bg-white p-8 lg:p-10 rounded-3xl border border-outline-variant/30 shadow-sm space-y-6 flex flex-col justify-between min-h-[480px]">
+            <div className="bg-gradient-to-br from-[#004d4d] to-[#006a6a] p-8 lg:p-10 rounded-3xl border border-teal-700/40 shadow-lg shadow-teal-900/20 space-y-6 flex flex-col justify-between min-h-[480px]">
               <div>
-                <h3 className="text-2xl font-bold text-on-surface mb-2">Our Location</h3>
-                <p className="text-on-surface-variant text-sm">Visit our clinical center of excellence. Click the map below to open directly in Google Maps.</p>
+                <h3 className="text-2xl font-bold text-white mb-2">Our Location</h3>
+                <p className="text-teal-100/80 text-sm">Visit our clinical center of excellence. Click the map below to open directly in Google Maps.</p>
               </div>
 
               {/* Map Preview Container */}
@@ -130,15 +130,15 @@ export default function ContactPage() {
               {/* Address detail */}
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
-                  <span className="material-symbols-outlined text-primary">location_on</span>
-                  <span className="text-sm sm:text-base font-medium text-on-surface">{address}, {city}</span>
+                  <span className="material-symbols-outlined text-white">location_on</span>
+                  <span className="text-sm sm:text-base font-medium text-teal-100/80">{address}, {city}</span>
                 </div>
                 
                 <a
                   href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address + ', ' + city)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-primary text-white py-4 rounded-xl font-medium hover:opacity-90 hover:-translate-y-0.5 transition-all duration-200 text-center flex items-center justify-center gap-2 text-base"
+                  className="w-full bg-white/15 border border-white/25 text-white py-4 rounded-xl font-bold hover:bg-white/25 hover:-translate-y-0.5 transition-all duration-200 text-center flex items-center justify-center gap-2 text-base"
                 >
                   <span className="material-symbols-outlined text-xl">map</span>
                   Get Directions on Google Maps

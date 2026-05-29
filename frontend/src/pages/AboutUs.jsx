@@ -117,7 +117,7 @@ Reclaim your confidence with advanced, dermatologist-led treatments customized f
               
               <button
                 onClick={onBookClick}
-                className="bg-secondary text-white px-8 py-4 rounded-xl font-semibold hover:bg-secondary/90 hover:-translate-y-1 hover:shadow-lg transition-all duration-200 text-base"
+                className="bg-white text-primary px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 hover:-translate-y-1 hover:shadow-lg transition-all duration-200 text-base"
               >
                 Book Consultation
               </button>
