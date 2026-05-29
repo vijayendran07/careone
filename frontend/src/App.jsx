@@ -522,7 +522,7 @@ function Footer({ settings }) {
 
           {/* Column 1 — Brand Box (Left Column, expanded horizontally) */}
           <div className="space-y-4 lg:col-span-2">
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 flex flex-col items-start gap-4 shadow-lg shadow-black/20 w-full h-auto">
+            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 flex flex-col items-start gap-4 shadow-lg shadow-black/20 w-[calc(100%-20px)] h-auto">
               <div className="bg-white rounded-lg p-2 flex-shrink-0">
                 <img src="/footer-logo.jpg" alt={`${clinicName} - Skin Hair Laser Clinic`} className="h-10 w-auto object-contain" />
               </div>
@@ -567,7 +567,7 @@ function Footer({ settings }) {
 
           {/* Column 2 — Useful Links / Treatments */}
           <div className="space-y-4">
-            <h4 className="font-bold text-white text-base tracking-wide">Treatments</h4>
+            <h4 className="font-bold text-white text-base text-lg tracking-wide">Treatments</h4>
             <ul className="space-y-3 text-lg text-teal-100/70">
               <li><Link to="/treatments#hair-restoration" className="hover:text-white transition">Hair Restoration</Link></li>
               <li><Link to="/treatments#skin-rejuvenation" className="hover:text-white transition">Skin Rejuvenation</Link></li>
@@ -578,7 +578,7 @@ function Footer({ settings }) {
 
           {/* Column 3 — Support */}
           <div className="space-y-4">
-            <h4 className="font-bold text-white text-base tracking-wide">Support</h4>
+            <h4 className="font-bold text-white text-base text-lg tracking-wide">Support</h4>
             <ul className="space-y-3 text-lg text-teal-100/70">
               <li><Link to="/privacy" className="hover:text-white transition">Privacy Policy</Link></li>
               <li><Link to="/terms" className="hover:text-white transition">Terms of Service</Link></li>
@@ -589,7 +589,7 @@ function Footer({ settings }) {
 
           {/* Column 4 — Store Location & Details */}
           <div className="space-y-4">
-            <h4 className="font-bold text-white text-base tracking-wide">Clinic Details</h4>
+            <h4 className="font-bold text-white text-base text-lg tracking-wide">Clinic Details</h4>
             <div className="space-y-3 text-lg text-teal-100/70">
               {/* Location Row */}
               <div className="flex items-start gap-2.5">
