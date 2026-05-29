@@ -82,7 +82,7 @@ export default function Home({ onBookClick }) {
             key={idx}
             src={slideUrl}
             alt={`Care One Hero Slide ${idx + 1}`}
-            className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ease-in-out ${currentSlide === idx ? 'opacity-100 z-0' : 'opacity-0 z-0'}`}
+            className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ease-in-out ${currentSlide === idx ? 'opacity-500 z-0' : 'opacity-0 z-0'}`}
           />
         ))}
 

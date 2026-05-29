@@ -111,7 +111,7 @@ export default function Treatments({ onBookClick }) {
             key={idx}
             src={slideUrl}
             alt={`Care One Treatments Slide ${idx + 1}`}
-            className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ease-in-out ${currentSlide === idx ? 'opacity-100 z-0' : 'opacity-0 z-0'}`}
+            className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ease-in-out ${currentSlide === idx ? 'opacity-500 z-0' : 'opacity-0 z-0'}`}
           />
         ))}
 
@@ -155,9 +155,26 @@ export default function Treatments({ onBookClick }) {
               Advanced Solutions for <br className="hidden sm:block" />
               Skin &amp; <span className="text-primary">Hair</span>
             </h1>
-            <p className="text-sm sm:text-base lg:text-lg text-black-600 leading-relaxed max-w-xl mx-auto font-medium">
+            <p className="text-sm sm:text-base lg:text-lg text-grey-900 leading-relaxed max-w-xl mx-auto font-bold">
               Discover our comprehensive range of medical-grade treatments designed to restore confidence through science-led precision.
             </p>
+          </div>
+        </div>
+      </section>
+      <section className="bg-primary py-8">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-white text-center">
+            {[
+              { value: '2000+', label: 'Happy Patients' },
+              { value: '500+', label: 'Monthly Treatments' },
+              { value: '100%', label: 'Results' },
+              { value: '10+', label: 'Years Experience' }
+            ].map((stat, i) => (
+              <div key={i}>
+                <div className="text-3xl lg:text-4xl font-bold">{stat.value}</div>
+                <div className="text-white/80 text-sm mt-1">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
