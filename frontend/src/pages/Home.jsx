@@ -128,8 +128,9 @@ export default function Home({ onBookClick }) {
               Care You Can <span className="text-primary">Trust</span>
             </h1>
             <p className="text-sm sm:text-base lg:text-lg font-bold text-gray-900 leading-relaxed max-w-xl mx-auto">
-              Reclaim your confidence with advanced, dermatologist-led treatments customized for your unique skin and hair goals.
+              Reclaim your confidence with dermatologist-led treatments customized for your unique skin and hair goals.
             </p>
+           
           </div>
         </div>
       </section>
