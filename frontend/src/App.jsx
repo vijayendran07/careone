@@ -522,7 +522,7 @@ function Footer({ settings }) {
 
           {/* Column 1 — Brand Box (Left Column, expanded horizontally) */}
           <div className="space-y-4 lg:col-span-2">
-            <div className="bg-[#003c3c]/40 border border-white/5 rounded-xl p-4 flex flex-col items-start gap-3.5 shadow-sm backdrop-blur-xs w-full h-auto">
+            <div className="bg-[#a5dde6]/40 border border-white/5 rounded-xl p-4 flex flex-col items-start gap-3.5 shadow-sm backdrop-blur-xs w-full h-auto">
               <div className="bg-white rounded-lg p-2 flex-shrink-0">
                 <img src="/footer-logo.jpg" alt={`${clinicName} - Skin Hair Laser Clinic`} className="h-10 w-auto object-contain" />
               </div>
