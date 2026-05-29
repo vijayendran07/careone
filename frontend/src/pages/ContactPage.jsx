@@ -108,7 +108,7 @@ export default function ContactPage() {
                 href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address + ', ' + city)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative block rounded-2xl overflow-hidden border border-outline-variant/20 shadow-inner h-[260px] transition duration-300"
+                className="group relative block rounded-2xl overflow-hidden border border-outline-variant/20 shadow-inner h-[220px] transition duration-300"
               >
                 {/* Embedded dynamic iframe representing the location map */}
                 <iframe
