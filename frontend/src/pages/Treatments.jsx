@@ -152,7 +152,7 @@ export default function Treatments({ onBookClick }) {
         <div className="relative z-10 w-full text-center px-4 sm:px-6 md:px-10 lg:px-16 py-8 sm:py-16">
           <div className="max-w-3xl mx-auto space-y-4 sm:space-y-6">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 drop-shadow-sm">
-              Advanced Clinical Solutions for <br className="hidden sm:block" />
+              Advanced Solutions for <br className="hidden sm:block" />
               Skin &amp; <span className="text-primary">Hair</span>
             </h1>
             <p className="text-sm sm:text-base lg:text-lg text-black-600 leading-relaxed max-w-xl mx-auto font-medium">
