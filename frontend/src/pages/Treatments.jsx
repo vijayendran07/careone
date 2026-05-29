@@ -155,7 +155,7 @@ export default function Treatments({ onBookClick }) {
               Advanced Clinical Solutions for <br className="hidden sm:block" />
               Skin &amp; <span className="text-primary">Hair</span>
             </h1>
-            <p className="text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed max-w-xl mx-auto font-medium">
+            <p className="text-sm sm:text-base lg:text-lg text-black-600 leading-relaxed max-w-xl mx-auto font-medium">
               Discover our comprehensive range of medical-grade treatments designed to restore confidence through science-led precision.
             </p>
           </div>

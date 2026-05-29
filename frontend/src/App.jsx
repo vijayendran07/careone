@@ -522,13 +522,12 @@ function Footer({ settings }) {
 
           {/* Column 1 — Brand Box (Left Column, expanded horizontally) */}
           <div className="space-y-4 lg:col-span-2">
-            <div className="bg-[#1b1b1b]/40 border border-white/5 rounded-xl p-4 flex flex-col items-start gap-3.5 shadow-sm backdrop-blur-xs w-full h-auto">
+            <div className="bg-[#f0e68c]/40 border border-white/5 rounded-xl p-4 flex flex-col items-start gap-3.5 shadow-sm backdrop-blur-xs w-full h-auto">
               <div className="bg-white rounded-lg p-2 flex-shrink-0">
                 <img src="/footer-logo.jpg" alt={`${clinicName} - Skin Hair Laser Clinic`} className="h-10 w-auto object-contain" />
               </div>
-              <p className="text-teal-100/75 text-[14px] leading-relaxed">
-                Providing world-class clinical excellence in skin & hair care.Expert Skin & Hair care you can trust. Your trusted partner for transformative care.
-We blend cutting-edge technology with expert dermatology to ensure you leave feeling rejuvenated and empowered. Founded in 2025, we've helped thousands achieve their aesthetic goals.Care One has been pioneering advanced dermatological treatments with a commitment to excellence, safety, and patient transformation. 
+              <p className="text-teal-100/75 text-[14px] leading-relaxed text-justify">
+                Providing world-class clinical excellence in skin &amp; hair care. We blend cutting-edge technology with expert dermatology to ensure you leave feeling rejuvenated and empowered. Founded in 2025, we've helped thousands achieve their aesthetic goals with a commitment to excellence, safety, and patient transformation.
               </p> 
             </div>
             
