@@ -48,38 +48,36 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
             {/* Left: Info */}
-            <div className="space-y-6">
-              <div className="grid grid-cols-1 gap-4">
-                {/* Card 1: Address */}
-                <div className="bg-primary text-white rounded-3xl p-6 lg:p-8 border border-primary/10 shadow-sm flex items-start gap-5 hover:scale-[1.01] hover:shadow-md transition-all duration-300">
-                  <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <span className="material-symbols-outlined text-white text-2xl">location_on</span>
+            <div className="space-y-8">
+              <div className="bg-gray-50 rounded-3xl p-8 lg:p-10 border border-outline-variant/20">
+                <h3 className="text-2xl font-bold text-on-surface mb-6">Clinic Information</h3>
+                <div className="space-y-5">
+                  <div className="flex gap-4 items-start">
+                    <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <span className="material-symbols-outlined text-primary text-xl">location_on</span>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-on-surface">Main Clinic Address</p>
+                      <p className="text-sm text-on-surface-variant mt-1">{address}, {city}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-bold text-lg text-white">Main Clinic Address</h4>
-                    <p className="text-teal-100/90 text-sm mt-1 leading-relaxed">{address}, {city}</p>
+                  <div className="flex gap-4 items-start">
+                    <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <span className="material-symbols-outlined text-primary text-xl">call</span>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-on-surface">Phone &amp; Booking Support</p>
+                      <p className="text-sm text-on-surface-variant mt-1">{phone}</p>
+                    </div>
                   </div>
-                </div>
-
-                {/* Card 2: Phone */}
-                <div className="bg-primary text-white rounded-3xl p-6 lg:p-8 border border-primary/10 shadow-sm flex items-start gap-5 hover:scale-[1.01] hover:shadow-md transition-all duration-300">
-                  <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <span className="material-symbols-outlined text-white text-2xl">call</span>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-lg text-white">Phone &amp; Booking Support</h4>
-                    <p className="text-teal-100/90 text-sm mt-1 leading-relaxed">{phone}</p>
-                  </div>
-                </div>
-
-                {/* Card 3: Email */}
-                <div className="bg-primary text-white rounded-3xl p-6 lg:p-8 border border-primary/10 shadow-sm flex items-start gap-5 hover:scale-[1.01] hover:shadow-md transition-all duration-300">
-                  <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <span className="material-symbols-outlined text-white text-2xl">mail</span>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-lg text-white">Email Inquiries</h4>
-                    <p className="text-teal-100/90 text-sm mt-1 leading-relaxed">{email}</p>
+                  <div className="flex gap-4 items-start">
+                    <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <span className="material-symbols-outlined text-primary text-xl">mail</span>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-on-surface">Email Inquiries</p>
+                      <p className="text-sm text-on-surface-variant mt-1">{email}</p>
+                    </div>
                   </div>
                 </div>
               </div>
