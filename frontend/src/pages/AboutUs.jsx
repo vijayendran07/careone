@@ -1,6 +1,24 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import API_URL from '../config/api'
 
 export default function AboutUs({ onBookClick }) {
+  const [gallery, setGallery] = useState([])
+
+  useEffect(() => {
+    fetch(`${API_URL}/api/gallery`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          setGallery(data.images)
+        }
+      })
+      .catch(console.error)
+  }, [])
+
+  const getImage = (sectionId, fallback) => {
+    const img = gallery.find(g => g.section === sectionId)
+    return img?.imageUrl || fallback
+  }
 
   return (
     <main>
@@ -63,6 +81,69 @@ export default function AboutUs({ onBookClick }) {
             <p className="text-on-surface-variant text-base lg:text-lg leading-relaxed">
               Today, we're proud to serve over 2,000 satisfied patients and maintain the highest standards of clinical care, patient safety, and aesthetic outcomes.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════ OUR TEAM (DOCTORS) ═══════════════ */}
+      <section className="py-16 lg:py-24 bg-primary text-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* Image Column */}
+            <div className="relative h-[380px] lg:h-[480px] rounded-3xl overflow-hidden shadow-2xl group hover:scale-[1.01] transition-transform duration-300">
+              <img 
+                src={getImage('doctor-image-1', 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=1000')} 
+                alt="Our Expert Doctors" 
+                className="w-full h-full object-cover object-center" 
+              />
+            </div>
+            
+            {/* Content Column */}
+            <div className="space-y-6">
+              <span className="inline-block bg-white/20 border border-white/30 text-[#f5ebd5] font-semibold uppercase tracking-widest text-xs px-4 py-2 rounded-full">
+                Our Doctors
+              </span>
+              <h2 className="text-3xl lg:text-5xl font-bold leading-tight">
+                Dermatology Led by Board-Certified Experts
+              </h2>
+              <p className="text-teal-100/80 text-base lg:text-lg leading-relaxed">
+                Our clinic is staffed by highly qualified dermatologists and clinical specialists who bring years of advanced training and international experience to every treatment.
+              </p>
+              
+              {/* Doctor Cards */}
+              <div className="space-y-4 text-on-surface">
+                {[
+                  {
+                    name: 'Dr. Rajesh Kumar',
+                    role: 'Founder & Chief Dermatologist',
+                    credentials: 'MD in Dermatology, 15+ Years Experience',
+                    desc: 'Specializes in advanced regenerative hair therapies, clinical dermatology, and custom anti-aging protocols.'
+                  },
+                  {
+                    name: 'Dr. Anjali Sharma',
+                    role: 'Senior Aesthetic Specialist',
+                    credentials: 'MBBS, DDVL, Laser Surgery Board-Certified',
+                    desc: 'Expert in FDA-approved laser treatments, deep chemical peeling, and non-surgical facial rejuvenation.'
+                  }
+                ].map((doc, idx) => (
+                  <div key={idx} className="p-5 bg-white rounded-2xl border border-outline-variant/20 hover:border-primary/30 hover:shadow-lg hover:scale-[1.01] transition-all duration-300">
+                    <div className="flex justify-between items-start flex-wrap gap-1">
+                      <h4 className="text-base lg:text-lg font-bold text-primary">{doc.name}</h4>
+                      <span className="text-[11px] bg-secondary/10 text-secondary px-2.5 py-0.5 rounded-full font-semibold">{doc.role}</span>
+                    </div>
+                    <p className="text-xs text-primary font-medium mt-0.5 mb-2">{doc.credentials}</p>
+                    <p className="text-on-surface-variant text-sm leading-relaxed">{doc.desc}</p>
+                  </div>
+                ))}
+              </div>
+              
+              <button
+                onClick={onBookClick}
+                className="bg-secondary text-white px-8 py-4 rounded-xl font-semibold hover:bg-secondary/90 hover:-translate-y-1 hover:shadow-lg transition-all duration-200 text-base"
+              >
+                Book Consultation
+              </button>
+            </div>
           </div>
         </div>
       </section>

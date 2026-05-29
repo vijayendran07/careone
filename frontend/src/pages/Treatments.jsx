@@ -55,19 +55,19 @@ export default function Treatments({ onBookClick }) {
   const hairTreatments = [
     {
       title: 'GFC Hair Therapy',
-      desc: "GFC hair therapy is a non-surgical, regenerative treatment that stimulates hair growth using growth factors extracted from your own blood. GFC therapy is considered a safer and more effective alternative to traditional PRP therapy, especially for those who did not see success with PRP. The treatment is designed to promote natural hair regrowth, improve scalp health, and strengthen hair follicles.",
+      desc: "GFC hair therapy is a non-surgical, regenerative treatment that stimulates hair growth using growth factors extracted from your own blood. GFC therapy is considered a safer and more advanced teaatment than traditional method  ",
       benefits: ['Thickens existing hair', '45 min session, minimal downtime'],
       featured: false
     },
     {
       title: 'Follicular Restoration',
-      desc: 'Follicular Restoration is an advanced hair restoration treatment focused on revitalizing weakened or damaged hair follicles to promote healthier, thicker, and natural-looking hair growth. Using modern regenerative and non-surgical techniques, the treatment helps improve scalp health, strengthen existing follicles, reduce hair thinning, and support long-term hair density restoration for both men and women..',
+      desc: 'Follicular Restoration is an advanced hair restoration treatment focused on revitalizing weakened or damaged hair follicles to promote healthier, thicker, and natural-looking hair growth.',
       benefits: ['Reverses early thinning', 'Relaxing clinical environment'],
       featured: true
     },
     {
       title: 'Exosome therapy ',
-      desc: 'Exosome Therapy is an emerging regenerative medicine treatment that uses tiny extracellular vesicles called exosomes, which are naturally released by cells to carry proteins, RNA, lipids, and signaling molecules throughout the body. These exosomes are believed to help with cell communication, tissue repair, inflammation control, and regeneration.Requires further scientific validation before becoming a widely accepted standard medical treatment.',
+      desc: 'Exosome Therapy is an emerging regenerative medicine treatment that uses tiny extracellular vesicles called exosomes, which are naturally released by cells to carry proteins, RNA, lipids, and signaling molecules throughout the body.',
       benefits: ['Improved absorption', 'Slight redness for 24 hours'],
       featured: false
     }
