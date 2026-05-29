@@ -107,35 +107,13 @@ export default function AboutUs({ onBookClick }) {
                 Dermatology Led by Board-Certified Experts
               </h2>
               <p className="text-teal-100/80 text-base lg:text-lg leading-relaxed">
-                Our clinic is staffed by highly qualified dermatologists and clinical specialists who bring years of advanced training and international experience to every treatment.
+                Our clinic is staffed by highly qualified dermatologists and clinical specialists who bring years of advanced training and international experience to every treatment.Expert Skin & Hair
+Care You Can Trust
+Reclaim your confidence with advanced, dermatologist-led treatments customized for your unique skin and hair goals.
               </p>
               
               {/* Doctor Cards */}
-              <div className="space-y-4 text-on-surface">
-                {[
-                  {
-                    name: 'Dr. Rajesh Kumar',
-                    role: 'Founder & Chief Dermatologist',
-                    credentials: 'MD in Dermatology, 15+ Years Experience',
-                    desc: 'Specializes in advanced regenerative hair therapies, clinical dermatology, and custom anti-aging protocols.'
-                  },
-                  {
-                    name: 'Dr. Anjali Sharma',
-                    role: 'Senior Aesthetic Specialist',
-                    credentials: 'MBBS, DDVL, Laser Surgery Board-Certified',
-                    desc: 'Expert in FDA-approved laser treatments, deep chemical peeling, and non-surgical facial rejuvenation.'
-                  }
-                ].map((doc, idx) => (
-                  <div key={idx} className="p-5 bg-white rounded-2xl border border-outline-variant/20 hover:border-primary/30 hover:shadow-lg hover:scale-[1.01] transition-all duration-300">
-                    <div className="flex justify-between items-start flex-wrap gap-1">
-                      <h4 className="text-base lg:text-lg font-bold text-primary">{doc.name}</h4>
-                      <span className="text-[11px] bg-secondary/10 text-secondary px-2.5 py-0.5 rounded-full font-semibold">{doc.role}</span>
-                    </div>
-                    <p className="text-xs text-primary font-medium mt-0.5 mb-2">{doc.credentials}</p>
-                    <p className="text-on-surface-variant text-sm leading-relaxed">{doc.desc}</p>
-                  </div>
-                ))}
-              </div>
+             
               
               <button
                 onClick={onBookClick}
