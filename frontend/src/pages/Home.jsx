@@ -216,7 +216,6 @@ export default function Home({ onBookClick }) {
               Our Services
             </span>
             <h2 className="text-3xl lg:text-5xl font-bold">Transformative Solutions for Your Best Self</h2>
-            <div className="h-1 w-20 bg-secondary mx-auto mt-5" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {services.map((service, i) => (
