@@ -64,10 +64,7 @@ export default function AdminDashboard() {
     { id: 'skin-result-1-after', label: 'Skin Result 1 (After)', category: 'Patient Results Page' },
     { id: 'skin-result-2-before', label: 'Skin Result 2 (Before)', category: 'Patient Results Page' },
     { id: 'skin-result-2-after', label: 'Skin Result 2 (After)', category: 'Patient Results Page' },
-    { id: 'skin-result-3-before', label: 'Skin Result 3 (Before)', category: 'Patient Results Page' },
-    { id: 'skin-result-3-after', label: 'Skin Result 3 (After)', category: 'Patient Results Page' },
-    { id: 'skin-result-4-before', label: 'Skin Result 4 (Before)', category: 'Patient Results Page' },
-    { id: 'skin-result-4-after', label: 'Skin Result 4 (After)', category: 'Patient Results Page' },
+
   ]
 
   const getToken = () => {

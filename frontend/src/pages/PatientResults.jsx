@@ -121,20 +121,7 @@ export default function PatientResults({ onBookClick }) {
                 treatment: 'Advanced Mesotherapy · 6 sessions',
                 description: 'Skin hydration levels increased dramatically. Fine lines softened and overall radiance enhanced.'
               },
-              {
-                before: getImage('skin-result-3-before', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80'),
-                after: getImage('skin-result-3-after', 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80'),
-             
-                treatment: 'Combination Protocol · 4 months',
-                description: 'Multi-modality approach resulted in comprehensive skin rejuvenation and natural-looking results.'
-              },
-              {
-                before: getImage('skin-result-4-before', 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80'),
-                after: getImage('skin-result-4-after', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80'),
-             
-                treatment: 'Anti-Aging Protocol · 6 months',
-                description: 'Significant reduction in fine lines and age spots. Patient regained youthful glow and skin elasticity.'
-              }
+
             ].map((result, idx) => (
               <div key={idx} className="rounded-3xl overflow-hidden shadow-md border border-outline-variant/30 hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 bg-white">
                 <div className="flex gap-1 p-2 bg-gray-100/50">

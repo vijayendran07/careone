@@ -29,10 +29,7 @@ const gallerySchema = new mongoose.Schema({
       'skin-result-1-after',
       'skin-result-2-before',
       'skin-result-2-after',
-      'skin-result-3-before',
-      'skin-result-3-after',
-      'skin-result-4-before',
-      'skin-result-4-after'
+
     ]
   },
   imageUrl: {
