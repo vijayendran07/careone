@@ -1032,7 +1032,7 @@ export default function AdminDashboard() {
                           { label: 'Clinic Name', field: 'clinicName', type: 'text' },
                           { label: 'Contact Email', field: 'email', type: 'email' },
                           { label: 'Phone Number', field: 'phone', type: 'tel' },
-                          { label: 'City', field: 'city', type: 'text' },
+                          { label: 'Country', field: 'country', type: 'text' },
                         ].map(({ label, field, type }) => (
                           <div key={field}>
                             <label htmlFor={field} className="block text-sm font-semibold text-on-surface mb-2">{label}</label>

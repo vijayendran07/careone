@@ -54,7 +54,7 @@ export default function Home({ onBookClick }) {
 
   const services = [
     {
-      icon: 'content_cut',
+      icon: 'syringe',
       title: 'Hair Restoration',
       desc: 'Advanced follicular treatments and regenerative therapies for natural hair growth.'
     },
@@ -64,7 +64,7 @@ export default function Home({ onBookClick }) {
       desc: 'Targeted FDA-approved laser solutions for skin tightening and blemish removal.'
     },
     {
-      icon: 'face_6',
+      icon: 'face_retouching_natural',
       title: 'Skin Rejuvenation',
       desc: 'Deep hydration, chemical peels, and non-surgical anti-aging procedures.'
     }
@@ -143,7 +143,7 @@ export default function Home({ onBookClick }) {
               { value: '2000+', label: 'Happy Patients' },
               { value: '500+', label: 'Monthly Treatments' },
               { value: '100%', label: 'Results' },
-              { value: '10+', label: 'Years Experience' }
+              { value: '15+', label: 'Years Experience' }
             ].map((stat, i) => (
               <div key={i}>
                 <div className="text-3xl lg:text-4xl font-bold">{stat.value}</div>
