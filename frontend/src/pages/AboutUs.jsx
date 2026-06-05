@@ -134,13 +134,15 @@ Reclaim your confidence with advanced, dermatologist-led treatments customized f
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {[
-              { icon: '✓', title: 'Excellence', desc: 'Highest standards in every treatment we provide' },
-              { icon: '❤', title: 'Compassion', desc: 'Patient-centered care in everything we do' },
-              { icon: '🔬', title: 'Innovation', desc: 'Latest technologies and cutting-edge techniques' },
-              { icon: '🛡️', title: 'Safety', desc: 'Rigorous protocols and full clinical certification' }
+              { icon: 'verified', title: 'Excellence', desc: 'Highest standards in every treatment we provide' },
+              { icon: 'favorite', title: 'Compassion', desc: 'Patient-centered care in everything we do' },
+              { icon: 'biotech', title: 'Innovation', desc: 'Latest technologies and cutting-edge techniques' },
+              { icon: 'shield', title: 'Safety', desc: 'Rigorous protocols and full clinical certification' }
             ].map((value, idx) => (
               <div key={idx} className="text-center p-6 lg:p-8 rounded-2xl bg-gradient-to-br from-white to-gray-50/50 border border-outline-variant/30 shadow-sm hover:shadow-xl hover:bg-gradient-to-br hover:from-primary/5 hover:to-secondary/5 hover:border-primary/30 transition-all duration-300">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto text-3xl mb-4">{value.icon}</div>
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="material-symbols-outlined text-primary text-3xl">{value.icon}</span>
+                </div>
                 <h3 className="text-lg lg:text-xl font-bold text-on-surface mb-2">{value.title}</h3>
                 <p className="text-sm text-on-surface-variant leading-relaxed">{value.desc}</p>
               </div>
