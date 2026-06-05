@@ -64,7 +64,7 @@ export default function Home({ onBookClick }) {
       desc: 'Targeted FDA-approved laser solutions for skin tightening and blemish removal.'
     },
     {
-      icon: 'face_retouching_natural',
+      icon: '/skin-rejuvenation-icon.png',
       title: 'Skin Rejuvenation',
       desc: 'Deep hydration, chemical peels, and non-surgical anti-aging procedures.'
     }
@@ -218,18 +218,37 @@ export default function Home({ onBookClick }) {
             <h2 className="text-3xl lg:text-5xl font-bold">Transformative Solutions for Your Best Self</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {services.map((service, i) => (
-              <div key={i} className="bg-white p-8 rounded-2xl group hover:bg-secondary transition-all duration-300 transform hover:-translate-y-2 text-on-surface hover:text-white shadow-sm hover:shadow-xl">
-                <span className="material-symbols-outlined text-primary text-5xl group-hover:text-white mb-5 block transition-colors">
-                  {service.icon}
-                </span>
-                <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                <p className="text-on-surface-variant group-hover:text-white/90 mb-6 leading-relaxed text-sm">{service.desc}</p>
-                <a href={`/treatments#${service.title.toLowerCase().replace(' ', '-')}`} className="text-primary group-hover:text-white font-bold flex items-center gap-2 text-sm">
-                  View Details <span className="material-symbols-outlined text-sm">arrow_forward</span>
-                </a>
-              </div>
-            ))}
+            {services.map((service, i) => {
+              const isCustomIcon = service.icon.startsWith('/');
+              return (
+                <div key={i} className="bg-white p-8 rounded-2xl group hover:bg-secondary transition-all duration-300 transform hover:-translate-y-2 text-on-surface hover:text-white shadow-sm hover:shadow-xl">
+                  {isCustomIcon ? (
+                    <span
+                      className="w-12 h-12 mb-5 block bg-primary group-hover:bg-white transition-colors duration-300"
+                      style={{
+                        maskImage: `url("${service.icon}")`,
+                        WebkitMaskImage: `url("${service.icon}")`,
+                        maskSize: 'contain',
+                        WebkitMaskSize: 'contain',
+                        maskRepeat: 'no-repeat',
+                        WebkitMaskRepeat: 'no-repeat',
+                        maskPosition: 'center',
+                        WebkitMaskPosition: 'center'
+                      }}
+                    />
+                  ) : (
+                    <span className="material-symbols-outlined text-primary text-5xl group-hover:text-white mb-5 block transition-colors">
+                      {service.icon}
+                    </span>
+                  )}
+                  <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+                  <p className="text-on-surface-variant group-hover:text-white/90 mb-6 leading-relaxed text-sm">{service.desc}</p>
+                  <a href={`/treatments#${service.title.toLowerCase().replace(' ', '-')}`} className="text-primary group-hover:text-white font-bold flex items-center gap-2 text-sm">
+                    View Details <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                  </a>
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
